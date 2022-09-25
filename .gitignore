@@ -33,3 +33,9 @@
 
 # RubyMineを使用されている方は次も追加
 /.idea
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
