@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update!(post_params)
+    if @post.update(post_params)
       redirect_to @post, notice: "武将を更新しました"
     else
       flash.now[:alert] = "武将の更新に失敗しました"
