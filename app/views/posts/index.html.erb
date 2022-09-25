@@ -1,5 +1,17 @@
 <h1 class="text-center">武将一覧</h1>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont, "武将名" %>
+  <%= f.search_field :name_cont, size: 15 %>
+  <%= f.label :birthplace_cont, "出身地" %>
+  <%= f.search_field :birthplace_cont, size: 10 %>
+  <%= f.label :castle_cont, "居城" %>
+  <%= f.search_field :castle_cont, size: 10 %>
+  <%= f.label :famous_battle_cont, "有名な戦い" %>
+  <%= f.search_field :famous_battle_cont, size: 15 %>
+  <%= f.submit "検索" %>
+<% end %>
+
 <table class="table table-bordered table-striped mt-4">
   <thead class="table-primary">
     <tr>

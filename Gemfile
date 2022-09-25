@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.7'
 gem "net-smtp"
 gem 'faker', require: false
 gem 'kaminari'
+gem 'ransack'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.order(id: :desc).page(params[:page]).per(PER_PAGE)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.order(id: :desc).page(params[:page]).per(PER_PAGE)
   end
 
   def show; end
