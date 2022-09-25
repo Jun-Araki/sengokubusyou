@@ -11,11 +11,9 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 div.field_with_errors {
   display: contents;
-  input {
-    border: 2px solid red;
-  }
+  input,
   textarea {
-    border: 2px solid red;
+    @extend .is-invalid;
   }
 }
 
