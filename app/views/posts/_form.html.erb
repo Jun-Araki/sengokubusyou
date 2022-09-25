@@ -3,29 +3,29 @@
 <%= form_with model: @post, local: true do |form| %>
   <div class="form-group">
     <%= form.label :name %> <br>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.text_field :name, class: "form-control", required: true %>
   </div>
   <div class="form-group">
     <%= form.label :catch_copy %> <br>
-    <%= form.text_field :catch_copy, class: "form-control"  %>
+    <%= form.text_field :catch_copy, class: "form-control", required: true  %>
   </div>
   <div class="form-group">
     <%= form.label :birthplace %> <br>
-    <%= form.text_field :birthplace, class: "form-control"  %>
+    <%= form.text_field :birthplace, class: "form-control", required: true  %>
   </div>
   <div class="form-group">
     <%= form.label :castle %> <br>
-    <%= form.text_field :castle, class: "form-control"  %>
+    <%= form.text_field :castle, class: "form-control", required: true  %>
   </div>
   <div class="form-group">
     <%= form.label :famous_battle %> <br>
-    <%= form.text_field :famous_battle, class: "form-control"  %>
+    <%= form.text_field :famous_battle, class: "form-control", required: true  %>
   </div>
   <div class="form-group">
     <%= form.label :recommend_point %> <br>
-    <%= form.text_area :recommend_point, class: "form-control"  %>
+    <%= form.text_area :recommend_point, class: "form-control", required: true  %>
   </div>
   <div>
-    <%= form.submit button_value, class: "btn btn-primary btn-block" %>
+    <%= form.submit button_value, class: "btn btn-primary btn-block", required: true %>
   </div>
 <% end %>
