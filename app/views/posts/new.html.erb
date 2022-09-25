@@ -1,2 +1,30 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>新規武将</h1>
+<%= form_with model: @post, local: true do |form| %>
+  <div>
+    <%= form.label :name, "武将名" %> <br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :catch_copy, "キャッチコピー" %> <br>
+    <%= form.text_field :catch_copy %>
+  </div>
+  <div>
+    <%= form.label :birthplace, "出身地" %> <br>
+    <%= form.text_field :birthplace %>
+  </div>
+  <div>
+    <%= form.label :castle, "居城" %> <br>
+    <%= form.text_field :castle %>
+  </div>
+  <div>
+    <%= form.label :famous_battle, "有名な戦い" %> <br>
+    <%= form.text_field :famous_battle %>
+  </div>
+  <div>
+    <%= form.label :recommend_point, "おすすめポイント" %> <br>
+    <%= form.text_area :recommend_point %>
+  </div>
+  <div>
+    <%= form.submit "登録" %>
+  </div>
+<% end %>
