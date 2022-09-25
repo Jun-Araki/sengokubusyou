@@ -11,10 +11,36 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 div.field_with_errors {
   display: contents;
-  input {
-    border: 2px solid red;
-  }
+  input,
   textarea {
-    border: 2px solid red;
+    @extend .is-invalid;
   }
+}
+
+.base-container {
+  @extend .container-fluid;
+  max-width: var(--breakpoint-lg);
+  padding: 30px 15px;
+}
+
+body {
+  padding-top: 50px;
+}
+
+// テーブル
+th,
+td {
+  vertical-align: middle !important;
+}
+
+.break-word {
+  word-break: break-word;
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
 }

@@ -1,3 +1,12 @@
-  <%= link_to "武将一覧", posts_path %>
-  <%= link_to "新規武将", new_post_path %>
-  <hr>
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+  <span class="navbar-brand">おすすめ戦国武将アプリ</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <%= link_to "武将一覧", posts_path, class: "nav-item nav-link active" %>
+      <%= link_to "新規武将", new_post_path, class: "nav-item nav-link active" %>
+    </div>
+  </div>
+</nav>

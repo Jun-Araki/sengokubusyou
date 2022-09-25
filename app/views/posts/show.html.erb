@@ -1,7 +1,13 @@
-<h1>武将詳細</h1>
-<p>武将名 <br><%= @post.name %></p>
-<p>キャッチコピー <br><%= @post.catch_copy %></p>
-<p>出身地 <br><%= @post.birthplace %></p>
-<p>居城 <br><%= @post.castle %></p>
-<p>有名な戦い <br><%= @post.famous_battle %></p>
-<p>おすすめポイント <br><%=safe_join(@post.recommend_point.split("\n"),tag(:br))%></p>
+<h1 class="card text-center">武将詳細</h1>
+<section class="card border-dark mt-5">
+  <div class="card-header">
+    <h4><%= @post.name %></h4>
+  </div>
+  <div class="card-body">
+    <p>キャッチコピー <br><b><%= @post.catch_copy %></b></p>
+    <p>出身地 <br><b><%= @post.birthplace %></b></p>
+    <p>居城 <br><b><%= @post.castle %></b></p>
+    <p>有名な戦い <br><b><%= @post.famous_battle %></b></p>
+    <p>おすすめポイント <br><b><%=safe_join(@post.recommend_point.split("\n"),tag(:br))%></b></p>
+  </div>
+</section>
