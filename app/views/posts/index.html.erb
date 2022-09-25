@@ -1,4 +1,5 @@
 <h1 class="text-center">武将一覧</h1>
+
 <table class="table table-bordered table-striped mt-4">
   <thead class="table-primary">
     <tr>
@@ -7,6 +8,7 @@
       <th scope="col"></th>
     </tr>
   </thead> 
+
   <tbody>
     <% @posts.each.with_index(1) do |post, i| %>
       <tr>
@@ -27,3 +29,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @posts %>
