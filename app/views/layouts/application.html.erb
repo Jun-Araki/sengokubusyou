@@ -11,9 +11,7 @@
   </head>
 
   <body>
-  <%= link_to "武将一覧", posts_path %>
-  <%= link_to "新規武将", new_post_path %>
-  <hr>
+  <%= render "layouts/header" %>
     <%= yield %>
   </body>
 </html>
