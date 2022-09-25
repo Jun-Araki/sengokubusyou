@@ -12,15 +12,24 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create!(post_params)
-    redirect_to post, notice: "武将を登録しました"
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to @post, notice: "武将を登録しました"
+    else
+      flash.now[:alert] = "武将の登録に失敗しました"
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    @post.update!(post_params)
-    redirect_to @post, notice: "武将を更新しました"
+    if @post.update!(post_params)
+      redirect_to @post, notice: "武将を更新しました"
+    else
+      flash.now[:alert] = "武将の更新に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
