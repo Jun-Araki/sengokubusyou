@@ -1,23 +1,27 @@
-<h1>武将一覧</h1>
-<table>
-  <thead>
+<h1 class="text-center">武将一覧</h1>
+<table class="table table-bordered table-striped mt-4">
+  <thead class="table-primary">
     <tr>
       <th scope="col">No.</th>
-      <th scope="col">武将名</th>
-      <th scope="col">キャッチコピー</th>
+      <th scope="col" class="w-50" >武将名</th>
       <th scope="col"></th>
     </tr>
   </thead> 
   <tbody>
     <% @posts.each.with_index(1) do |post, i| %>
       <tr>
-        <th scope="row"><%= i %></th>
-        <td><%= post.name %></td>
-        <td><%= post.catch_copy %></td>
-        <td>
-          <%= link_to "詳細", post_path(post) %>
-          <%= link_to "編集", edit_post_path(post) %>
-          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "登録解除しますか?" } %>
+        <th scope="row" class="text-right" ><%= i %></th>
+        <td class="break-word"><%= post.name %></td>
+        <td class="text-nowrap">
+          <%= link_to post, class: "btn btn-primary" do %>
+            <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
+          <% end %>
+          <%= link_to edit_post_path(post), class: "btn btn-success" do %>
+            <i class="far fa-edit"></i> <span class="d-none d-md-inline"> 編集</span>
+          <% end %>
+          <%= link_to post, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
+            <i class="far fa-trash-alt"></i> <span class="d-none d-md-inline"> 削除</span>
+          <% end %>
         </td>
       </tr>
     <% end %>
