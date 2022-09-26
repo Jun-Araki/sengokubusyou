@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   PER_PAGE = 20
 
@@ -17,7 +19,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to @post, notice: "武将を登録しました"
+      redirect_to @post, notice: "武将を登録しました" # rubocop:disable all
     else
       flash.now[:alert] = "武将の登録に失敗しました"
       render :new
@@ -28,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "武将を更新しました"
+      redirect_to @post, notice: "武将を更新しました" # rubocop:disable all
     else
       flash.now[:alert] = "武将の更新に失敗しました"
       render :edit
@@ -37,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to root_path, alert: "武将を削除しました"
+    redirect_to root_path, alert: "武将を削除しました" # rubocop:disable all
   end
 
   private

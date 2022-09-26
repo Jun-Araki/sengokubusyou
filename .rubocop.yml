@@ -1,0 +1,19 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.1.2
+  NewCops: enable
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Rails/FilePath:
+  Exclude:
+    - 'config/environments/development.rb'
+
+StringLiterals:
+  EnforcedStyle: double_quotes

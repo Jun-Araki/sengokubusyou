@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :catch_copy, presence: true, length: { maximum: 30 }
