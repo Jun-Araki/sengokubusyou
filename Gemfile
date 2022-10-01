@@ -18,11 +18,13 @@ gem "webpacker", "~> 5.0"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "devise"
 gem "faker", require: false
 gem "jbuilder", "~> 2.7"
 gem "kaminari"
 gem "net-smtp"
 gem "ransack"
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -40,6 +42,9 @@ gem "rails-i18n", "~> 6.0.0"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "pry-byebug"
+  gem "pry-doc"
+  gem "pry-rails"
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
 end
