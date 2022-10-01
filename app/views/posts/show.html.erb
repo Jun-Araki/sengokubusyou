@@ -9,5 +9,22 @@
     <p>居城 <br><b><%= @post.castle %></b></p>
     <p>有名な戦い <br><b><%= @post.famous_battle %></b></p>
     <p>おすすめポイント <br><b><%=safe_join(@post.recommend_point.split("\n"),tag(:br))%></b></p>
+    <p>登録日時 <br><b><%= l @post.created_at %></b></p>
   </div>
 </section>
+
+<p id="post-<%= @post.id %>" >
+  <% if @post.liked_by?(current_user) %>
+    <%= render "like", post: @post %>
+  <% else %>
+    <%=  render "dislike", post: @post %>
+  <% end %>
+</p>
+
+<p>
+  <% if current_user.id == @post.user_id %>
+    <%= link_to "編集", edit_post_path(@post) %>
+    <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除しますか？" } %>
+  <% end %>
+  <%= link_to "投稿一覧へ", posts_path %>
+</p>

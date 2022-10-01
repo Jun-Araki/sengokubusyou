@@ -3,6 +3,7 @@ ja:
   activerecord:
     models:
       post: 武将
+      like: いいね
     attributes:
       post:
         name: 武将名
@@ -11,12 +12,21 @@ ja:
         castle: 居城
         famous_battle: 有名な戦い
         recommend_point: おすすめポイント
+      like:
+        user: ユーザー
+        user_id: ユーザー
+        post: 登録
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: '%{record}が存在しているので削除できません'
           has_many: '%{record}が存在しているので削除できません'
+      models:
+        like:
+          attributes:
+            user_id:
+              duplicated: は同じ武将に複数回いいねはできません
   date:
     abbr_day_names:
       - 日
@@ -189,3 +199,7 @@ ja:
       long: '%Y/%m/%d %H:%M'
       short: '%m/%d %H:%M'
     pm: 午後
+
+  time:
+    formats:
+      default: "%Y年%-m月%-d日(%a) %-H時%-M分"

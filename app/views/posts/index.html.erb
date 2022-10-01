@@ -16,7 +16,8 @@
   <thead class="table-primary">
     <tr>
       <th scope="col">No.</th>
-      <th scope="col" class="w-50" >武将名</th>
+      <th scope="col" class="w-25" >武将名</th>
+      <th scope="col"></th>
       <th scope="col"></th>
     </tr>
   </thead> 
@@ -26,15 +27,26 @@
       <tr>
         <th scope="row" class="text-right" ><%= i %></th>
         <td class="break-word"><%= post.name %></td>
+        <td id="post-<%= post.id %>">
+          <% if post.liked_by?(current_user) %>
+            <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
+            <%= post.likes_count %>
+          <% else %>
+            <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %>
+            <%= post.likes_count %>
+          <% end %>
+        </td>
         <td class="text-nowrap">
           <%= link_to post, class: "btn btn-primary" do %>
             <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
           <% end %>
-          <%= link_to edit_post_path(post), class: "btn btn-success" do %>
-            <i class="far fa-edit"></i> <span class="d-none d-md-inline"> 編集</span>
-          <% end %>
-          <%= link_to post, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
-            <i class="far fa-trash-alt"></i> <span class="d-none d-md-inline"> 削除</span>
+          <% if current_user.id == post.user_id %>
+            <%= link_to edit_post_path(post), class: "btn btn-success" do %>
+              <i class="far fa-edit"></i> <span class="d-none d-md-inline"> 編集</span>
+            <% end %>
+            <%= link_to post, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
+              <i class="far fa-trash-alt"></i> <span class="d-none d-md-inline"> 削除</span>
+            <% end %>
           <% end %>
         </td>
       </tr>
