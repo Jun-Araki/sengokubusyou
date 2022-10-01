@@ -1,6 +1,6 @@
-# frozen_string_literal: true
-
 class Post < ApplicationRecord
+  has_many :likes, dependent: :destroy
+
   belongs_to :user
   validates :name, presence: true, length: { maximum: 30 }
   validates :catch_copy, presence: true, length: { maximum: 30 }
