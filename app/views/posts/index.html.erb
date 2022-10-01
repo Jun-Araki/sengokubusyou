@@ -27,11 +27,11 @@
       <tr>
         <th scope="row" class="text-right" ><%= i %></th>
         <td class="break-word"><%= post.name %></td>
-        <td>
+        <td id="post-<%= post.id %>">
           <% if post.liked_by?(current_user) %>
-            <%= link_to "💖「いいね！」を取り消す", post_likes_path(post), method: :delete %>
+            <%= link_to "💖「いいね！」を取り消す", post_likes_path(post), method: :delete, remote: true %>
           <% else %>
-            <%= link_to "🤍「いいね！」する", post_likes_path(post), method: :post %>
+            <%= link_to "🤍「いいね！」する", post_likes_path(post), method: :post, remote: true %>
           <% end %>
         </td>
         <td class="text-nowrap">
