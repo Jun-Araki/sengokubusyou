@@ -1,1 +1,2 @@
-<%= link_to "💖「いいね！」を取り消す", post_likes_path(@post), method: :delete, remote: true %>
+<%= link_to "💖", post_likes_path(@post), method: :delete, remote: true %>
+<%= post.likes_count %>
