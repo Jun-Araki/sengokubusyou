@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  belongs_to :user
   validates :name, presence: true, length: { maximum: 30 }
   validates :catch_copy, presence: true, length: { maximum: 30 }
   validates :birthplace, presence: true, length: { maximum: 30 }

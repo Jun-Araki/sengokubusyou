@@ -3,21 +3,23 @@
 class PostsController < ApplicationController
   PER_PAGE = 20
 
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result.order(id: :desc).page(params[:page]).per(PER_PAGE)
   end
 
-  def show; end
+  def show
+    @post = Post.find(params[:id])
+  end
 
   def new
     @post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.create(post_params)
     if @post.save
       redirect_to @post, notice: "武将を登録しました" # rubocop:disable all
     else
@@ -45,7 +47,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def post_params
