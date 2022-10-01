@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'a07e62a3c846bf8104abe837f96d3c9a10d8b92dbabbd99c00d8dc68a3a5feccdb5dff7345fe388fc0e17b2ed552d05b911d690ff5fb773e98154e5e3816d005'
+  # config.secret_key = 'a07e62a3c846bf8104abe837f96d3c9a10d8b92dbabbd99c00d8dc68a3a5feccdb5dff7345fe388fc0e17b2ed552d05b911d690ff5fb773e98154e5e3816d005' # rubocop:disable all
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -36,7 +36,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'b6087c6a06e56993a0b92ae56b0d82c6a62153632e68112d36f5e1a73cc8829ae7b953751c31dce88b43d7003900f0b48484202efc0b9a2eba4b95ada5076178'
+  # config.pepper = 'b6087c6a06e56993a0b92ae56b0d82c6a62153632e68112d36f5e1a73cc8829ae7b953751c31dce88b43d7003900f0b48484202efc0b9a2eba4b95ada5076178'  # rubocop:disable all
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
