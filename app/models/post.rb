@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   validates :castle, presence: true, length: { maximum: 30 }
   validates :famous_battle, presence: true, length: { maximum: 30 }
   validates :recommend_point, presence: true, length: { maximum: 300 }
+  mount_uploader :image, ImageUploader
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)
