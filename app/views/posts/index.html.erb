@@ -16,7 +16,8 @@
   <thead class="table-primary">
     <tr>
       <th scope="col">No.</th>
-      <th scope="col" class="w-50" >武将名</th>
+      <th scope="col" class="w-25" >武将名</th>
+      <th scope="col"></th>
       <th scope="col"></th>
     </tr>
   </thead> 
@@ -26,6 +27,13 @@
       <tr>
         <th scope="row" class="text-right" ><%= i %></th>
         <td class="break-word"><%= post.name %></td>
+        <td>
+          <% if post.liked_by?(current_user) %>
+            <%= link_to "💖「いいね！」を取り消す", post_likes_path(post), method: :delete %>
+          <% else %>
+            <%= link_to "🤍「いいね！」する", post_likes_path(post), method: :post %>
+          <% end %>
+        </td>
         <td class="text-nowrap">
           <%= link_to post, class: "btn btn-primary" do %>
             <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
