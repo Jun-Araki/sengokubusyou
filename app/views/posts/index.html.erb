@@ -19,6 +19,7 @@
       <th scope="col" class="w-25" >武将名</th>
       <th scope="col"></th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead> 
 
@@ -27,6 +28,7 @@
       <tr>
         <th scope="row" class="text-right" ><%= i %></th>
         <td class="break-word"><%= post.name %></td>
+        <td><%= image_tag post.image.thumb.url %></td>
         <td id="post-<%= post.id %>">
           <% if post.liked_by?(current_user) %>
             <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
