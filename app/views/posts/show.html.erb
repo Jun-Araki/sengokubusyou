@@ -4,6 +4,7 @@
     <h4><%= @post.name %></h4>
   </div>
   <div class="card-body">
+    <p><%= image_tag @post.image.url %></p>
     <p>キャッチコピー <br><b><%= @post.catch_copy %></b></p>
     <p>出身地 <br><b><%= @post.birthplace %></b></p>
     <p>居城 <br><b><%= @post.castle %></b></p>
