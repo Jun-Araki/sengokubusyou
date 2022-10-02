@@ -31,6 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   process convert: "jpg"
+  process resize_to_limit: [400, 600]
 
   protected
 
