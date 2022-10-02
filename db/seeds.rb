@@ -3,7 +3,7 @@
 require "faker"
 Faker::Config.locale = :ja
 
-user = User.create!(email: "test1@example.com", password: "password")
+user = User.create!(email: "test3@example.com", password: "password")
 
 # 1000件の初期データを投入
 20.times do
@@ -15,5 +15,12 @@ user = User.create!(email: "test1@example.com", password: "password")
                recommend_point: Faker::Name.name,
                user_id: user.id)
 end
+
+users = User.all
+user  = users.first
+following = users[2..10]
+followers = users[3..13]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
 
 Rails.logger.debug "初期データの投入に成功しました！"
