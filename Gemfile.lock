@@ -296,6 +296,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
+  mini_magick
   net-smtp
   pg (~> 1.1)
   pre-commit
