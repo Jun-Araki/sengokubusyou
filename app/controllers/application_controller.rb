@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in_user
     unless user_signed_in?# rubocop:disable all
-      store_location
+      # store_location
       flash[:danger] = "ログインしてください"# rubocop:disable all
       redirect_to login_url
     end
