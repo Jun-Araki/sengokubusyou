@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1><%= @user.nickname %></h1>
-      <span><%= link_to "マイページ", @user %></span>
+      <span><%= link_to "#{@user.nickname}のページ", @user %></span>
       <span><b>登録武将数:</b> <%= @user.posts.count %></span>
     </section>
   </aside>

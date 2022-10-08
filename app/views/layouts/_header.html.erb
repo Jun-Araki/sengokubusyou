@@ -8,7 +8,7 @@
     <% if user_signed_in? %>
       <%= link_to "武将一覧", posts_path, class: "nav-item nav-link active" %>
       <%= link_to "新規武将", new_post_path, class: "nav-item nav-link active" %>
-      <%= link_to "マイページ", user_path(@user), class: "nav-item nav-link active" %>
+      <%= link_to "マイページ", user_path(current_user), class: "nav-item nav-link active" %>
       <%= link_to "アカウント編集", edit_user_registration_path, class: "nav-item nav-link active" %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか?"}, class: "nav-item nav-link active"  %>
     <% else %>
