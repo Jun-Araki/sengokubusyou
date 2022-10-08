@@ -41,7 +41,11 @@
               <% end %>
             <% end %>
           </td>
-          <td><%= post.user.nickname if post.user.nickname.present? %></td>
+          <td>
+            <% if post.user.nickname.present? %>
+              <%= link_to post.user.nickname, user_path(post.user.id) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
