@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  PER_PAGE = 10
+  PER_PAGE = 3
 
   before_action :authenticate_user!, except: :index
   before_action :set_post, only: %i[edit update destroy]

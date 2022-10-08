@@ -30,3 +30,20 @@
     <% end %>
   </tbody>
 </table>
+
+<% @user ||= current_user %>
+<div class="stats"></div>
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.following.count %>
+    </strong>
+    フォロー
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    フォロワー
+  </a>
+      <%= render "follow_form" if user_signed_in? %>
+</div>
