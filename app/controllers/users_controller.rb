@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
 
-  def index; end
-
   def show
     # @posts = current_user.posts
-    # binding.pry
     @user = User.find(params[:id])
     @posts = @user.posts
+    # binding.pry
   end
 
   def following

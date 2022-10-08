@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include ApplicationHelper
+  include UsersHelper
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in_user
     unless user_signed_in?# rubocop:disable all
-      # store_location
       flash[:danger] = "ログインしてください"# rubocop:disable all
       redirect_to login_url
     end
