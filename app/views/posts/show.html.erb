@@ -5,7 +5,7 @@
   </div>
   <div class="card-body">
     <p><%= image_tag @post.image.url %></p>
-    <p>出身地 <b><%= @post.prefecture_id %></b></p>
+    <p>出身地：<b><%= @post.prefecture_name %></b></p>
     <p><%= link_to "Wikipedia", @post.url, target: :_blank, rel: "noopener noreferrer", class: "btn btn-primary" %></p>
   </div>
 </section>
