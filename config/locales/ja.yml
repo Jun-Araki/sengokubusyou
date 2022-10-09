@@ -7,11 +7,9 @@ ja:
     attributes:
       post:
         name: 武将名
-        catch_copy: キャッチコピー
         birthplace: 出身地
-        castle: 居城
-        famous_battle: 有名な戦い
-        recommend_point: おすすめポイント
+        url: Wikipediaのリンク
+        image: 武将画像
       like:
         user: ユーザー
         user_id: ユーザー
