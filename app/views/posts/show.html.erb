@@ -32,6 +32,10 @@
     <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
     <%= l c.created_at %><br>
     <%= safe_join(c.content.split("\n"),tag(:br)) %>
+    
+    <% if current_user.id == c.user_id %>
+      <%= link_to "削除", post_comment_path(@post, c), method: :delete %>
+    <% end %>
     <hr>
   </div>
 <% end %>
@@ -39,6 +43,7 @@
 <%= form_with(model:[@post, @comment], method: :post) do |f| %>
   <%= f.text_area :content %>
   <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <br>
   <%= f.submit 'コメントする', class: "btn btn-primary"  %>
 <% end %>
