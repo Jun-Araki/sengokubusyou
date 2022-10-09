@@ -18,6 +18,8 @@ Like.create!(user_id: 1, post_id: 3)
 Like.create!(user_id: 2, post_id: 1)
 Like.create!(user_id: 3, post_id: 1)
 
+Comment.create!(content: "前例のない方法で天下統一目前まで行った", user_id:2, post_id:4)
+
 users = User.all
 user  = users.first
 following = users[1..2]

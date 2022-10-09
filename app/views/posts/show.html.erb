@@ -10,7 +10,6 @@
     <p>居城 <br><b><%= @post.castle %></b></p>
     <p>有名な戦い <br><b><%= @post.famous_battle %></b></p>
     <p>おすすめポイント <br><b><%=safe_join(@post.recommend_point.split("\n"),tag(:br))%></b></p>
-    <p>登録日時 <br><b><%= l @post.created_at %></b></p>
   </div>
 </section>
 
@@ -24,8 +23,25 @@
 
 <p>
   <% if current_user.id == @post.user_id %>
-    <%= link_to "編集", edit_post_path(@post) %>
-    <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除しますか？" } %>
+    <%= link_to "武将編集", edit_post_path(@post), class: "btn btn-success" %>
+    <%= link_to "武将削除", post_path(@post), class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？" } %>
   <% end %>
-  <%= link_to "投稿一覧へ", posts_path %>
+  <%= link_to "武将一覧へ", posts_path, class: "btn btn-primary" %>
 </p>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
+    <%= l c.created_at %><br>
+    <%= safe_join(c.content.split("\n"),tag(:br)) %>
+    <hr>
+  </div>
+<% end %>
+
+<%= form_with(model:[@post, @comment], method: :post) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <br>
+  <%= f.submit 'コメントする', class: "btn btn-primary"  %>
+<% end %>
