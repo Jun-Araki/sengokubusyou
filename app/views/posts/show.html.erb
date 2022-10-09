@@ -5,11 +5,8 @@
   </div>
   <div class="card-body">
     <p><%= image_tag @post.image.url %></p>
-    <p>キャッチコピー <br><b><%= @post.catch_copy %></b></p>
-    <p>出身地 <br><b><%= @post.birthplace %></b></p>
-    <p>居城 <br><b><%= @post.castle %></b></p>
-    <p>有名な戦い <br><b><%= @post.famous_battle %></b></p>
-    <p>おすすめポイント <br><b><%=safe_join(@post.recommend_point.split("\n"),tag(:br))%></b></p>
+    <p>出身地 <b><%= @post.birthplace %></b></p>
+    <p>詳細はこちら <br><b><%= @post.url %></b></p>
   </div>
 </section>
 
