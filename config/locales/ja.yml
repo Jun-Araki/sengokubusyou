@@ -1,5 +1,12 @@
 ---
 ja:
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
   activerecord:
     models:
       post: 武将
@@ -7,7 +14,7 @@ ja:
     attributes:
       post:
         name: 武将名
-        birthplace: 出身地
+        prefecture_name: 都道府県
         url: Wikipediaのリンク
         image: 武将画像
       like:

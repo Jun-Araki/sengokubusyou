@@ -18,15 +18,16 @@ gem "webpacker", "~> 5.0"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "active_hash"
 gem "carrierwave", "~> 2.0"
 gem "devise"
 gem "devise-i18n"
 gem "faker", require: false
 gem "jbuilder", "~> 2.7"
 gem "kaminari"
+gem "mini_magick"
 gem "net-smtp"
 gem "ransack"
-gem "mini_magick"# rubocop:disable all
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

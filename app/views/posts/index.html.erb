@@ -4,8 +4,8 @@
   <%= search_form_for @q do |f| %>
     <%= f.label :name_cont, "武将名" %>
     <%= f.search_field :name_cont, size: 15 %>
-    <%= f.label :birthplace_cont, "出身地" %>
-    <%= f.search_field :birthplace_cont, size: 10 %>
+    <%= f.label :prefecture_name_cont, "出身地" %>
+    <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
     <%= f.submit "検索" %>
   <% end %>
 
@@ -47,6 +47,7 @@
     </tbody>
   </table>
 
-<%= paginate @posts %>
-
+<div class="pagination justify-content-center">
+  <%= paginate @posts %>
+</div>
 <% end %>
