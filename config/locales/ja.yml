@@ -14,7 +14,7 @@ ja:
     attributes:
       post:
         name: 武将名
-        birthplace: 出身地
+        perfecture_id: 都道府県
         url: Wikipediaのリンク
         image: 武将画像
       like:
