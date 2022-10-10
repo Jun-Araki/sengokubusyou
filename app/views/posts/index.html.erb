@@ -6,7 +6,7 @@
     <%= f.search_field :name_cont, size: 15 %>
     <%= f.label :prefecture_name_cont, "出身地" %>
     <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
-    <%= f.submit "検索" %>
+    <%= f.submit "検索a" %>
   <% end %>
 
   <table class="table table-bordered table-striped mt-4">
