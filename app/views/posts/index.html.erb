@@ -1,13 +1,17 @@
 <% if user_signed_in? %>
   <h1 class="text-center">武将一覧</h1>
 
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name_cont, "武将名" %>
-    <%= f.search_field :name_cont, size: 15 %>
-    <%= f.label :prefecture_name_cont, "出身地" %>
-    <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
-    <%= f.submit "検索" %>
-  <% end %>
+  <div class="form">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :name_cont, "武将名" %>
+      <%= f.search_field :name_cont, size: 15 %>&emsp;
+      <%= f.label :furigana_initial_cont, "武将名(50音)" %>
+      <%= f.collection_select :furigana_initial_cont, Furigana.all, :ini, :ini, {include_blank: "---"} %>&emsp;
+      <%= f.label :prefecture_name_cont, "出身地" %>
+      <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
 
   <table class="table table-bordered table-striped mt-4">
     <tbody>

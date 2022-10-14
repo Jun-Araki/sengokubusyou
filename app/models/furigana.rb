@@ -1,7 +1,7 @@
 class Furigana < ActiveHash::Base
   # rubocop:disable all
   self.data = [
-    { id:1, ini: "あ" }, { id:2, ini: "か" }
+    { ini: "あ行" }, { ini: "か行" }, { ini: "さ行" }, { ini: "た行" }, { ini: "な行" }, { ini: "は行" }, { ini: "ま行" }, { ini: "や行" }, { ini: "ら行" }, { ini: "わ行" }
   ]
 
   include ActiveHash::Associations
