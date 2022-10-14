@@ -14,8 +14,9 @@ ja:
     attributes:
       post:
         name: 武将名
+        furigana: 武将名（ふりがな）
+        furigana_initial: 武将名（ふりがなグループ）
         prefecture_name: 都道府県
-        url: Wikipediaのリンク
         image: 武将画像
       like:
         user: ユーザー
