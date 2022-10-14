@@ -44,3 +44,10 @@ td {
 .alert-alert {
   @extend .alert-danger;
 }
+
+// フッター
+.footer {
+  background-color: blue;
+  color: white;
+  padding: 3px;
+}

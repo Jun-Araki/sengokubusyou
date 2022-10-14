@@ -50,4 +50,6 @@
 <div class="pagination justify-content-center">
   <%= paginate @posts %>
 </div>
+<% else %>
+  <%= render "layouts/top" %>
 <% end %>

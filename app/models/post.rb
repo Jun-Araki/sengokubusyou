@@ -8,8 +8,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }, uniqueness: true# rubocop:disable all
-  validates :prefecture_name, presence: true
-  validates :url, presence: true, uniqueness: true# rubocop:disable all
+  # validates :prefecture_name, presence: true
+  # validates :url, presence: true, uniqueness: true
   mount_uploader :image, ImageUploader, uniqueness: true
 
   def liked_by?(user)
