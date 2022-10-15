@@ -15,10 +15,11 @@
 
   <table class="table table-bordered table-striped mt-4">
     <tbody>
-      <% @posts.each do |post| %>
+      <% @posts.sort_by {|post| post.id } .each do |post| %>
         <tr>
           <td class="break-word"><b><%= post.name %></b></td>
           <td><%= image_tag post.image.thumb.url %></td>
+          <td class="commentary"><%= post.commentary %></td>
           <td id="post-<%= post.id %>">
             <% if post.liked_by?(current_user) %>
               <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
