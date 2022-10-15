@@ -1,5 +1,27 @@
-<h1>登録武将一覧</h1>
+<h1><%= @user.nickname %>のページ</h1>
 
+<% if @user.id == current_user.id %>
+  <%= link_to "アカウント編集", edit_user_registration_path, class: "btn btn-success" %>  
+<% end %>
+
+<% @user ||= current_user %>
+<div class="stats"></div>
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.following.count %>
+    </strong>
+    フォロー
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    フォロワー
+  </a>
+      <%= render "follow_form" if user_signed_in? %>
+</div>
+
+<h2>登録武将一覧</h2>
 <table class="table table-bordered table-striped mt-4">
   <tbody>
     <% @posts.each do |post| %>
@@ -30,20 +52,3 @@
     <% end %>
   </tbody>
 </table>
-
-<% @user ||= current_user %>
-<div class="stats"></div>
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    フォロー
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    フォロワー
-  </a>
-      <%= render "follow_form" if user_signed_in? %>
-</div>

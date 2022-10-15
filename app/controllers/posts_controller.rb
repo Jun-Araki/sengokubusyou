@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  PER_PAGE = 3
+  PER_PAGE = 30
 
   before_action :authenticate_user!, except: :index
   before_action :set_post, only: %i[edit update destroy]
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(:user, :likes).order(id: :desc).page(params[:page]).per(PER_PAGE)
+    @posts = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
   end
 
   def show
@@ -54,6 +54,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :prefecture_name, :url, :image)
+    params.require(:post).permit(:name, :furigana_name, :furigana_initial, :prefecture_name, :commentary, :image)
   end
 end

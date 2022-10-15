@@ -44,3 +44,17 @@ td {
 .alert-alert {
   @extend .alert-danger;
 }
+
+// .commentary {
+//   width: 50%;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+// フッター
+.footer {
+  background-color: blue;
+  color: white;
+  padding: 3px;
+}

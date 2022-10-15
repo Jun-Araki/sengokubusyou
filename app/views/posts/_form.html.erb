@@ -6,12 +6,20 @@
     <%= form.text_field :name, class: "form-control", required: true %>
   </div>
   <div class="form-group">
+    <%= form.label :furigana_name %> <br>
+    <%= form.text_field :furigana_name, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :furigana_initial %> <br>
+    <%= form.collection_select :furigana_initial, Furigana.all, :ini, :ini, {include_blank: "---"}, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
     <%= form.label :prefecture_name %> <br>
     <%= form.collection_select :prefecture_name, Prefecture.all, :name, :name, {include_blank: "---"}, class: "form-control", required: true  %>
   </div>
   <div class="form-group">
-    <%= form.label :url %> <br>
-    <%= form.text_field :url, class: "form-control", required: true  %>
+    <%= form.label :commentary %> <br>
+    <%= form.text_field :commentary, class: "form-control", required: true %>
   </div>
   <div class="form-group">
     <%= form.label :image %> <br>
