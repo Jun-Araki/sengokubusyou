@@ -17,7 +17,7 @@
   <% @posts.each do |post| %>
     <div class="col">
       <div class="card h-100 text-card-container">
-        <p class="card-img-top"><%= image_tag post.image.url %></p>
+        <%= image_tag post.image.url, :size => "200", :align => "center" %>
         <div class="card-body">
           <h5 class="card-title"><%= post.name %></h5>
           <p class="card-text"><%= post.commentary %></p>
