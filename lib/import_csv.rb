@@ -5,10 +5,9 @@ class ImportCsv
     list = []
     CSV.foreach(path, headers: true) do |row|
       list << {
-        image: File.open("./app/assets/images/#{row['image']}"),
-        name: row["name"],
-        user_id: row["user_id"],
-        prefecture_name: row["prefecture_name"]
+        image: File.open("./app/assets/images/#{row['image']}"), name: row["name"], user_id: row["user_id"],
+        prefecture_name: row["prefecture_name"], furigana_name: row["furigana_name"],
+        furigana_initial: row["furigana_initial"], commentary: row["commentary"]
       }
     end
     list
