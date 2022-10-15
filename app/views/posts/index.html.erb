@@ -13,14 +13,18 @@
     <% end %>
   </div>
 
-  <table class="table table-bordered table-striped mt-4">
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td class="break-word"><b><%= post.name %></b></td>
-          <td><%= image_tag post.image.thumb.url %></td>
-          <td class="commentary"><%= post.commentary %></td>
-          <td id="post-<%= post.id %>">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @posts.each do |post| %>
+    <div class="col">
+      <div class="card h-100 text-card-container">
+        <p class="card-img-top"><%= image_tag post.image.url %></p>
+        <div class="card-body">
+          <h5 class="card-title"><%= post.name %></h5>
+          <p class="card-text"><%= post.commentary %></p>
+          <%= link_to post, class: "btn btn-primary" do %>
+            <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
+          <% end %>
+          <p id="post-<%= post.id %>">
             <% if post.liked_by?(current_user) %>
               <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
               <%= post.likes_count %>
@@ -28,33 +32,17 @@
               <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %>
               <%= post.likes_count %>
             <% end %>
-          </td>
-          <td class="text-nowrap">
-            <%= link_to post, class: "btn btn-primary" do %>
-              <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
-            <% end %>
-            <% if current_user.id == post.user_id %>
-              <%= link_to edit_post_path(post), class: "btn btn-success" do %>
-                <i class="far fa-edit"></i> <span class="d-none d-md-inline"> 編集</span>
-              <% end %>
-              <%= link_to post, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
-                <i class="far fa-trash-alt"></i> <span class="d-none d-md-inline"> 削除</span>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if post.user.nickname.present? %>
-              <%= link_to post.user.nickname, user_path(post.user.id) %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
 
 <div class="pagination justify-content-center">
   <%= paginate @posts %>
 </div>
+
 <% else %>
   <%= render "layouts/top" %>
 <% end %>

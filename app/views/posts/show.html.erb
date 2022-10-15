@@ -7,6 +7,11 @@
     <p><%= image_tag @post.image.url %></p>
     <p><%= @post.commentary %></p>
     <p>出身地：<b><%= @post.prefecture_name %></b></p>
+    <p>作成者：
+      <% if @post.user.nickname.present? %>
+        <%= link_to @post.user.nickname, user_path(@post.user.id) %>
+      <% end %>
+    </p>
   </div>
 </section>
 
