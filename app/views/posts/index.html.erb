@@ -13,11 +13,11 @@
     <% end %>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="row row-cols-2 row-cols-md-4 g-4">
   <% @posts.each do |post| %>
     <div class="col">
       <div class="card h-100 text-card-container">
-        <%= image_tag post.image.url, :size => "200", :align => "center" %>
+        <%= image_tag post.image.url, :size => "150", :align => "center" %>
         <div class="card-body">
           <h5 class="card-title"><b><%= post.name %></b></h5>
           <p class="card-text"><%= post.commentary %></p>
