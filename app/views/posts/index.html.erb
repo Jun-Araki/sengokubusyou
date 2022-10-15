@@ -19,7 +19,7 @@
       <div class="card h-100 text-card-container">
         <%= image_tag post.image.url, :size => "200", :align => "center" %>
         <div class="card-body">
-          <h5 class="card-title"><%= post.name %></h5>
+          <h5 class="card-title"><b><%= post.name %></b></h5>
           <p class="card-text"><%= post.commentary %></p>
           <%= link_to post, class: "btn btn-primary" do %>
             <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
