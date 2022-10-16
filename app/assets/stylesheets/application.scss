@@ -74,6 +74,19 @@ div.field_with_errors {
 
 //カードend
 
+//検索フォーム
+.form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+//ページネーション
+.pagination li a {
+  margin-top: 20px;
+  // border: solid 1px #b28e5f;
+}
+
+//フラッシュ
 .alert-notice {
   @extend .alert-success;
 }
