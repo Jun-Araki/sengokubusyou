@@ -23,26 +23,55 @@ div.field_with_errors {
   padding: 30px 15px;
 }
 
-body {
-  padding-top: 50px;
-}
-
 //カード
-.text-card-container {
-  padding-left: 9px;
-  padding-right: 9px;
-  margin-bottom: 9px;
-}
-
 .card {
-  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  border-top: 2px solid #b28e5f;
+  border-bottom: 4px solid #b28e5f;
+  border-left: 1px solid #b28e5f;
+  border-right: 1px solid #b28e5f;
 }
 
-// テーブル
-
-.break-word {
-  word-break: break-word;
+.card-body {
+  margin-bottom: 0;
 }
+
+.card-title {
+  padding: 20px;
+  font-size: 20px;
+  font-family: serif;
+  color: white;
+  background: #b28e5f;
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  padding: 0 15px;
+  height: 72px;
+}
+
+.card-btn-show {
+  background-color: #c92121;
+  border: solid 1px #991c1c;
+  color: white;
+  margin-bottom: 10px;
+  font-family: serif;
+}
+
+.card-btn-show:hover {
+  background-color: #c92121;
+  border: solid 1px #991c1c;
+  color: white;
+  margin-bottom: 10px;
+  font-family: serif;
+  opacity: 0.6;
+}
+
+//カードend
 
 .alert-notice {
   @extend .alert-success;
@@ -52,12 +81,10 @@ body {
   @extend .alert-danger;
 }
 
-// .commentary {
-//   width: 50%;
-//   white-space: nowrap;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-// }
+//ボディ
+body {
+  padding-top: 50px;
+}
 
 // フッター
 .footer {

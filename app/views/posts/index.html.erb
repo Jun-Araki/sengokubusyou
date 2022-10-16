@@ -17,11 +17,13 @@
   <% @posts.each do |post| %>
     <div class="col">
       <div class="card h-100 text-card-container">
-        <%= image_tag post.image.url, :size => "150", :align => "center" %>
+        <div class="card-title"><%= post.name %></div>
+        <div class="card-img-top">
+          <%= image_tag post.image.url, :size => "150" %>
+        </div>
         <div class="card-body">
-          <h5 class="card-title"><b><%= post.name %></b></h5>
           <p class="card-text"><%= post.commentary %></p>
-          <%= link_to post, class: "btn btn-primary" do %>
+          <%= link_to post, class: "btn card-btn-show" do %>
             <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
           <% end %>
           <p id="post-<%= post.id %>">
