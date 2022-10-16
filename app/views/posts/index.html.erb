@@ -18,28 +18,30 @@
     <div class="col">
       <div class="card h-100 text-card-container">
         <div class="card-title"><%= post.name %></div>
+
         <div class="card-img-top">
           <%= image_tag post.image.url, :size => "150" %>
         </div>
+
         <div class="card-body">
           <p class="card-text"><%= post.commentary %></p>
           <%= link_to post, class: "btn card-btn-show" do %>
             <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
           <% end %>
+
           <p id="post-<%= post.id %>">
             <% if post.liked_by?(current_user) %>
-              <%# <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %> %>
               <%= link_to post_likes_path(post), method: :delete, remote: true do %>
                 <i class="fas fa-heart"></i>
               <% end %>
-              <%= post.likes_count %>
+              &nbsp;<%= post.likes_count %>
             <% else %>
-              <%# <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %> %>
               <%= link_to post_likes_path(post), method: :post, remote: true do %>
-                <i class="fas fa-heart"></i>
+                <i class="far fa-heart"></i>
               <% end %>
-              <%= post.likes_count %>
+              &nbsp;<%= post.likes_count %>
             <% end %>
+            
           </p>
         </div>
       </div>
