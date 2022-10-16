@@ -38,24 +38,29 @@
     <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
   <% end %>
 
-<h2>コメント一覧</h2>
-<% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
-    <%= l c.created_at %><br>
-    <%= safe_join(c.content.split("\n"),tag(:br)) %>
-    
-    <% if current_user.id == c.user_id %>
-      <%= link_to "削除", post_comment_path(@post, c), method: :delete %>
-    <% end %>
-    <hr>
-  </div>
-<% end %>
+<section class="text-center">
+  <h2 >コメント</h2>
+  <% @comments.each do |c| %>
+    <div>
+      <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
+      <%= l c.created_at %><br>
+      <%= safe_join(c.content.split("\n"),tag(:br)) %>
+      
+      <% if current_user.id == c.user_id %>
+        <%= link_to "削除", post_comment_path(@post, c), method: :delete %>
+      <% end %>
+      <hr>
+    </div>
+  <% end %>
 
-<%= form_with(model:[@post, @comment], method: :post) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <br>
-  <%= f.submit 'コメントする', class: "btn btn-primary"  %>
-<% end %>
+  <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <br>
+    <div class="btn btn-primary">
+      <button type="submit" ><i class="fa-solid fa-pen"></i>コメントを書く</button>
+    </div>
+    <%# <i class="fa-solid fa-pen"></i><%= f.submit 'コメントする', class: "btn btn-primary" %> %>
+  <% end %>
+</section>
