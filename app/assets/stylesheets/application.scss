@@ -27,10 +27,11 @@ div.field_with_errors {
 .card {
   text-align: center;
   position: relative;
-  border-top: 2px solid #b28e5f;
+  border-top: 4px solid #b28e5f;
   border-bottom: 4px solid #b28e5f;
-  border-left: 1px solid #b28e5f;
-  border-right: 1px solid #b28e5f;
+  border-left: 2px solid #b28e5f;
+  border-right: 2px solid #b28e5f;
+  // background-color: #b28e5f1e;
 }
 
 .card-body {

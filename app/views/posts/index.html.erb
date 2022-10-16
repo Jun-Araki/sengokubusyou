@@ -28,10 +28,16 @@
           <% end %>
           <p id="post-<%= post.id %>">
             <% if post.liked_by?(current_user) %>
-              <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
+              <%# <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %> %>
+              <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
               <%= post.likes_count %>
             <% else %>
-              <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %>
+              <%# <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %> %>
+              <%= link_to post_likes_path(post), method: :post, remote: true do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
               <%= post.likes_count %>
             <% end %>
           </p>
