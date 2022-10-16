@@ -1,20 +1,38 @@
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
   <div class="container-fluid">
-    <%= link_to "みんなの戦国武将", posts_path, class: "navbar-brand" %>
+    <%= link_to posts_path, class: "navbar-brand" do %>
+      <i class="fas fa-home"></i>&nbsp;<span>みんなの戦国武将</span>
+    <% end %>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="navbar-nav me-auto mb-2 mb-lg-0">
       <% if user_signed_in? %>
-        <%= link_to "武将一覧", posts_path, class: "nav-item nav-link active" %>
-        <%= link_to "新規武将", new_post_path, class: "nav-item nav-link active" %>
-        <%= link_to "マイページ", user_path(current_user), class: "nav-item nav-link active" %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか?"}, class: "nav-item nav-link active" %>
+        <%= link_to posts_path, class: "nav-item nav-link active" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索</span>
+        <% end %>
+        <%= link_to new_post_path, class: "nav-item nav-link active" do %>
+          <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将登録</span>
+        <% end %>
+        <%= link_to user_path(current_user), class: "nav-item nav-link active" do %>
+          <i class="fa-regular fa-user"></i>&nbsp;<span>マイページ</span>
+        <% end %>
+        <%= link_to destroy_user_session_path, class: "nav-item nav-link active", method: :delete, data: { confirm: "ログアウトしますか?"} do %>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;<span>ログアウト</span>
+        <% end %>
       <% else %>
-        <%= link_to "新規登録", new_user_registration_path, class: "nav-item nav-link active" %>
-        <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link active" %>
-        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-item nav-link active" %>
+        <%= link_to new_user_registration_path, class: "nav-item nav-link active" do %>
+          <i class="fa-solid fa-user-plus"></i>&nbsp;<span>新規登録</span>
+        <% end %>
+        <%= link_to new_user_session_path, class: "nav-item nav-link active" do %>
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;<span>ログイン</span>
+        <% end %>
+        <%= link_to users_guest_sign_in_path, class: "nav-item nav-link active", method: :post do %>
+          <i class="fa-solid fa-right-to-bracket"></i></i>&nbsp;<span>ゲストログイン</span>
+        <% end %>
       <% end %>
       </div>
     </div>
