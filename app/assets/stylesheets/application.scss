@@ -100,9 +100,19 @@ body {
   padding-top: 50px;
 }
 
+//ナビバー
+.navbar {
+  background-color: #991c1c;
+  padding-left: 20px;
+}
+
+.navbar-nav {
+  text-align: right;
+}
+
 // フッター
 .footer {
-  background-color: blue;
+  background-color: #991c1c;
   color: white;
   padding: 3px;
 }
