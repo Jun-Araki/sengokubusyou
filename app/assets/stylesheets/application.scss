@@ -55,23 +55,52 @@ div.field_with_errors {
   height: 72px;
 }
 
-.card-btn-show {
-  background-color: #c92121;
-  border: solid 1px #991c1c;
-  color: white;
-  margin-bottom: 10px;
+.card-btn {
+  margin: 0 10px 10px 10px;
   font-family: serif;
+  color: white;
 }
 
-.card-btn-show:hover {
+.card-btn-show-delete {
+  background-color: #c92121;
+  border: solid 1px #991c1c;
+}
+
+.card-btn-show-delete:hover {
   background-color: #c92121;
   border: solid 1px #991c1c;
   color: white;
-  margin-bottom: 10px;
-  font-family: serif;
   opacity: 0.6;
 }
 
+.card-btn-edit {
+  background-color: #6a8f36;
+  border: solid 1px black;
+}
+
+.card-btn-edit:hover {
+  background-color: #6a8f36;
+  border: solid 1px black;
+  color: white;
+  opacity: 0.6;
+}
+
+.card-btn-index {
+  background-color: #eed3d3;
+  border: solid 1px #a92121;
+  color: #a92121;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-btn-index:hover {
+  background-color: #eed3d3;
+  border: solid 1px #a92121;
+  color: #a92121;
+  margin-top: 10px;
+  opacity: 0.6;
+  text-align: center;
+}
 //カードend
 
 //検索フォーム

@@ -1,8 +1,10 @@
-<h1 class="card">武将詳細</h1>
-<section class="card border-dark mt-5">
-  <div class="card-header">
+<h1 class="text-center">武将詳細</h1>
+<section class="card mt-5">
+
+  <div class="card-title">
       <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.furigana_name %></small></h4>
   </div>
+
   <div class="card-body">
     <p><%= image_tag @post.image.url %></p>
     <p><%= @post.commentary %></p>
@@ -12,24 +14,29 @@
         <%= link_to @post.user.nickname, user_path(@post.user.id) %>
       <% end %>
     </p>
+
+    <% if current_user.id == @post.user_id %>
+      <%= link_to edit_post_path(@post), class: "btn card-btn card-btn-edit" do %>
+        <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集</span>
+      <% end %>
+      <%= link_to post_path(@post), class: "btn card-btn card-btn-show-delete", method: :delete, data: { confirm: "削除しますか？" } do %>
+        <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除</span>
+      <% end %>
+    <% end %>
+
+    <p id="post-<%= @post.id %>" >
+     <% if @post.liked_by?(current_user) %>
+       <%= render "like", post: @post %>
+     <% else %>
+       <%=  render "dislike", post: @post %>
+     <% end %>
+    </p>
   </div>
 </section>
 
-<p id="post-<%= @post.id %>" >
-  <% if @post.liked_by?(current_user) %>
-    <%= render "like", post: @post %>
-  <% else %>
-    <%=  render "dislike", post: @post %>
+  <%= link_to posts_path, class: "btn card-btn card-btn-index" do %>
+    <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
   <% end %>
-</p>
-
-<p>
-  <% if current_user.id == @post.user_id %>
-    <%= link_to "武将編集", edit_post_path(@post), class: "btn btn-success" %>
-    <%= link_to "武将削除", post_path(@post), class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？" } %>
-  <% end %>
-  <%= link_to "武将一覧へ", posts_path, class: "btn btn-primary" %>
-</p>
 
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>
