@@ -54,8 +54,10 @@ div.field_with_errors {
   padding: 0 15px;
   height: 72px;
 }
+//カードend
 
-.card-btn {
+//ボタン
+.btn {
   margin: 0 10px 10px 10px;
   font-family: serif;
   color: white;
@@ -66,7 +68,8 @@ div.field_with_errors {
   border: solid 1px #991c1c;
 }
 
-.card-btn-show-delete:hover {
+.card-btn-show-delete:hover,
+.card-btn-show-delete:active {
   background-color: #c92121;
   border: solid 1px #991c1c;
   color: white;
@@ -101,7 +104,21 @@ div.field_with_errors {
   opacity: 0.6;
   text-align: center;
 }
-//カードend
+
+.comment-search-btn {
+  background-color: #4163a7;
+  border: solid 1px black;
+}
+
+.comment-search-btn:hover,
+.comment-search-btn:active {
+  background-color: #4163a7;
+  border: solid 1px black;
+  color: white;
+  opacity: 0.6;
+}
+
+//ボタンend
 
 //検索フォーム
 .form {

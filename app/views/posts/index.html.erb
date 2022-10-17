@@ -9,7 +9,9 @@
       <%= f.collection_select :furigana_initial_cont, Furigana.all, :ini, :ini, {include_blank: "---"} %>&emsp;
       <%= f.label :prefecture_name_cont, "出身地" %>
       <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
-      <%= f.submit "検索" %>
+      <%= button_tag type: 'submit', class: 'btn comment-search-btn' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
+      <% end %>
     <% end %>
   </div>
 
@@ -25,7 +27,7 @@
 
         <div class="card-body">
           <p class="card-text"><%= post.commentary %></p>
-          <%= link_to post, class: "btn card-btn card-btn-show-delete" do %>
+          <%= link_to post, class: "btn card-btn-show-delete" do %>
             <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
           <% end %>
 
