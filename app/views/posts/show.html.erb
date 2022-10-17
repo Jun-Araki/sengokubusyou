@@ -16,10 +16,10 @@
     </p>
 
     <% if current_user.id == @post.user_id %>
-      <%= link_to edit_post_path(@post), class: "btn card-btn-edit" do %>
+      <%= link_to edit_post_path(@post), class: "btn btn-edit" do %>
         <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集</span>
       <% end %>
-      <%= link_to post_path(@post), class: "btn card-btn-show-delete", method: :delete, data: { confirm: "削除しますか？" } do %>
+      <%= link_to post_path(@post), class: "btn btn-show-delete", method: :delete, data: { confirm: "削除しますか？" } do %>
         <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除</span>
       <% end %>
     <% end %>
@@ -34,7 +34,7 @@
   </div>
 </section>
 
-  <%= link_to posts_path, class: "btn card-btn-index" do %>
+  <%= link_to posts_path, class: "btn btn-index" do %>
     <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
   <% end %>
 
@@ -59,7 +59,7 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <br>
 
-    <%= button_tag type: 'submit', class: 'btn comment-search-btn' do %>
+    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
       <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
     <% end %>
   <% end %>

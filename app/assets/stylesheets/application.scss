@@ -63,59 +63,40 @@ div.field_with_errors {
   color: white;
 }
 
-.card-btn-show-delete {
+.btn:hover,
+.btn:active {
+  color: white;
+  opacity: 0.6;
+}
+
+.btn-show-delete,
+.btn-show-delete:hover,
+.btn-show-delete:active {
   background-color: #c92121;
   border: solid 1px #991c1c;
 }
 
-.card-btn-show-delete:hover,
-.card-btn-show-delete:active {
-  background-color: #c92121;
-  border: solid 1px #991c1c;
-  color: white;
-  opacity: 0.6;
-}
-
-.card-btn-edit {
+.btn-edit,
+.btn-edit:hover,
+.btn-edit:active {
   background-color: #6a8f36;
   border: solid 1px black;
 }
 
-.card-btn-edit:hover {
-  background-color: #6a8f36;
-  border: solid 1px black;
-  color: white;
-  opacity: 0.6;
-}
-
-.card-btn-index {
+.btn-index,
+.btn-index:hover,
+.btn-index:active {
   background-color: #eed3d3;
   border: solid 1px #a92121;
   color: #a92121;
   margin-top: 10px;
-  text-align: center;
 }
 
-.card-btn-index:hover {
-  background-color: #eed3d3;
-  border: solid 1px #a92121;
-  color: #a92121;
-  margin-top: 10px;
-  opacity: 0.6;
-  text-align: center;
-}
-
-.comment-search-btn {
+.btn-comment-search,
+.btn-comment-search:hover,
+.btn-comment-search:active {
   background-color: #4163a7;
   border: solid 1px black;
-}
-
-.comment-search-btn:hover,
-.comment-search-btn:active {
-  background-color: #4163a7;
-  border: solid 1px black;
-  color: white;
-  opacity: 0.6;
 }
 
 //ボタンend
