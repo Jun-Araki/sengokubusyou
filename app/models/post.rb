@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }, uniqueness: true# rubocop:disable all
   validates :furigana_name, presence: true
   validates :furigana_initial, presence: true
-  validates :prefecture_name, presence: true
+  # validates :prefecture_name, presence: true
   validates :commentary, presence: true
   mount_uploader :image, ImageUploader, uniqueness: true
 

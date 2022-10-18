@@ -65,37 +65,37 @@ div.field_with_errors {
 
 .btn:hover,
 .btn:active {
-  color: white;
+  color: white !important;
   opacity: 0.6;
 }
 
 .btn-show-delete,
 .btn-show-delete:hover,
 .btn-show-delete:active {
-  background-color: #c92121;
+  background-color: #c92121 !important;
   border: solid 1px #991c1c;
 }
 
 .btn-edit,
 .btn-edit:hover,
 .btn-edit:active {
-  background-color: #6a8f36;
+  background-color: #6a8f36 !important;
   border: solid 1px black;
 }
 
 .btn-index,
 .btn-index:hover,
 .btn-index:active {
-  background-color: #eed3d3;
+  background-color: #eed3d3 !important;
   border: solid 1px #a92121;
-  color: #a92121;
+  color: #a92121 !important;
   margin-top: 10px;
 }
 
 .btn-comment-search,
 .btn-comment-search:hover,
 .btn-comment-search:active {
-  background-color: #4163a7;
+  background-color: #4163a7 !important;
   border: solid 1px black;
   margin: 10px 0 20px 0;
 }
