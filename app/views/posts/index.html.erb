@@ -1,7 +1,10 @@
-<% if user_signed_in? %>
-  <h1 class="text-center">武将検索</h1>
+<% unless user_signed_in? %>
+  <%= render "layouts/top" %>
 
-  <div class="form">
+<% else %>
+  <h1>武将検索</h1>
+
+  <section class="form">
     <%= search_form_for @q do |f| %>
       <%= f.label :name_cont, "武将名" %>
       <%= f.search_field :name_cont, size: 15 %>&emsp;
@@ -13,48 +16,45 @@
         <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
       <% end %>
     <% end %>
-  </div>
+  </section>
 
-  <div class="row row-cols-2 row-cols-md-4 g-4">
-  <% @posts.each do |post| %>
-    <div class="col">
-      <div class="card h-100 text-card-container">
-        <div class="card-title"><%= post.name %></div>
+  <section class="row row-cols-2 row-cols-md-4 g-4">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <div class="card h-100 text-card-container">
+          <div class="card-title"><%= post.name %></div>
 
-        <div class="card-img-top">
-          <%= image_tag post.image.url, :size => "150" %>
-        </div>
+          <div class="card-img-top">
+            <%= image_tag post.image.url, :size => "150" %>
+          </div>
 
-        <div class="card-body">
-          <p class="card-text"><%= post.commentary %></p>
-          <%= link_to post, class: "btn btn-show-delete" do %>
-            <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-          <% end %>
-
-          <p id="post-<%= post.id %>">
-            <% if post.liked_by?(current_user) %>
-              <%= link_to post_likes_path(post), method: :delete, remote: true do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-              &nbsp;<%= post.likes_count %>
-            <% else %>
-              <%= link_to post_likes_path(post), method: :post, remote: true do %>
-                <i class="far fa-heart"></i>
-              <% end %>
-              &nbsp;<%= post.likes_count %>
+          <div class="card-body">
+            <p class="card-text"><%= post.commentary %></p>
+            <%= link_to post, class: "btn btn-show-delete" do %>
+              <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
             <% end %>
-            
-          </p>
+
+            <p id="post-<%= post.id %>">
+              <% if post.liked_by?(current_user) %>
+                <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+                &nbsp;<%= post.likes_count %>
+              <% else %>
+                <%= link_to post_likes_path(post), method: :post, remote: true do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+                &nbsp;<%= post.likes_count %>
+              <% end %>
+              
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-  </div>
+    <% end %>
+  </section>
 
-<div class="pagination justify-content-center">
-  <%= paginate @posts %>
-</div>
-
-<% else %>
-  <%= render "layouts/top" %>
+  <section class="pagination justify-content-center">
+    <%= paginate @posts %>
+  </section>
 <% end %>
