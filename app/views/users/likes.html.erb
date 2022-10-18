@@ -1,0 +1,8 @@
+<h1>いいねした武将一覧</h1>
+
+<% @like_posts.each do |post| %>
+  <%= link_to post.name, post_path(post.id) %>
+  <%= link_to post.user.nickname, user_path(post.user.id) %>
+  <i class="fa fa-heart unlike-btn"></i>
+  <%= post.likes.length %>
+<% end %>
