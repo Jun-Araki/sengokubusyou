@@ -1,12 +1,12 @@
 databases:
-  - name: アプリ名_db
-    databaseName: アプリ名_production
+  - name: sengokubusyou_app_db
+    databaseName: sengokubusyou_app_production
     region: singapore
     plan: free
 
 services:
   - type: web
-    name: アプリ名_web
+    name: sengokubusyou_app_web
     env: ruby
     region: singapore
     plan: free
@@ -16,7 +16,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: アプリ名_db
+          name: sengokubusyou_app_db
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
