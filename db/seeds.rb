@@ -1,7 +1,7 @@
 # rubocop:disable all
-user1 = User.create!(email: "test1@example.com", password: "password", nickname: "test1")
-user2 = User.create!(email: "test2@example.com", password: "password", nickname: "test2")
-user3 = User.create!(email: "test3@example.com", password: "password", nickname: "test3")
+user1 = User.create!(email: "test1@example.com", password: "password", nickname: "sanamaru")
+user2 = User.create!(email: "test2@example.com", password: "password", nickname: "taikou")
+user3 = User.create!(email: "test3@example.com", password: "password", nickname: "osaka")
 
 # post1 = Post.create!(name: "真田幸村", prefecture_name: "長野県", url: "https://ja.wikipedia.org/wiki/%E7%9C%9F%E7%94%B0%E4%BF%A1%E7%B9%81", image: File.open("./app/assets/images/Sanada_Yukimura.png"), user_id: 1)
 # post2 = Post.create!(name: "徳川家康", prefecture_name: "愛知県", url: "https://ja.wikipedia.org/wiki/%E5%BE%B3%E5%B7%9D%E5%AE%B6%E5%BA%B7", image: File.open("./app/assets/images/Tokugawa_Ieyasu.png"), user_id: 2)
@@ -25,6 +25,12 @@ user3 = User.create!(email: "test3@example.com", password: "password", nickname:
 # followers = users[2..2]
 # following.each { |followed| user.follow(followed) }
 # followers.each { |follower| follower.follow(user) }
+
+require "csv"
+
+CSV.foreach("db/csv_data/post_data.csv", headers: true) do |row|
+  Post.create!(row.to_h)
+end
 
 Rails.logger.debug "初期データの投入に成功しました！"
 # rubocop:enable all

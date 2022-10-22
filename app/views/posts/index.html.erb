@@ -1,7 +1,10 @@
-<% if user_signed_in? %>
-  <h1 class="text-center">武将一覧</h1>
+<% unless user_signed_in? %>
+  <%= render "layouts/top" %>
 
-  <div class="form">
+<% else %>
+  <h1>武将検索</h1>
+
+  <section class="form">
     <%= search_form_for @q do |f| %>
       <%= f.label :name_cont, "武将名" %>
       <%= f.search_field :name_cont, size: 15 %>&emsp;
@@ -9,52 +12,49 @@
       <%= f.collection_select :furigana_initial_cont, Furigana.all, :ini, :ini, {include_blank: "---"} %>&emsp;
       <%= f.label :prefecture_name_cont, "出身地" %>
       <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-
-  <table class="table table-bordered table-striped mt-4">
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td class="break-word"><b><%= post.name %></b></td>
-          <td><%= image_tag post.image.thumb.url %></td>
-          <td class="commentary"><%= post.commentary %></td>
-          <td id="post-<%= post.id %>">
-            <% if post.liked_by?(current_user) %>
-              <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
-              <%= post.likes_count %>
-            <% else %>
-              <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %>
-              <%= post.likes_count %>
-            <% end %>
-          </td>
-          <td class="text-nowrap">
-            <%= link_to post, class: "btn btn-primary" do %>
-              <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
-            <% end %>
-            <% if current_user.id == post.user_id %>
-              <%= link_to edit_post_path(post), class: "btn btn-success" do %>
-                <i class="far fa-edit"></i> <span class="d-none d-md-inline"> 編集</span>
-              <% end %>
-              <%= link_to post, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
-                <i class="far fa-trash-alt"></i> <span class="d-none d-md-inline"> 削除</span>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if post.user.nickname.present? %>
-              <%= link_to post.user.nickname, user_path(post.user.id) %>
-            <% end %>
-          </td>
-        </tr>
+      <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </section>
 
-<div class="pagination justify-content-center">
-  <%= paginate @posts %>
-</div>
-<% else %>
-  <%= render "layouts/top" %>
+  <section class="row row-cols-2 row-cols-md-4 g-4">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <div class="card h-100 text-card-container">
+          <div class="card-title"><%= post.name %></div>
+
+          <div class="card-img-top">
+            <%= image_tag post.image.url, :size => "150" %>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text"><%= post.commentary %></p>
+            <%= link_to post, class: "btn btn-show-delete" do %>
+              <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
+            <% end %>
+
+            <p id="post-<%= post.id %>">
+              <% if post.liked_by?(current_user) %>
+                <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+                &nbsp;<%= post.likes_count %>
+              <% else %>
+                <%= link_to post_likes_path(post), method: :post, remote: true do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+                &nbsp;<%= post.likes_count %>
+              <% end %>
+              
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+
+  <section class="pagination justify-content-center">
+    <%= paginate @posts %>
+  </section>
 <% end %>

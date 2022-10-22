@@ -1,49 +1,69 @@
-<h1 class="card text-center">武将詳細</h1>
-<section class="card border-dark mt-5">
-  <div class="card-header">
+<h1>武将詳細</h1>
+<section class="card mt-5">
+
+  <div class="card-title">
       <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.furigana_name %></small></h4>
   </div>
+
   <div class="card-body">
     <p><%= image_tag @post.image.url %></p>
     <p><%= @post.commentary %></p>
     <p>出身地：<b><%= @post.prefecture_name %></b></p>
+    <p>作成者：
+      <% if @post.user.nickname.present? %>
+        <%= link_to @post.user.nickname, user_path(@post.user.id) %>
+      <% end %>
+    </p>
+
+    <% if current_user.id == @post.user_id %>
+      <%= link_to edit_post_path(@post), class: "btn btn-edit" do %>
+        <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集</span>
+      <% end %>
+      <%= link_to post_path(@post), class: "btn btn-show-delete", method: :delete, data: { confirm: "削除しますか？" } do %>
+        <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除</span>
+      <% end %>
+    <% end %>
+
+    <p id="post-<%= @post.id %>" >
+     <% if @post.liked_by?(current_user) %>
+       <%= render "like", post: @post %>
+     <% else %>
+       <%=  render "dislike", post: @post %>
+     <% end %>
+    </p>
   </div>
 </section>
 
-<p id="post-<%= @post.id %>" >
-  <% if @post.liked_by?(current_user) %>
-    <%= render "like", post: @post %>
-  <% else %>
-    <%=  render "dislike", post: @post %>
+  <%= link_to posts_path, class: "btn btn-index" do %>
+    <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
   <% end %>
-</p>
 
-<p>
-  <% if current_user.id == @post.user_id %>
-    <%= link_to "武将編集", edit_post_path(@post), class: "btn btn-success" %>
-    <%= link_to "武将削除", post_path(@post), class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？" } %>
-  <% end %>
-  <%= link_to "武将一覧へ", posts_path, class: "btn btn-primary" %>
-</p>
+<section class="text-center">
+  <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+    <%= f.text_area :content, required: true %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <br>
 
-<h2>コメント一覧</h2>
-<% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
-    <%= l c.created_at %><br>
-    <%= safe_join(c.content.split("\n"),tag(:br)) %>
-    
-    <% if current_user.id == c.user_id %>
-      <%= link_to "削除", post_comment_path(@post, c), method: :delete %>
+    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
+      <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
     <% end %>
-    <hr>
-  </div>
-<% end %>
+  <% end %>
 
-<%= form_with(model:[@post, @comment], method: :post) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <br>
-  <%= f.submit 'コメントする', class: "btn btn-primary"  %>
-<% end %>
+  <h3>みんなのコメント</h3>
+  <hr>
+  <% @comments.each do |c| %>
+    <div>
+      <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
+      &nbsp;<%= l c.created_at %><br>
+      <%= safe_join(c.content.split("\n"),tag(:br)) %>
+      
+      <% if current_user.id == c.user_id %>
+        <%= link_to post_comment_path(@post, c), method: :delete, data: { confirm: "削除しますか？" } do %>
+          &nbsp;<i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      <% end %>
+      <hr>
+    </div>
+  <% end %>
+</section>

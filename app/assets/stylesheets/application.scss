@@ -23,18 +23,105 @@ div.field_with_errors {
   padding: 30px 15px;
 }
 
-body {
-  padding-top: 50px;
+//見出し
+h1 {
+  text-align: center;
 }
 
-// テーブル
-th,
-td {
-  vertical-align: middle !important;
+//カード
+.card {
+  text-align: center;
+  position: relative;
+  border-top: 4px solid #b28e5f;
+  border-bottom: 4px solid #b28e5f;
+  border-left: 2px solid #b28e5f;
+  border-right: 2px solid #b28e5f;
+  // background-color: #b28e5f1e;
 }
 
-.break-word {
-  word-break: break-word;
+.card-body {
+  margin-bottom: 0;
+}
+
+.card-title {
+  padding: 20px;
+  font-size: 20px;
+  font-family: serif;
+  color: white;
+  background: #b28e5f;
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  padding: 0 15px;
+  height: 72px;
+}
+//カードend
+
+//ボタン
+.btn {
+  margin: 0 10px 10px 10px;
+  font-family: serif;
+  color: white;
+}
+
+.btn:hover,
+.btn:active {
+  color: white !important;
+  opacity: 0.6;
+}
+
+.btn-show-delete,
+.btn-show-delete:hover,
+.btn-show-delete:active {
+  background-color: #c92121 !important;
+  border: solid 1px #991c1c;
+}
+
+.btn-edit,
+.btn-edit:hover,
+.btn-edit:active {
+  background-color: #6a8f36 !important;
+  border: solid 1px black;
+}
+
+.btn-index,
+.btn-index:hover,
+.btn-index:active {
+  background-color: #eed3d3 !important;
+  border: solid 1px #a92121;
+  color: #a92121 !important;
+  margin-top: 10px;
+}
+
+.btn-comment-search,
+.btn-comment-search:hover,
+.btn-comment-search:active {
+  background-color: #4163a7 !important;
+  border: solid 1px black;
+  margin: 10px 0 20px 0;
+}
+
+//ボタンend
+
+//検索フォーム
+.form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+//ページネーション
+.pagination li a {
+  margin-top: 20px;
+  // border: solid 1px #b28e5f;
+}
+
+//フラッシュ
+.alert {
+  margin-top: 6px;
 }
 
 .alert-notice {
@@ -45,16 +132,30 @@ td {
   @extend .alert-danger;
 }
 
-// .commentary {
-//   width: 50%;
-//   white-space: nowrap;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-// }
+//ボディ
+body {
+  padding-top: 50px;
+}
+
+//ナビバー
+.navbar {
+  background-color: #991c1c;
+  padding-left: 20px;
+}
+
+.navbar-image {
+  width: 30px;
+  height: 24px;
+}
 
 // フッター
 .footer {
-  background-color: blue;
+  background-color: #991c1c;
   color: white;
   padding: 3px;
+}
+
+//全体
+a {
+  text-decoration: none;
 }
