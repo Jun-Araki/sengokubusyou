@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: sengokubusyou_app_production
   username: sengokubusyou_app
   password: <%= ENV['SENGOKUBUSYOU_APP_DATABASE_PASSWORD'] %>

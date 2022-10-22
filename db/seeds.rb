@@ -26,5 +26,11 @@ user3 = User.create!(email: "test3@example.com", password: "password", nickname:
 # following.each { |followed| user.follow(followed) }
 # followers.each { |follower| follower.follow(user) }
 
+require "csv"
+
+CSV.foreach("db/csv_data/post_data.csv", headers: true) do |row|
+  Post.create!(row.to_h)
+end
+
 Rails.logger.debug "初期データの投入に成功しました！"
 # rubocop:enable all
