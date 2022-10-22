@@ -20,13 +20,19 @@ gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "active_hash"
 gem "carrierwave", "~> 2.0"
+gem "debug"
 gem "devise"
 gem "devise-i18n"
 gem "faker", require: false
 gem "jbuilder", "~> 2.7"
 gem "kaminari"
+gem "matrix"
 gem "mini_magick"
+gem "net-ftp"
+gem "net-imap"
+gem "net-pop"
 gem "net-smtp"
+gem "prime"
 gem "ransack"
 
 # Use Redis adapter to run Action Cable in production
