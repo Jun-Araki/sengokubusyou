@@ -1,6 +1,6 @@
-user1 = User.create!(email: "test1@example.com", password: "password", nickname: "sanamaru")
-user2 = User.create!(email: "test2@example.com", password: "password", nickname: "taikou")
-user3 = User.create!(email: "test3@example.com", password: "password", nickname: "osaka")
+User.create!(email: "test1@example.com", password: "password", nickname: "sanamaru")
+User.create!(email: "test2@example.com", password: "password", nickname: "taikou")
+User.create!(email: "test3@example.com", password: "password", nickname: "osaka")
 
 require "csv"
 
