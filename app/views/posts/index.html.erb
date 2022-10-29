@@ -1,7 +1,10 @@
-
-<%= render "ranks", post: @post %>
-
 <h1>武将検索</h1>
+
+<div class="text-center">
+<%= link_to ranks_posts_path, class: "btn btn-index" do %>
+  <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
+<% end %>
+</div>
 
 <section class="form">
   <%= search_form_for @q do |f| %>

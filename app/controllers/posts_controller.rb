@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
-    @post_like_ranks = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
   end
 
   def show
@@ -46,6 +45,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy!
     redirect_to root_path, alert: "武将を削除しました" # rubocop:disable all
+  end
+
+  def ranks
+    @post_like_ranks = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
   end
 
   private

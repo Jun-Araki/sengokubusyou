@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :posts do
     resource :likes, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
+    collection do
+      get "ranks"
+    end
   end
 
   resources :users do

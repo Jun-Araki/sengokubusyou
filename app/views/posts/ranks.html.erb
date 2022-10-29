@@ -2,11 +2,11 @@
 
 <section class="row rank" >
   <% @post_like_ranks.each.with_index(1) do |post, i| %>
-    <div class="col-12 col-sm-6 col-md-4">
-    第<%= i %>位
+    <div class="col-12 col-md-4">
+    
       <div class="card h-100 text-card-container">
         <%= link_to post do %>
-          <div class="card-title"><%= post.name %></div>
+          <div class="card-title"><p class="rank-num">第<%= i %>位</p><%= post.name %></div>
           <div class="card-img-top">
             <%= image_tag post.image.url, :size => "150" %>
           </div>

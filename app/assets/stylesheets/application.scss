@@ -26,6 +26,7 @@ div.field_with_errors {
 //見出し
 h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -41,10 +42,6 @@ h3 {
   border-left: 2px solid #b28e5f;
   border-right: 2px solid #b28e5f;
   // background-color: #b28e5f1e;
-}
-
-.card-body {
-  margin-bottom: 0;
 }
 
 .card-title {
@@ -122,7 +119,12 @@ h3 {
 
 //ランキング
 .rank {
-  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.rank-num {
+  text-align: center;
+  font-size: 30px;
 }
 
 //検索フォーム
