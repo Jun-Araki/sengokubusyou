@@ -1,5 +1,5 @@
 <h1>武将詳細</h1>
-<section class="card mt-5">
+<section class="card card-show mt-5">
 
   <div class="card-title">
       <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.furigana_name %></small></h4>
@@ -7,13 +7,15 @@
 
   <div class="card-body">
     <p><%= image_tag @post.image.url %></p>
-    <p><%= @post.commentary %></p>
-    <p>出身地：<b><%= @post.prefecture_name %></b></p>
-    <p>作成者：
-      <% if @post.user.nickname.present? %>
-        <%= link_to @post.user.nickname, user_path(@post.user.id) %>
-      <% end %>
-    </p>
+    <div class="card-show-main">
+      <p><%= @post.commentary %></p>
+      <p>出身地：<b><%= @post.prefecture_name %></b></p>
+      <p>作成者：
+        <% if @post.user.nickname.present? %>
+          <%= link_to @post.user.nickname, user_path(@post.user.id) %>
+        <% end %>
+      </p>
+    </div>
 
     <% if current_user.id == @post.user_id %>
       <%= link_to edit_post_path(@post), class: "btn btn-edit" do %>
@@ -34,12 +36,12 @@
   </div>
 </section>
 
+<section class="text-center">
   <%= link_to posts_path, class: "btn btn-index" do %>
     <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
   <% end %>
 
-<section class="text-center">
-  <h3>おすすめのエピソードをシェアしよう！</h3>
+  <h3>おすすめのポイントをシェアしよう！</h3>
   <%= form_with(model:[@post, @comment], method: :post) do |f| %>
     <%= f.text_area :content, required: true %>
     <%= f.hidden_field :post_id, value: @post.id %>
