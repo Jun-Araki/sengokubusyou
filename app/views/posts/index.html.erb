@@ -1,7 +1,4 @@
-<% unless user_signed_in? %>
-  <%= render "layouts/top" %>
 
-<% else %>
   <h1>武将検索</h1>
 
   <section class="form">
@@ -35,11 +32,13 @@
               <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
             <% end %>
 
-            <p id="post-<%= post.id %>" >
-            <% if post.liked_by?(current_user) %>
-              <%= render "like", post: post %>
-            <% else %>
-              <%=  render "dislike", post: post %>
+            <% if user_signed_in? %>
+              <p id="post-<%= post.id %>" >
+                <% if post.liked_by?(current_user) %>
+                  <%= render "like", post: post %>
+                <% else %>
+                  <%= render "dislike", post: post %>
+                <% end %>              
             <% end %>
             </p>
           </div>
@@ -51,4 +50,3 @@
   <section class="pagination justify-content-center">
     <%= paginate @posts %>
   </section>
-<% end %>
