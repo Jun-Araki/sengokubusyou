@@ -34,19 +34,12 @@
               <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
             <% end %>
 
-            <p id="post-<%= post.id %>">
-              <% if post.liked_by?(current_user) %>
-                <%= link_to post_likes_path(post), method: :delete, remote: true do %>
-                  <i class="fas fa-heart"></i>
-                <% end %>
-                &nbsp;<%= post.likes_count %>
-              <% else %>
-                <%= link_to post_likes_path(post), method: :post, remote: true do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-                &nbsp;<%= post.likes_count %>
-              <% end %>
-              
+            <p id="post-<%= post.id %>" >
+            <% if post.liked_by?(current_user) %>
+              <%= render "like", post: post %>
+            <% else %>
+              <%=  render "dislike", post: post %>
+            <% end %>
             </p>
           </div>
         </div>

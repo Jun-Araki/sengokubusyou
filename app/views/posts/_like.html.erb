@@ -1,5 +1,5 @@
 <%= link_to post_likes_path(post), method: :delete, remote: true do %>
-  <i class="fas fa-heart"></i>
+  <i class="fas fa-heart"></i>&nbsp;<span>いいね！</span>
 <% end %>
 
 &nbsp;<%= post.likes_count %>

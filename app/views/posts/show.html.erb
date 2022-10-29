@@ -39,6 +39,7 @@
   <% end %>
 
 <section class="text-center">
+  <h3>おすすめのエピソードをシェアしよう！</h3>
   <%= form_with(model:[@post, @comment], method: :post) do |f| %>
     <%= f.text_area :content, required: true %>
     <%= f.hidden_field :post_id, value: @post.id %>
@@ -50,7 +51,6 @@
     <% end %>
   <% end %>
 
-  <h3>みんなのコメント</h3>
   <hr>
   <% @comments.each do |c| %>
     <div>
