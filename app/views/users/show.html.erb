@@ -1,6 +1,6 @@
 <h1><%= @user.nickname %>のページ</h1>
 
-<section>
+<section class="user-show">
   <% if @user.id == current_user.id %>
     <%= link_to edit_user_registration_path, class: "btn btn-edit" do %>
       <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>
@@ -31,35 +31,38 @@
 
 <h2>登録武将一覧</h2>
 
-<table class="table table-bordered table-striped mt-4">
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td class="break-word"><b><%= post.name %></b></td>
-        <td><%= image_tag post.image.thumb.url %></td>
-        <td id="post-<%= post.id %>">
-          <% if post.liked_by?(current_user) %>
-            <%= link_to "💖", post_likes_path(post), method: :delete, remote: true %>
-            <%= post.likes_count %>
-          <% else %>
-            <%= link_to "🤍", post_likes_path(post), method: :post, remote: true %>
-            <%= post.likes_count %>
+<section class="row g-4">
+  <% @posts.each do |post| %>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 text-card-container">
+        <%= link_to post do %>
+          <div class="card-title"><%= post.name %></div>
+          <div class="card-img-top">
+            <%= image_tag post.image.url, :size => "150" %>
+          </div>
+        <% end %>
+
+        <div class="card-body">
+          <p class="card-text"><%= post.commentary %></p>
+          <%= link_to post, class: "btn btn-show-delete" do %>
+            <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
           <% end %>
-        </td>
-        <td class="text-nowrap">
-          <%= link_to post, class: "btn btn-primary" do %>
-            <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline"> 詳細</span>
+
+          <% if user_signed_in? %>
+            <p id="post-<%= post.id %>" >
+            <% if post.liked_by?(current_user) %>
+              <%= render "posts/like", post: post %>
+            <% else %>
+              <%= render "posts/dislike", post: post %>
+            <% end %>              
           <% end %>
-          <% if current_user.id == @user.id %>
-            <%= link_to edit_post_path(post), class: "btn btn-success" do %>
-              <i class="far fa-edit"></i> <span class="d-none d-md-inline"> 編集</span>
-            <% end %>
-            <%= link_to post, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
-              <i class="far fa-trash-alt"></i> <span class="d-none d-md-inline"> 削除</span>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<section class="pagination justify-content-center">
+  <%= paginate @posts %>
+</section>

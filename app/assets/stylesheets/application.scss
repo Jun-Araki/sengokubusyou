@@ -24,7 +24,8 @@ div.field_with_errors {
 }
 
 //見出し
-h1 {
+h1,
+h2 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -134,6 +135,11 @@ h3 {
 //検索フォーム
 .form {
   margin-bottom: 20px;
+  text-align: center;
+}
+
+//ユーザー
+.user-show {
   text-align: center;
 }
 
