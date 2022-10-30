@@ -1,34 +1,14 @@
-<h1>いいね！ランキング</h1>
-
-<section class="row rank" >
+<section class="row" >
+  <h1>いいね数ランキング</h1>
   <% @post_like_ranks.each.with_index(1) do |post, i| %>
-    <div class="col-12 col-md-4">
-    
-      <div class="card h-100 text-card-container">
-        <%= link_to post do %>
-          <div class="card-title"><p class="rank-num">第<%= i %>位</p><%= post.name %></div>
-          <div class="card-img-top">
-            <%= image_tag post.image.url, :size => "150" %>
-          </div>
-        <% end %>
-
-        <div class="card-body">
-          <p class="card-text"><%= post.commentary %></p>
-          <%= link_to post, class: "btn btn-show-delete" do %>
-            <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-          <% end %>
-
-          <% if user_signed_in? %>
-            <p id="post-<%= post.id %>" >
-              <% if post.liked_by?(current_user) %>
-                <%= render "like", post: post %>
-              <% else %>
-                <%= render "dislike", post: post %>
-              <% end %>              
-          <% end %>
-          </p>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "ranks_common", locals: {post: post, i: i} %>
   <% end %>
+
+  <h1>コメント数ランキング</h1>
+  <% @post_comment_ranks.each.with_index(1) do |post, i| %>
+    <%= render partial: "ranks_common", locals: {post: post, i: i} %>
+  <% end %>
+
+    
+
 </section>
