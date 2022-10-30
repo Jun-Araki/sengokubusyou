@@ -48,8 +48,9 @@ class PostsController < ApplicationController
   end
 
   def ranks
-    @post_like_ranks = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @post_like_ranks    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
     @post_comment_ranks = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @user_post_ranks    = User.find(Post.group(:user_id).order("count(user_id) desc").limit(3).pluck(:user_id))
   end
 
   private

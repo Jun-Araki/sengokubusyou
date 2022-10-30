@@ -56,7 +56,7 @@
   <hr>
   <% @comments.each do |c| %>
     <div>
-      <a href="/users/<%= current_user.id %>"><%= c.user.nickname %></a>
+      <a href="/users/<%= c.user.id %>"><%= c.user.nickname %></a>
       &nbsp;<%= l c.created_at %><br>
       <%= safe_join(c.content.split("\n"),tag(:br)) %>
       
