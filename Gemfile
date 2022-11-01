@@ -24,6 +24,7 @@ gem "debug"
 gem "devise"
 gem "devise-i18n"
 gem "faker", require: false
+gem "fog-aws"
 gem "jbuilder", "~> 2.7"
 gem "kaminari"
 gem "matrix"
