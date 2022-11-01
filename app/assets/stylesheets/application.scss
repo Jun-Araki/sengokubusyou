@@ -24,8 +24,14 @@ div.field_with_errors {
 }
 
 //見出し
-h1 {
+h1,
+h2 {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-bottom: 20px;
 }
 
 //カード
@@ -37,10 +43,6 @@ h1 {
   border-left: 2px solid #b28e5f;
   border-right: 2px solid #b28e5f;
   // background-color: #b28e5f1e;
-}
-
-.card-body {
-  margin-bottom: 0;
 }
 
 .card-title {
@@ -56,9 +58,18 @@ h1 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  padding: 0 15px;
   height: 72px;
 }
+
+.card-show {
+  margin: 0 400px;
+}
+
+.card-show-main {
+  padding: 0 50px;
+  font-size: large;
+}
+
 //カードend
 
 //ボタン
@@ -107,9 +118,28 @@ h1 {
 
 //ボタンend
 
+//ランキング
+.rank-row {
+  margin-bottom: 30px;
+}
+
+.rank-num {
+  text-align: center;
+  font-size: 30px;
+}
+
+.rank-page {
+  margin: 0 170px;
+}
+
 //検索フォーム
 .form {
   margin-bottom: 20px;
+  text-align: center;
+}
+
+//ユーザー
+.user-show {
   text-align: center;
 }
 

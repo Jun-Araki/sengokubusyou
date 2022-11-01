@@ -2,8 +2,10 @@ class UsersController < ApplicationController
   before_action :logged_in_user
   before_action :set_user
 
+  PER_PAGE = 24
+
   def show
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(PER_PAGE).includes(:user, :likes)
   end
 
   def following
