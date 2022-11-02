@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
+    # binding.pry
     @q = Post.ransack(params[:q])
     @posts = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
   end
