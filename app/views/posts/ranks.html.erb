@@ -12,6 +12,5 @@
   <h1>ユーザーの登録数ランキング</h1>
   <% @user_post_ranks.each.with_index(1) do |user, i| %>
     <%= render partial: "ranks_user", locals: {user: user, i: i} %>
-    <a href="/users/<%= user.id %>"><%= user.nickname %></a>
   <% end %>
 </section>

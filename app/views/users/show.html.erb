@@ -38,7 +38,7 @@
         <%= link_to post do %>
           <div class="card-title"><%= post.name %></div>
           <div class="card-img-top">
-            <%= image_tag post.image.url, :size => "150" %>
+            <%= image_tag post.image.thumb.url, :size => "150" %>
           </div>
         <% end %>
 
