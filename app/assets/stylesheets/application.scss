@@ -24,10 +24,14 @@ div.field_with_errors {
 }
 
 //見出し
-h1,
-h2 {
+h1 {
   text-align: center;
   margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 h3 {
@@ -186,9 +190,6 @@ h3 {
 }
 
 //登録・編集フォーム
-.new-user-title {
-  margin-bottom: 50px;
-}
 
 .form-post-user {
   max-width: 300px;
@@ -205,6 +206,14 @@ h3 {
 
 .form-icon {
   margin: auto;
+}
+
+.form-group-login {
+  margin-bottom: 10px !important;
+}
+
+.check-login {
+  text-align: center;
 }
 
 //ボディ
