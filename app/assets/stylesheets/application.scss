@@ -186,17 +186,25 @@ h3 {
 }
 
 //登録・編集フォーム
-.form-post {
-  max-width: 400px;
+.new-user-title {
+  margin-bottom: 50px;
+}
+
+.form-post-user {
+  max-width: 300px;
   margin: auto;
 }
 
 .form-group {
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .form-area {
   height: 100px;
+}
+
+.form-icon {
+  margin: auto;
 }
 
 //ボディ
