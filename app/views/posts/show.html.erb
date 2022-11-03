@@ -1,12 +1,12 @@
 <h1>武将詳細</h1>
-<section class="card card-show mt-5">
+<section class="card card-show">
 
   <div class="card-title">
       <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.furigana_name %></small></h4>
   </div>
 
   <div class="card-body">
-    <p><%= image_tag @post.image.url %></p>
+    <p><%= image_tag @post.image.url, :size => "400" %></p>
     <div class="card-show-main">
       <p><%= @post.commentary %></p>
       <p>出身地：<b><%= @post.prefecture_name %></b></p>
