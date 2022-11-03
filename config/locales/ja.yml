@@ -18,6 +18,12 @@ ja:
         furigana_initial: 武将名（ふりがな50音）
         prefecture_name: 都道府県
         image: 武将画像
+      user:
+        nickname: ニックネーム
+        email: Eメール
+        profile: プロフィール文
+        twitter: twitterのURL
+        user_image: アイコン
       like:
         user: ユーザー
         user_id: ユーザー

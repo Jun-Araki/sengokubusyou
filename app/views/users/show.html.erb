@@ -1,6 +1,8 @@
 <h1><%= @user.nickname %>のページ</h1>
 
 <section class="user-show">
+  <p><%= image_tag @user.user_image.url, :size => "150" %></p>
+
   <% if @user.id == current_user.id %>
     <%= link_to edit_user_registration_path, class: "btn btn-edit" do %>
       <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>

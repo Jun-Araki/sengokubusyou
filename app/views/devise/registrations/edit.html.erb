@@ -5,12 +5,27 @@
 
   <div class="field">
     <%= f.label :nickname, "ニックネーム" %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile %><br />
+    <%= f.text_field :profile, autofocus: true, autocomplete: "profile" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :twitter %><br />
+    <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter" %>
+  </div>
+
+  <div class="filed">
+    <%= f.label :user_image %> <br>
+    <%= f.file_field :user_image, accept: "image/png,image/jpeg,image/gif" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
