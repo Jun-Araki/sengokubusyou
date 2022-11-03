@@ -36,7 +36,7 @@
   </div>
 </section>
 
-<section class="text-center">
+<section class="comment">
   <%= link_to posts_path, class: "btn btn-index" do %>
     <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
   <% end %>
@@ -56,15 +56,16 @@
   <hr>
   <% @comments.each do |c| %>
     <div>
-      <a href="/users/<%= c.user.id %>"><%= c.user.nickname %></a>
-      &nbsp;<%= l c.created_at %><br>
-      <%= safe_join(c.content.split("\n"),tag(:br)) %>
-      
+      <a href="/users/<%= c.user.id %>"><%= image_tag c.user.user_image.thumb.url %></a>
+      &nbsp;<a href="/users/<%= c.user.id %>"><b><%= c.user.nickname %></b></a>
+      &nbsp;<%= l c.created_at %>
       <% if current_user.id == c.user_id %>
         <%= link_to post_comment_path(@post, c), method: :delete, data: { confirm: "削除しますか？" } do %>
-          &nbsp;<i class="fa-regular fa-trash-can"></i>
+          &nbsp;<i class="fa-regular fa-trash-can"></i><br>
         <% end %>
       <% end %>
+      <p class="comment-content"><%= safe_join(c.content.split("\n"),tag(:br)) %></p>
+
       <hr>
     </div>
   <% end %>
