@@ -79,7 +79,6 @@ h3 {
 
 //ボタン
 .btn {
-  margin: 0 10px 10px 10px;
   font-family: serif;
   color: white;
 }
@@ -95,6 +94,7 @@ h3 {
 .btn-show-delete:active {
   background-color: #c92121 !important;
   border: solid 1px #991c1c;
+  margin-bottom: 10px;
 }
 
 .btn-edit,
@@ -102,6 +102,7 @@ h3 {
 .btn-edit:active {
   background-color: #6a8f36 !important;
   border: solid 1px black;
+  margin-bottom: 10px;
 }
 
 .btn-index,
@@ -110,7 +111,6 @@ h3 {
   background-color: #eed3d3 !important;
   border: solid 1px #a92121;
   color: #a92121 !important;
-  margin-top: 10px;
 }
 
 .btn-comment-search,
@@ -119,6 +119,14 @@ h3 {
   background-color: #4163a7 !important;
   border: solid 1px black;
   margin: 10px 0 20px 0;
+}
+
+.btn-regist,
+.btn-regist:hover,
+.btn-regist:active {
+  background-color: #4163a7 !important;
+  border: solid 1px black;
+  width: 100%;
 }
 
 //ボタンend
@@ -175,6 +183,20 @@ h3 {
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+//登録・編集フォーム
+.form-post {
+  max-width: 400px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-area {
+  height: 100px;
 }
 
 //ボディ
