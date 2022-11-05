@@ -24,17 +24,20 @@ class UsersController < ApplicationController
   end
 
   def regists
-    @regist_posts = @user.posts.page(params[:page]).per(PER_PAGE)
+    @title = "登録"
+    @posts = @user.posts.page(params[:page]).per(PER_PAGE)
   end
 
   def likes
+    @title = "いいね"
     likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
+    @posts = Kaminari.paginate_array(Post.find(likes)).page(params[:page]).per(PER_PAGE)
   end
 
   def comments
+    @title = "コメント"
     comments = Comment.where(user_id: @user.id).pluck(:post_id)
-    @comment_posts = Post.find(comments)
+    @posts = Kaminari.paginate_array(Post.find(comments)).page(params[:page]).per(PER_PAGE)
   end
 
   private

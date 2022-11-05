@@ -1,18 +1,1 @@
-<h2><b><%= @user.nickname %></b>が登録した武将</h2>
-
-<% if @user.posts.present? %>
-  <div class="count-posts">
-    <b>武将数:&nbsp;</b><%= @user.posts.count %>
-  </div>
-
-  <section class="row g-4 card-user">
-    <%= render partial: "post", collection: @regist_posts, as: :post %>
-  </section>
-
-  <div class="pagination justify-content-center">
-    <%= paginate @regist_posts %>
-  </div>
-
-<% else %>
-  <p class="text-center">武将はありません</p>
-<% end %>
+<%= render "user_post" %>

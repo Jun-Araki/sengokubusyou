@@ -1,14 +1,1 @@
-<h2><b><%= @user.nickname %></b>がコメントした武将</h2>
-
-<% if @comment_posts.present? %>
-  <div class="count-posts">
-    <b>武将数:&nbsp;</b><%= @comment_posts.count %>
-  </div>
-
-  <section class="row g-4 card-user">
-    <%= render partial: "post", collection: @comment_posts, as: :post %>
-  </section>
-
-<% else %>
-  <p class="text-center">武将はありません</p>
-<% end %>
+<%= render "user_post" %>
