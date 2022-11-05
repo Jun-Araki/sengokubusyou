@@ -37,22 +37,23 @@
 </section>
 
 <section class="comment">
-  <%= link_to posts_path, class: "btn btn-index" do %>
-    <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
-  <% end %>
-
-  <h3>おすすめのポイントをシェアしよう！</h3>
-  <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-    <%= f.text_area :content, required: true %>
-    <%= f.hidden_field :post_id, value: @post.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <br>
-
-    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
-      <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
+  <div class="text-center">
+    <%= link_to posts_path, class: "btn btn-index" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
     <% end %>
-  <% end %>
 
+    <h3>おすすめのポイントをコメントしよう！</h3>
+    <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+      <%= f.text_area :content, required: true %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <br>
+
+      <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
+        <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
+      <% end %>
+    <% end %>
+  </div>
   <hr>
   <% @comments.each do |c| %>
     <div>
