@@ -31,6 +31,9 @@
     <%= link_to likes_user_path(@user), class: "btn btn-comment-search" do %>
       <i class="fa-solid fa-heart"></i>&nbsp;<span>いいねした武将</span>
     <% end %>
+    <%= link_to comments_user_path(@user), class: "btn btn-comment-search" do %>
+      <i class="fa-solid fa-message"></i>&nbsp;<span>コメントした武将</span>
+    <% end %>
   </div>
 
   <div class="text-center">

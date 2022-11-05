@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :likes, :regists
+      get :following, :followers, :regists, :likes, :comments
     end
   end
 

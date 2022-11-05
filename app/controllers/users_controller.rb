@@ -16,13 +16,20 @@ class UsersController < ApplicationController
     render "show_follow"
   end
 
+  def regists
+    @regist_posts = @user.posts.page(params[:page]).per(PER_PAGE)
+  end
+
   def likes
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
+    # binding.pry
+    # @user
   end
 
-  def regists
-    @posts = @user.posts.page(params[:page]).per(PER_PAGE).includes(:user, :likes)
+  def comments
+    comments = Comment.where(user_id: @user.id).pluck(:post_id)
+    @comment_posts = Post.find(comments)
   end
 
   private
