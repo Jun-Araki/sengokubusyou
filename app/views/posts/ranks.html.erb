@@ -1,11 +1,2 @@
-<section class="row rank-page" >
-  <h1>いいね数ランキング</h1>
-  <% @post_like_ranks.each.with_index(1) do |post, i| %>
-    <%= render partial: "ranks_common", locals: {post: post, i: i} %>
-  <% end %>
-
-  <h1>コメント数ランキング</h1>
-  <% @post_comment_ranks.each.with_index(1) do |post, i| %>
-    <%= render partial: "ranks_common", locals: {post: post, i: i} %>
-  <% end %>
-</section>
+<%= render partial:"ranks_page", locals: {title: "いいね"} %>
+<%= render partial:"ranks_page", locals: {title: "コメント"} %>
