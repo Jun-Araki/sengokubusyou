@@ -1,40 +1,12 @@
 <h2><b><%= @user.nickname %></b>が登録した武将</h2>
 
 <% if @user.posts.present? %>
-<div class="count-posts">
-  <b>登録武将数:&nbsp;</b><%= @user.posts.count %>
-</div>
+  <div class="count-posts">
+    <b>武将数:&nbsp;</b><%= @user.posts.count %>
+  </div>
 
   <section class="row g-4 card-user">
-    <% @regist_posts.each do |post| %>
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 text-card-container">
-          <%= link_to post do %>
-            <div class="card-title"><%= post.name %></div>
-            <div class="card-img-top">
-              <%= image_tag post.image.url, :size => "150" %>
-            </div>
-          <% end %>
-
-          <div class="card-body">
-            <p class="card-text"><%= post.commentary %></p>
-            <%= link_to post, class: "btn btn-show-delete" do %>
-              <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-            <% end %>
-
-            <% if user_signed_in? %>
-              <p id="post-<%= post.id %>" >
-              <% if post.liked_by?(current_user) %>
-                <%= render "posts/like", post: post %>
-              <% else %>
-                <%= render "posts/dislike", post: post %>
-              <% end %>              
-            <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: "post", collection: @regist_posts, as: :post %>
   </section>
 
   <div class="pagination justify-content-center">

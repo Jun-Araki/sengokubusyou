@@ -1,45 +1,14 @@
 <h2><b><%= @user.nickname %></b>がいいねした武将</h2>
 
 <% if @like_posts.present? %>
-<div class="count-posts">
-  <b>登録武将数:&nbsp;</b><%= @like_posts.count %>
-</div>
+  <div class="count-posts">
+    <b>武将数:&nbsp;</b><%= @like_posts.count %>
+  </div>
 
-  <section class="row row-cols-2 row-cols-md-4 g-4 card-user">
-    <% @like_posts.each do |post| %>
-      <div class="col">
-        <div class="card h-100 text-card-container">
-          <div class="card-title"><%= post.name %></div>
-
-          <div class="card-img-top">
-            <%= image_tag post.image.url, :size => "150" %>
-          </div>
-
-          <div class="card-body">
-            <p class="card-text"><%= post.commentary %></p>
-            <%= link_to post, class: "btn btn-show-delete" do %>
-              <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-            <% end %>
-
-            <p id="post-<%= post.id %>">
-              <% if post.liked_by?(current_user) %>
-                <%= link_to post_likes_path(post), method: :delete, remote: true do %>
-                  <i class="fas fa-heart"></i>
-                <% end %>
-                &nbsp;<%= post.likes_count %>
-              <% else %>
-                <%= link_to post_likes_path(post), method: :post, remote: true do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-                &nbsp;<%= post.likes_count %>
-              <% end %>
-              
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <section class="row g-4 card-user">
+    <%= render partial: "post", collection: @like_posts, as: :post %>
   </section>
+
 <% else %>
   <p class="text-center">武将はありません</p>
 <% end %>
