@@ -21,10 +21,10 @@ ja:
         image: 武将画像
       user:
         nickname: ニックネーム
-        email: Eメール
-        profile: プロフィール文
+        email: メールアドレス
+        profile: 自己紹介
         twitter: twitterのURL
-        user_image: アイコン
+        user_image: アイコン画像
       like:
         user: ユーザー
         user_id: ユーザー

@@ -38,13 +38,13 @@
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-1 form-icon">
+    <div class="col-sm-1 form-icon ">
       <%= f.label :profile do %>
         <i class="fa-regular fa-address-card"></i>
       <% end %>
     </div>
     <div class="col-sm-11">
-      <%= f.text_area :profile, autofocus: true, autocomplete: "profile", class: "form-control", placeholder: "自己紹介（200字以内）" %>
+      <%= f.text_area :profile, autofocus: true, autocomplete: "profile", class: "form-control form-area", placeholder: "自己紹介（200字以内）" %>
     </div>
   </div>
 
@@ -59,14 +59,8 @@
     </div>
   </div>
 
-  <%= button_tag type: 'submit', class: 'btn btn-regist form-group' do %>
-      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>更新</span>
-  <% end %>
-
-  <div class="btn btn-regist form-group">
-    <%= f.submit "更新" %>
-  </div>
+  <button type="submit" class="btn btn-regist form-group">更新</button>
 <% end %>
 
-
-<p><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %></p>
+<hr>
+<%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>
