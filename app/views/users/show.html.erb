@@ -1,19 +1,11 @@
-<h1><%= @user.nickname %>のページ</h1>
-
 <section class="user-show">
   <p><%= image_tag @user.user_image.url, :size => "150" %></p>
+  <p><b><%= @user.nickname %></b></p>
 
-  <% if @user.id == current_user.id %>
-    <% unless @user.email == "guest@example.com" %>
-      <%= link_to edit_user_registration_path, class: "btn btn-edit" do %>
-        <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>
-      <% end %>
-    <% end %>
+  <%= link_to @user.twitter, class: "twitter", target: "_blank" do %>
+    <i class="fa-brands fa-twitter"></i>
   <% end %>
 
-  <%= link_to likes_user_path(@user), class: "btn btn-comment-search" do %>
-    <i class="fa-solid fa-heart"></i>&nbsp;<span>いいね一覧</span>
-  <% end %>
 
   <% @user ||= current_user %>
   <div class="stats"></div>
@@ -21,7 +13,7 @@
       <strong id="following" class="stat">
         <%= @user.following.count %>
       </strong>
-      フォロー
+      フォロー<br>
     </a>
     <a href="<%= followers_user_path(@user) %>">
       <strong id="followers" class="stat">
@@ -31,42 +23,24 @@
     </a>
         <%= render "follow_form" if user_signed_in? %>
   </div>
-</section>
 
-<h2>登録武将一覧</h2>
+  <div class="text-center">
+    <%= link_to regists_user_path(@user), class: "btn btn-comment-search" do %>
+      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>登録した武将</span>
+    <% end %>
+    <%= link_to likes_user_path(@user), class: "btn btn-comment-search" do %>
+      <i class="fa-solid fa-heart"></i>&nbsp;<span>いいねした武将</span>
+    <% end %>
+  </div>
 
-<section class="row g-4 card-user">
-  <% @posts.each do |post| %>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="card h-100 text-card-container">
-        <%= link_to post do %>
-          <div class="card-title"><%= post.name %></div>
-          <div class="card-img-top">
-            <%= image_tag post.image.url, :size => "150" %>
-          </div>
+  <div class="text-center">
+    <% if @user.id == current_user.id %>
+      <% unless @user.email == "guest@example.com" %>
+        <%= link_to edit_user_registration_path, class: "btn btn-edit" do %>
+          <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>
         <% end %>
+      <% end %>
+    <% end %>
+  </div>
 
-        <div class="card-body">
-          <p class="card-text"><%= post.commentary %></p>
-          <%= link_to post, class: "btn btn-show-delete" do %>
-            <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-          <% end %>
-
-          <% if user_signed_in? %>
-            <p id="post-<%= post.id %>" >
-            <% if post.liked_by?(current_user) %>
-              <%= render "posts/like", post: post %>
-            <% else %>
-              <%= render "posts/dislike", post: post %>
-            <% end %>              
-          <% end %>
-          </p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</section>
-
-<section class="pagination justify-content-center">
-  <%= paginate @posts %>
 </section>

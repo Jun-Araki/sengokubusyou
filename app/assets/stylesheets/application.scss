@@ -189,7 +189,7 @@ h3 {
   @extend .alert-danger;
 }
 
-//登録・編集フォーム
+//ユーザ関連
 
 .form-post-user {
   max-width: 350px;
@@ -214,6 +214,10 @@ h3 {
 
 .check-login {
   text-align: center;
+}
+
+.twitter {
+  font-size: large;
 }
 
 //ボディ

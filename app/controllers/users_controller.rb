@@ -4,10 +4,6 @@ class UsersController < ApplicationController
 
   PER_PAGE = 24
 
-  def show
-    @posts = @user.posts.page(params[:page]).per(PER_PAGE).includes(:user, :likes)
-  end
-
   def following
     @title = "フォロー"
     @users = @user.following
@@ -23,6 +19,10 @@ class UsersController < ApplicationController
   def likes
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
+  end
+
+  def regists
+    @posts = @user.posts.page(params[:page]).per(PER_PAGE).includes(:user, :likes)
   end
 
   private
