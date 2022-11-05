@@ -1,48 +1,66 @@
 <h2><%= t('.title', resource: resource.model_name.human) %></h2>
 
+<section class="form-post-user" >
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :nickname, "ニックネーム" %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+  <div class="form-group row">
+    <div class="col-sm-1 form-icon">
+      <%= f.label :user_image do %>
+        <i class="fa-solid fa-image"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.file_field :user_image, accept: "image/png,image/jpeg,image/gif", autofocus: true, autocomplete: "user_image", class: "form-control", placeholder: "アイコン画像" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group row">
+    <div class="col-sm-1 form-icon">
+      <%= f.label :nickname do %>
+        <i class="fa-solid fa-user"></i> 
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control", placeholder: "ニックネーム", required: true %>
+    </div>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %>
+  <div class="form-group row">
+    <div class="col-sm-1 form-icon">
+      <%= f.label :email do %>
+        <i class="fa-solid fa-envelope"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "メールアドレス", required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-group row">
+    <div class="col-sm-1 form-icon ">
+      <%= f.label :profile do %>
+        <i class="fa-regular fa-address-card"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_area :profile, autofocus: true, autocomplete: "profile", class: "form-control form-area", placeholder: "自己紹介（200字以内）" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="form-group row">
+    <div class="col-sm-1 form-icon">
+      <%= f.label :twitter do %>
+        <i class="fa-brands fa-twitter"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter", class: "form-control", placeholder: "アカウント名" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit t('.update') %>
-  </div>
+  <button type="submit" class="btn btn-regist form-group">更新</button>
 <% end %>
 
-<h3><%= t('.cancel_my_account') %></h3>
-
-<p><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %></p>
-
-<%= link_to t('devise.shared.links.back'), :back %>
+<hr>
+<%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>

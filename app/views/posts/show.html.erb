@@ -36,35 +36,37 @@
   </div>
 </section>
 
-<section class="text-center">
-  <%= link_to posts_path, class: "btn btn-index" do %>
-    <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
-  <% end %>
-
-  <h3>おすすめのポイントをシェアしよう！</h3>
-  <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-    <%= f.text_area :content, required: true %>
-    <%= f.hidden_field :post_id, value: @post.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <br>
-
-    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
-      <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
+<section class="comment">
+  <div class="text-center">
+    <%= link_to posts_path, class: "btn btn-index" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
     <% end %>
-  <% end %>
 
+    <h3>おすすめのポイントをコメントしよう！</h3>
+    <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+      <%= f.text_area :content, required: true, class: "form-area" %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <br>
+
+      <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
+        <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
+      <% end %>
+    <% end %>
+  </div>
   <hr>
   <% @comments.each do |c| %>
     <div>
-      <a href="/users/<%= c.user.id %>"><%= c.user.nickname %></a>
-      &nbsp;<%= l c.created_at %><br>
-      <%= safe_join(c.content.split("\n"),tag(:br)) %>
-      
+      <a href="/users/<%= c.user.id %>"><%= image_tag c.user.user_image.thumb.url %></a>
+      &nbsp;<a href="/users/<%= c.user.id %>"><b><%= c.user.nickname %></b></a>
+      &nbsp;<%= l c.created_at %>
       <% if current_user.id == c.user_id %>
         <%= link_to post_comment_path(@post, c), method: :delete, data: { confirm: "削除しますか？" } do %>
-          &nbsp;<i class="fa-regular fa-trash-can"></i>
+          &nbsp;<i class="fa-regular fa-trash-can"></i><br>
         <% end %>
       <% end %>
+      <p class="comment-content"><%= safe_join(c.content.split("\n"),tag(:br)) %></p>
+
       <hr>
     </div>
   <% end %>

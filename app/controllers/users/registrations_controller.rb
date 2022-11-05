@@ -5,5 +5,17 @@ module Users
     def ensure_normal_user
       redirect_to root_path, alert: "ゲストユーザーは更新・削除できません。" if resource.email == "guest@example.com"# rubocop:disable all
     end
+
+    def after_sign_up_path_for(resource)
+      user_path(resource)
+    end
+
+    def after_update_path_for(resource)
+      user_path(resource)
+    end
+
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
   end
 end

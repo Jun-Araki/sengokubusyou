@@ -20,38 +20,20 @@
   <% end %>
 </section>
 
-<section class="row g-4">
-  <% @posts.each do |post| %>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="card h-100 text-card-container">
-        <%= link_to post do %>
-          <div class="card-title"><%= post.name %></div>
-          <div class="card-img-top">
-            <%= image_tag post.image.thumb.url %>
-          </div>
-        <% end %>
+<% if @posts.present? %>
+  <section class="row g-4 card-user">
+    <%= render partial: "/users/post", collection: @posts %>
+  </section>
 
-        <div class="card-body">
-          <p class="card-text"><%= post.commentary %></p>
-          <%= link_to post, class: "btn btn-show-delete" do %>
-            <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-          <% end %>
+  <section class="pagination justify-content-center">
+    <%= paginate @posts %>
+  </section>
 
-          <% if user_signed_in? %>
-            <p id="post-<%= post.id %>" >
-            <% if post.liked_by?(current_user) %>
-              <%= render "like", post: post %>
-            <% else %>
-              <%= render "dislike", post: post %>
-            <% end %>              
-          <% end %>
-          </p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</section>
-
-<section class="pagination justify-content-center">
-  <%= paginate @posts %>
-</section>
+<% else %>
+  <div class="text-center">
+    <p>武将がいません</p>
+    <%= link_to new_post_path, class: "btn btn-comment-search" do %>
+      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将の登録はこちら</span>
+    <% end %>
+  </div>
+<% end %>

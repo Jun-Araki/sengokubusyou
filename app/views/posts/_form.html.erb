@@ -1,31 +1,40 @@
 <%= render "layouts/error_messages" %>
 
-<%= form_with model: @post, local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :name %> <br>
-    <%= form.text_field :name, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= form.label :furigana_name %> <br>
-    <%= form.text_field :furigana_name, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= form.label :furigana_initial %> <br>
-    <%= form.collection_select :furigana_initial, Furigana.all, :ini, :ini, {include_blank: "---"}, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= form.label :prefecture_name %> <br>
-    <%= form.collection_select :prefecture_name, Prefecture.all, :name, :name, {include_blank: "---"}, class: "form-control", required: true  %>
-  </div>
-  <div class="form-group">
-    <%= form.label :commentary %> <br>
-    <%= form.text_field :commentary, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= form.label :image %> <br>
-    <%= form.file_field :image, class: "form-control", accept: "image/png,image/jpeg,image/gif" %>
-  </div>
-  <div>
-    <%= form.submit button_value, class: "btn btn-primary btn-block", required: true %>
-  </div>
-<% end %>
+<section class="form-post-user" >
+  <%= form_with model: @post, local: true do |form| %>
+
+    <div class="form-group">
+      <%= form.label :name %> <br>
+      <%= form.text_field :name, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :furigana_name %> <br>
+      <%= form.text_field :furigana_name, class: "form-control", required: true %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :furigana_initial %> <br>
+      <%= form.collection_select :furigana_initial, Furigana.all, :ini, :ini, {include_blank: "---"}, class: "form-control", required: true %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :prefecture_name %> <br>
+      <%= form.collection_select :prefecture_name, Prefecture.all, :name, :name, {include_blank: "---"}, class: "form-control", required: true  %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :commentary %> <br>
+      <%= form.text_area :commentary, class: "form-control form-area", required: true %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :image %> <br>
+      <%= form.file_field :image, class: "form-control", accept: "image/png,image/jpeg,image/gif" %>
+    </div>
+    
+    <%= button_tag type: 'submit', class: 'btn btn-regist form-group' do %>
+      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将登録</span>
+    <% end %>
+  <% end %>
+</section>

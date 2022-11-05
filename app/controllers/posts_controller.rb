@@ -7,9 +7,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    # binding.pry
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+    @posts = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
   end
 
   def show
@@ -51,7 +50,6 @@ class PostsController < ApplicationController
   def ranks
     @post_like_ranks    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
     @post_comment_ranks = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
-    @user_post_ranks    = User.find(Post.group(:user_id).order("count(user_id) desc").limit(3).pluck(:user_id))
   end
 
   private

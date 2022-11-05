@@ -13,6 +13,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, :email, presence: true
+  validates :profile, length: { maximum: 200 }
+
+  mount_uploader :user_image, ImageUploader, uniqueness: true
 
   def self.guest
     find_or_create_by!(nickname: "guest", email: "guest@example.com") do |user|

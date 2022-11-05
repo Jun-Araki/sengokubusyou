@@ -5,7 +5,10 @@ class UsersController < ApplicationController
   PER_PAGE = 24
 
   def show
-    @posts = @user.posts.page(params[:page]).per(PER_PAGE).includes(:user, :likes)
+    return if @user.twitter.blank?
+
+    twitter_url = "https://twitter.com/"
+    @twitter = twitter_url + @user.twitter
   end
 
   def following
@@ -20,9 +23,21 @@ class UsersController < ApplicationController
     render "show_follow"
   end
 
+  def regists
+    @title = "登録"
+    @posts = @user.posts.page(params[:page]).per(PER_PAGE)
+  end
+
   def likes
+    @title = "いいね"
     likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
+    @posts = Kaminari.paginate_array(Post.find(likes)).page(params[:page]).per(PER_PAGE)
+  end
+
+  def comments
+    @title = "コメント"
+    comments = Comment.where(user_id: @user.id).pluck(:post_id)
+    @posts = Kaminari.paginate_array(Post.find(comments)).page(params[:page]).per(PER_PAGE)
   end
 
   private

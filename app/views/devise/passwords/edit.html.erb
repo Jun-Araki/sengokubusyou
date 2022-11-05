@@ -1,25 +1,38 @@
 <h2><%= t('.change_your_password') %></h2>
 
+<section class="form-post-user" >
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, t('.new_password') %><br />
-    <% if @minimum_password_length %>
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+  <div class="form-group form-group-login row">
+    <div class="col-sm-1 form-icon">
+      <%= f.label :password do %>
+        <i class="fa-solid fa-lock"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", 
+      placeholder: "パスワード#{t('devise.shared.minimum_password_length', count: @minimum_password_length)}", required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-group row">
+    <div class="col-sm-1 form-icon">
+      <%= f.label :password_confirmation do %>
+        <i class="fa-solid fa-lock"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "パスワード（確認）", required: true %>
+    </div>
   </div>
 
-  <div class="actions">
+  <div class="btn actions text-center">
     <%= f.submit t('.change_my_password') %>
   </div>
 <% end %>
 
+<hr>
 <%= render "devise/shared/links" %>
+</section>
