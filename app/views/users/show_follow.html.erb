@@ -2,9 +2,9 @@
   <h1><%= @user.nickname %>の<%= @title %></h1>
 
   <% if @users.any? %>
-    <ul class="users follow">
+    <div class="row g-4">
       <%= render @users %>
-    </ul>
+    </div>
   <% else %>
     <p class="text-center">ユーザーはいません</p>
   <% end %>
