@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 
   PER_PAGE = 24
 
+  def show
+    twitter_url = "https://twitter.com/"
+    @twitter = twitter_url + @user.twitter
+  end
+
   def following
     @title = "フォロー"
     @users = @user.following

@@ -2,18 +2,20 @@
   <p><%= image_tag @user.user_image.url, :size => "150" %></p>
   <p><b><%= @user.nickname %></b></p>
 
-  <%= link_to @user.twitter, class: "twitter", target: "_blank" do %>
-    <i class="fa-brands fa-twitter"></i>
-  <% end %>
+  <div>
+    <%= link_to @twitter, class: "twitter", target: "_blank" do %>
+      <i class="fa-brands fa-twitter"></i>
+    <% end %>
+  </div>
 
+    <p><%= @user.profile %><br></p>
 
   <% @user ||= current_user %>
-  <div class="stats"></div>
     <a href="<%= following_user_path(@user) %>">
       <strong id="following" class="stat">
         <%= @user.following.count %>
       </strong>
-      フォロー<br>
+      フォロー&nbsp;&nbsp;
     </a>
     <a href="<%= followers_user_path(@user) %>">
       <strong id="followers" class="stat">
@@ -21,8 +23,7 @@
       </strong>
       フォロワー
     </a>
-        <%= render "follow_form" if user_signed_in? %>
-  </div>
+    <%= render "follow_form" if user_signed_in? %>
 
   <div class="text-center">
     <%= link_to regists_user_path(@user), class: "btn btn-comment-search" do %>
