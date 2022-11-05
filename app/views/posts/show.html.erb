@@ -44,7 +44,7 @@
 
     <h3>おすすめのポイントをコメントしよう！</h3>
     <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-      <%= f.text_area :content, required: true %>
+      <%= f.text_area :content, required: true, class: "form-area" %>
       <%= f.hidden_field :post_id, value: @post.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <br>
