@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   PER_PAGE = 24
 
   def show
+    return if @user.twitter.blank?
+
     twitter_url = "https://twitter.com/"
     @twitter = twitter_url + @user.twitter
   end
@@ -28,8 +30,6 @@ class UsersController < ApplicationController
   def likes
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
-    # binding.pry
-    # @user
   end
 
   def comments
