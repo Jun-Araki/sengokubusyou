@@ -8,7 +8,13 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+    posts = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+
+    @posts = if params[:furigana_initial].present?
+               posts.select_furigana_initial(params[:furigana_initial])
+             else
+               posts
+             end
   end
 
   def show

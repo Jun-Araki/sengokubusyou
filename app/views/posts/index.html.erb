@@ -1,24 +1,30 @@
 <h1>武将検索</h1>
 
-<div class="text-center">
-<%= link_to ranks_posts_path, class: "btn btn-index" do %>
-  <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
-<% end %>
-</div>
-
-<section class="form">
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name_cont, "武将名" %>
-    <%= f.search_field :name_cont, size: 15 %>&emsp;
-    <%= f.label :furigana_initial_cont, "武将名(50音)" %>
-    <%= f.collection_select :furigana_initial_cont, Furigana.all, :ini, :ini, {include_blank: "---"} %>&emsp;
-    <%= f.label :prefecture_name_cont, "出身地" %>
-    <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
-    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
-      <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
+<% unless params[:furigana_initial].present? %>
+  <div class="text-center">
+    <%= link_to ranks_posts_path, class: "btn btn-index" do %>
+      <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
     <% end %>
-  <% end %>
-</section>
+  </div>
+
+  <div class="form">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :name_cont, "武将名" %>
+      <%= f.search_field :name_cont, size: 15 %>&emsp;
+      <%= f.label :furigana_initial_cont, "武将名(50音)" %>
+      <%= f.collection_select :furigana_initial_cont, Furigana.all, :ini, :ini, {include_blank: "---"} %>&emsp;
+      <%= f.label :prefecture_name_cont, "出身地" %>
+      <%= f.collection_select :prefecture_name_cont, Prefecture.all, :name, :name, {include_blank: "---"} %>
+      <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= link_to "あ行", posts_path(furigana_initial: "あ行") %>
+
+<% end %>
+
 
 <% if @posts.present? %>
   <section class="row g-4 card-user">

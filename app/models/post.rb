@@ -18,4 +18,11 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.any? { |like| like.user_id == user.id }
   end
+
+  def self.select_furigana_initial(furigana_initial)
+    case furigana_initial
+    when "あ行"
+      where(furigana_initial: "あ行")
+    end
+  end
 end
