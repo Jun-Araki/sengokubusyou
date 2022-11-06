@@ -6,7 +6,7 @@
   <% end %>
 </div>
 
-<div class="btn-furigana-index">
+<div class="m-auto text-center">
   <%= link_to "あ行", posts_path(furigana_initial: "あ行"), class: "btn btn-furigana btn-lg" %>
   <%= link_to "か行", posts_path(furigana_initial: "か行"), class: "btn btn-furigana btn-lg" %>
   <%= link_to "さ行", posts_path(furigana_initial: "さ行"), class: "btn btn-furigana btn-lg" %>
@@ -47,7 +47,7 @@
   <p class="text-center">検索結果<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
 <% end %>
 
-<section class="row g-4 card-user">
+<section class="row g-4">
   <%= render partial: "/users/post", collection: @posts %>
 </section>
 

@@ -1,7 +1,7 @@
-<div class="col-12 col-md-4 rank-row">
+<div class="col-12 col-md-4 mb-3">
   <div class="card h-100 text-card-container ">
     <%= link_to post do %>
-      <div class="card-title"><p class="rank-num">第<%= i %>位</p><%= post.name %></div>
+      <div class="card-title"><p class="tex-center"><font size="6">第<%= i %>位</font></p><%= post.name %></div>
       <div class="card-img-top">
         <%= image_tag post.image.url, :size => "150" %>
       </div>

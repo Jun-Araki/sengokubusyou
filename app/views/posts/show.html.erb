@@ -7,7 +7,8 @@
 
   <div class="card-body">
     <p><%= image_tag @post.image.url, :size => "400" %></p>
-    <div class="card-show-main">
+    <div class="px-5">
+      <font size="4">
       <p><%= @post.commentary %></p>
       <p>出身地：<b><%= @post.prefecture_name %></b></p>
       <p>作成者：
@@ -15,6 +16,7 @@
           <%= link_to @post.user.nickname, user_path(@post.user.id) %>
         <% end %>
       </p>
+      </font>
     </div>
 
     <% if current_user.id == @post.user_id %>

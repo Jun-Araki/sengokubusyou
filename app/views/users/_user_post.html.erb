@@ -1,11 +1,13 @@
 <h2><b><%= @user.nickname %></b>が<%= @title %>した武将</h2>
 
 <% if @posts.present? %>
-  <div class="count-posts">
-    <b>武将数:&nbsp;</b><%= @posts.count %>
+  <div class="text-center">
+    <font size="4">
+      <b>武将数:&nbsp;</b><%= @posts.count %>
+    </font>
   </div>
 
-  <section class="row g-4 card-user">
+  <section class="row g-4 m-auto">
     <%= render partial: "post", collection: @posts %>
   </section>
 
