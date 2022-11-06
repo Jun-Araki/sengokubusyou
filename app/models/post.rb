@@ -23,6 +23,8 @@ class Post < ApplicationRecord
     case furigana_initial
     when "あ行"
       where(furigana_initial: "あ行")
+    when "か行"
+      where(furigana_initial: "か行")
     end
   end
 end

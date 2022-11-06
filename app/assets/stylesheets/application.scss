@@ -133,6 +133,15 @@ h3 {
   width: 100%;
 }
 
+.btn-furigana,
+.btn-furigana:hover,
+.btn-furigana:active {
+  background-color: #a9974e;
+  outline: 1px solid rgb(255, 255, 255);
+  outline-offset: -4px;
+  border-radius: 0%;
+}
+
 //ボタンend
 
 //ランキング
