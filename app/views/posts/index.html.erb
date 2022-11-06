@@ -1,30 +1,37 @@
-<% if params[:furigana_initial].present? %>
-  <h1>武将検索（<%= params[:furigana_initial] %>）</h1>
+<h1>武将検索</h1>
 
-<% else %>
-  <h1>武将検索</h1>
+<div class="text-center">
+  <%= link_to ranks_posts_path, class: "btn btn-index btn-lg" do %>
+    <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
+  <% end %>
+</div>
 
-  <% if params[:q]== nil %>
-    <div class="text-center">
-      <%= link_to ranks_posts_path, class: "btn btn-index" do %>
-        <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
-      <% end %>
-    </div>
+<div class="btn-furigana-index">
+  <%= link_to "あ行", posts_path(furigana_initial: "あ行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "か行", posts_path(furigana_initial: "か行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "さ行", posts_path(furigana_initial: "さ行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "た行", posts_path(furigana_initial: "た行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "な行", posts_path(furigana_initial: "な行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "は行", posts_path(furigana_initial: "は行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "ま行", posts_path(furigana_initial: "ま行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "や行", posts_path(furigana_initial: "や行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "ら行", posts_path(furigana_initial: "ら行"), class: "btn btn-furigana btn-lg" %>
+  <%= link_to "わ行", posts_path(furigana_initial: "わ行"), class: "btn btn-furigana btn-lg" %>
+</div>
 
-    <div class="btn-furigana-index">
-      <%= link_to "あ行", posts_path(furigana_initial: "あ行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "か行", posts_path(furigana_initial: "か行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "さ行", posts_path(furigana_initial: "さ行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "た行", posts_path(furigana_initial: "た行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "な行", posts_path(furigana_initial: "な行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "は行", posts_path(furigana_initial: "は行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "ま行", posts_path(furigana_initial: "ま行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "や行", posts_path(furigana_initial: "や行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "ら行", posts_path(furigana_initial: "ら行"), class: "btn btn-furigana btn-lg" %>
-      <%= link_to "わ行", posts_path(furigana_initial: "わ行"), class: "btn btn-furigana btn-lg" %>
-    </div>
+<div class="text-center">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_cont, "武将名" %>
+    <%= f.search_field :name_cont, size: 15 %>&emsp;
+    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
+      <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
+    <% end %>
+  <% end %>
+</div>
 
-  <% elsif @q_result.present? %>
+<% if params[:q] != nil %>
+  <% if @q_result.present? %>
+    <p class="text-center">検索結果<%= @q_result.count %>件</p>
 
   <% else %>
     <div class="text-center">
@@ -34,16 +41,10 @@
       <% end %>
     </div>
   <% end %>
-  
-    <div class="form">
-    <%= search_form_for @q do |f| %>
-      <%= f.label :name_cont, "武将名" %>
-      <%= f.search_field :name_cont, size: 15 %>&emsp;
-      <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
-        <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
-      <% end %>
-    <% end %>
-  </div>
+<% end %>
+
+<% if params[:furigana_initial].present? %>
+  <p class="text-center">検索結果<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
 <% end %>
 
 <section class="row g-4 card-user">
