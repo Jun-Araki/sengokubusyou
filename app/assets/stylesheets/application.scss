@@ -35,7 +35,7 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 //カード
@@ -165,9 +165,6 @@ h3 {
 }
 
 //コメント
-h3 {
-  margin-top: 20px;
-}
 
 .comment {
   max-width: 600px;
@@ -188,7 +185,6 @@ h3 {
 //ページネーション
 .pagination li a {
   margin-top: 20px;
-  // border: solid 1px #b28e5f;
 }
 
 //フラッシュ
@@ -205,7 +201,6 @@ h3 {
 }
 
 //ユーザ関連
-
 .form-post-user {
   max-width: 350px;
   margin: auto;
@@ -226,10 +221,6 @@ h3 {
 
 .form-group-login {
   margin-bottom: 10px !important;
-}
-
-.check-login {
-  text-align: center;
 }
 
 .twitter {
