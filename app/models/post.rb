@@ -9,9 +9,13 @@ class Post < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }, uniqueness: true# rubocop:disable all
   validates :furigana_name, presence: true
   validates :furigana_initial, presence: true
-  # validates :prefecture_name, presence: true
+  validates :prefecture_name, presence: true
   validates :commentary, presence: true
   mount_uploader :image, ImageUploader, uniqueness: true
+
+  def liked_by?(user)
+    likes.any? { |like| like.user_id == user.id }
+  end
 
   enum furigana_initial: {
     あ行: 1,
@@ -25,10 +29,6 @@ class Post < ApplicationRecord
     ら行: 9,
     わ行: 10
   }
-
-  def liked_by?(user)
-    likes.any? { |like| like.user_id == user.id }
-  end
 
 # rubocop:disable all
   def self.select_furigana_initial(furigana_initial)
