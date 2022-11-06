@@ -1,5 +1,5 @@
 <section class="w-50 text-center m-auto">
-  <p><%= image_tag @user.user_image.url, :size => "150" %></p>
+  <img><%= image_tag @user.user_image.url, :size => "150" %></img>
   <p><b><%= @user.nickname %></b></p>
 
   <% if @user.twitter.present? %>
