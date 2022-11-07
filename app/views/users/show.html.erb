@@ -1,11 +1,13 @@
-<section class="user-show">
-  <p><%= image_tag @user.user_image.url, :size => "150" %></p>
+<section class="w-50 text-center m-auto">
+  <img><%= image_tag @user.user_image.url, :size => "150" %></img>
   <p><b><%= @user.nickname %></b></p>
 
   <% if @user.twitter.present? %>
-    <%= link_to @twitter, class: "twitter", target: "_blank" do %>
-      <i class="fa-brands fa-twitter"></i>
-    <% end %>
+    <font size="4px">
+      <%= link_to @twitter, target: "_blank" do %>
+        <i class="fa-brands fa-twitter"></i>
+      <% end %>
+    </font>
   <% end %>
 
   <p><%= @user.profile %><br></p>

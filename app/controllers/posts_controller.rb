@@ -8,7 +8,13 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+    @q_result = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+
+    @posts = if params[:furigana_initial].present?
+               @q_result.select_furigana_initial(params[:furigana_initial])
+             else
+               @q_result
+             end
   end
 
   def show
@@ -48,8 +54,8 @@ class PostsController < ApplicationController
   end
 
   def ranks
-    @post_like_ranks    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
-    @post_comment_ranks = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
   end
 
   private
