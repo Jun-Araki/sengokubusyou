@@ -118,6 +118,14 @@ div.field_with_errors {
   margin: 20px 10px 0 10px;
 }
 
+.btn-gest,
+.btn-gest:hover,
+.btn-gest:active {
+  background-color: #c92121 !important;
+  border: solid 1px #991c1c;
+  width: 100%;
+}
+
 .btn-unfollow {
   position: relative;
   display: inline-block;

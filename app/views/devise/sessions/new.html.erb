@@ -36,6 +36,10 @@
   <%= button_tag type: 'submit', class: 'btn btn-regist form-group' do %>
       <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;<span>ログイン</span>
   <% end %>
+
+  <%= link_to users_guest_sign_in_path, class: "btn btn-gest form-group", method: :post do %>
+  <i class="fa-solid fa-right-to-bracket"></i></i>&nbsp;<span>ゲストログイン（登録なしでログイン）</span>
+  <% end %>
 <% end %>
 
 <hr>
