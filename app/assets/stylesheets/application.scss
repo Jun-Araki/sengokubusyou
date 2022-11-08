@@ -167,7 +167,27 @@ div.field_with_errors {
 
 //ランキング
 .rank-page {
-  margin: 0 170px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.rank-num {
+  font-size: 30px;
+  font-weight: bold;
+  -webkit-text-stroke: 1px #b28e5f;
+  text-stroke: 1px #b28e5f;
+}
+
+.rank-1 {
+  color: gold;
+}
+
+.rank-2 {
+  color: silver;
+}
+
+.rank-3 {
+  color: chocolate;
 }
 
 //コメント

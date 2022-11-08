@@ -15,3 +15,5 @@ CSV.foreach("db/csv_data/post_data.csv", headers: true) do |row|
 end
 
 Rails.logger.debug "初期データの投入に成功しました！"
+d2oesu6a4fbkdq
+d2oesu6a4fbkdq
