@@ -31,7 +31,7 @@
 
 <% if params[:q] != nil %>
   <% if @q_result.present? %>
-    <p class="text-center">検索結果<%= @q_result.count %>件</p>
+    <p class="text-center">検索結果&nbsp;<%= @q_result.count %>件</p>
 
   <% else %>
     <div class="text-center">
@@ -44,7 +44,7 @@
 <% end %>
 
 <% if params[:furigana_initial].present? %>
-  <p class="text-center">検索結果<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
+  <p class="text-center">検索結果&nbsp;<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
 <% end %>
 
 <section class="row g-4">
