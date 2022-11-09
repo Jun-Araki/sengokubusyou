@@ -9,18 +9,17 @@ class ApplicationController < ActionController::Base
   def store_location
     if request.fullpath != new_user_registration_path &&
        request.fullpath != new_user_session_path &&
-       request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
-       !request.xhr?
+       request.fullpath != users_guest_sign_in_path
       session[:previous_url] = request.fullpath
     end
   end
 
-  def after_sign_in_path_for(resource)
-    if session[:previous_url] == root_path
-      super
-    else
-      session[:previous_url] || root_path
-    end
+  def after_sign_in_path_for(_resource)
+    # if session[:previous_url] == root_path
+    #   super
+    # else
+    session[:previous_url] || root_path
+    # end
   end
 
   def configure_permitted_parameters
@@ -31,10 +30,10 @@ class ApplicationController < ActionController::Base
   private
 
   def logged_in_user
-    unless user_signed_in?# rubocop:disable all
-      flash[:danger] = "ログインしてください"# rubocop:disable all
-      redirect_to login_url
-    end
+    return if user_signed_in?
+
+    flash[:danger] = t.call("alert.login")
+    redirect_to login_url
   end
 
   def store_current_location
