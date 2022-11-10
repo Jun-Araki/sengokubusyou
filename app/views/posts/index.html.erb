@@ -22,7 +22,7 @@
 <div class="text-center">
   <%= search_form_for @q do |f| %>
     <%= f.label :name_cont, "武将名" %>
-    <%= f.search_field :name_cont, size: 15 %>&emsp;
+    <%= f.search_field :name_or_furigana_name_cont, size: 15 %>&emsp;
     <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
       <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
     <% end %>
