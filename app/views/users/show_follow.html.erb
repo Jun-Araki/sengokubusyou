@@ -1,11 +1,15 @@
-<div class="text-center">
-  <h1><%= @user.nickname %>の<%= @title %></h1>
+<div class="row">
+  <%= render partial: "aside" %>
 
-  <% if @users.any? %>
-    <div class="row g-4">
-      <%= render @users %>
-    </div>
-  <% else %>
-    <p class="text-center">ユーザーはいません</p>
-  <% end %>
+  <div class="col-md-8 text-center">
+    <h2><%= @title %>しているユーザー</h2>
+
+    <% if @users.any? %>
+      <div class="row g-4">
+        <%= render @users %>
+      </div>
+    <% else %>
+      <p class="text-center">ユーザーはいません</p>
+    <% end %>
+  </div>
 </div>
