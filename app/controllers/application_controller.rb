@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     return if user_signed_in?
 
-    flash[:danger] = t.call("alert.login")
-    redirect_to login_url
+    flash[:danger] = t("alert.login")
+    redirect_to new_user_session_path
   end
 
   def store_current_location
