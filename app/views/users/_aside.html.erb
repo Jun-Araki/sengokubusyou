@@ -25,7 +25,23 @@
       </strong>
       フォロワー
     </a>
-    <%= render "follow_form" %>
+
+    <% unless current_user?(@user) %>
+      <% if current_user.following?(@user) %>
+        <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
+                    html: { method: :delete }, local: true) do |f| %>
+          <div class="">
+          <%= f.submit "アンフォロー", class: "btn btn-secondary"  %>
+          </div>  
+        <% end %>
+        
+      <% else %>
+        <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+          <div><%= hidden_field_tag :followed_id, @user.id %></div>
+          <%= f.submit "フォロー", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+    <% end %>
 
   <div class="text-center">
     <%= link_to regists_user_path(@user), class: "btn btn-comment-search" do %>

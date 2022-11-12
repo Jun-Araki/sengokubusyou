@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "フォロー"
+    @title = "フォローしているユーザー"
     @users = @user.following
     render "show_follow"
   end
