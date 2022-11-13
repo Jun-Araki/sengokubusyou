@@ -1,6 +1,13 @@
-User.create!(email: "test1@example.com", password: "password", nickname: "sanamaru")
-User.create!(email: "test2@example.com", password: "password", nickname: "taikou")
-User.create!(email: "test3@example.com", password: "password", nickname: "osaka")
+User.create!(email: "test1@example.com", password: "password", nickname: "さな丸")
+User.create!(email: "test2@example.com", password: "password", nickname: "大江戸")
+User.create!(email: "test3@example.com", password: "password", nickname: "戦国")
+User.create!(email: "test4@example.com", password: "password", nickname: "天下布武")
+User.create!(email: "test5@example.com", password: "password", nickname: "独眼竜")
+User.create!(email: "test6@example.com", password: "password", nickname: "キリシタン大名")
+User.create!(email: "test7@example.com", password: "password", nickname: "京")
+User.create!(email: "test8@example.com", password: "password", nickname: "刀狩")
+User.create!(email: "test9@example.com", password: "password", nickname: "鉄砲隊")
+User.create!(email: "test10@example.com", password: "password", nickname: "天守閣")
 
 require "csv"
 

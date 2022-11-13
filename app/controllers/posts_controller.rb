@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   PER_PAGE = 24
 
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: %w[index show ranks]
   before_action :set_post, only: %i[edit update destroy]
 
   def index
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @comment = current_user.comments.new
+    @comment = current_user.comments.new if user_signed_in?
   end
 
   def new
@@ -30,9 +30,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(post_params)
     if @post.save
-      redirect_to @post, notice: "武将を登録しました" # rubocop:disable all
+      redirect_to @post, notice: t("notice.post_create")
     else
-      flash.now[:alert] = "武将の登録に失敗しました"
+      flash.now[:alert] = t("alert.post_create_failure")
       render :new
     end
   end
@@ -41,9 +41,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "武将を更新しました" # rubocop:disable all
+      redirect_to @post, notice: t("notice.post_update")
     else
-      flash.now[:alert] = "武将の更新に失敗しました"
+      flash.now[:alert] = t("notice.post_update_failure")
       render :edit
     end
   end

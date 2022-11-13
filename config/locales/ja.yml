@@ -29,17 +29,27 @@ ja:
         user: ユーザー
         user_id: ユーザー
         post: 登録
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: '%{record}が存在しているので削除できません'
-          has_many: '%{record}が存在しているので削除できません'
-      models:
-        like:
-          attributes:
-            user_id:
-              duplicated: は同じ武将に複数回いいねはできません
+  errors:
+    messages:
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+        has_one: '%{record}が存在しているので削除できません'
+        has_many: '%{record}が存在しているので削除できません'
+    models:
+      like:
+        attributes:
+          user_id:
+            duplicated: は同じ武将に複数回いいねはできません
+  notice:
+    guest_login: ゲストユーザーとしてログインしました。
+    post_create: 武将を登録しました
+    post_update: 武将を更新しました
+  alert:
+    guest_password: ゲストユーザーのパスワード再設定はできません。
+    guest_update_delete : ゲストユーザーは更新・削除できません。
+    login: ログインしてください
+    post_create_failure: 武将の登録に失敗しました
+    post_update_failure: 武将の更新に失敗しました
   date:
     abbr_day_names:
       - 日

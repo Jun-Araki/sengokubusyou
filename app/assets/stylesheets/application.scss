@@ -21,6 +21,7 @@ div.field_with_errors {
   @extend .container-fluid;
   max-width: var(--breakpoint-lg);
   padding: 30px 15px;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 //カード
@@ -71,7 +72,7 @@ div.field_with_errors {
 .btn-show-delete,
 .btn-show-delete:hover,
 .btn-show-delete:active {
-  background-color: #c92121 !important;
+  background-color: #c82020 !important;
   border: solid 1px #991c1c;
   margin-bottom: 10px;
 }
@@ -108,6 +109,13 @@ div.field_with_errors {
   width: 100%;
 }
 
+.btn-post-show,
+.btn-post-show:hover,
+.btn-post-show:active {
+  background-color: #4163a7 !important;
+  border: solid 1px black;
+}
+
 .btn-furigana,
 .btn-furigana:hover,
 .btn-furigana:active {
@@ -116,6 +124,14 @@ div.field_with_errors {
   outline-offset: -4px;
   border-radius: 0%;
   margin: 20px 10px 0 10px;
+}
+
+.btn-gest,
+.btn-gest:hover,
+.btn-gest:active {
+  background-color: #c92121 !important;
+  border: solid 1px #991c1c;
+  width: 100%;
 }
 
 .btn-unfollow {
@@ -167,7 +183,27 @@ div.field_with_errors {
 
 //ランキング
 .rank-page {
-  margin: 0 170px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.rank-num {
+  font-size: 30px;
+  font-weight: bold;
+  -webkit-text-stroke: 1px #b28e5f;
+  text-stroke: 1px #b28e5f;
+}
+
+.rank-1 {
+  color: gold;
+}
+
+.rank-2 {
+  color: silver;
+}
+
+.rank-3 {
+  color: chocolate;
 }
 
 //コメント
@@ -187,7 +223,7 @@ div.field_with_errors {
 
 //フラッシュ
 .alert {
-  margin-top: 6px;
+  margin: auto;
 }
 
 .alert-notice {
@@ -221,6 +257,45 @@ div.field_with_errors {
   margin-bottom: 10px !important;
 }
 
+.user-show {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.user-show-name {
+  margin-left: 8px;
+}
+
+.follow-btn {
+  text-align: right;
+  width: 100%;
+}
+
+.follow-aside-btn {
+  margin: 10px;
+}
+
+//画像
+.user-img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+}
+
+.user-img-thumb {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+
+//ボディ
+.background-white {
+  background-color: white;
+  padding: 20px;
+}
+
 //ナビバー
 .navbar-sengoku {
   background-color: #991c1c;
@@ -229,7 +304,7 @@ div.field_with_errors {
 
 .navbar-image {
   width: 30px;
-  height: 24px;
+  height: 20px;
 }
 
 //見出し
