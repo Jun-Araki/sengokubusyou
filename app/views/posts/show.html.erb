@@ -42,12 +42,10 @@
   </div>
 </section>
 
-<section class="comment">
-  <div class="text-center">
-    <%= link_to posts_path, class: "btn btn-index" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索へ</span>
-    <% end %>
+<br>
 
+<section class="comment background-white">
+  <div class="text-center">
     <h3>おすすめのポイントをコメントしよう！</h3>
 
     <% if user_signed_in? %>
@@ -69,7 +67,6 @@
     <% end %>
   </div>
 
-  <hr>
   <% @comments.each do |c| %>
     <div>
       <a href="/users/<%= c.user.id %>"><%= image_tag c.user.user_image.thumb.url %></a>
@@ -85,7 +82,9 @@
       <% end %>
       <p class="comment-content"><%= safe_join(c.content.split("\n"),tag(:br)) %></p>
 
-      <hr>
+      <% unless @comments.last == c %>
+        <hr>  
+      <% end %>
     </div>
   <% end %>
 </section>

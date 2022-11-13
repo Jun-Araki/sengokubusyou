@@ -2,12 +2,14 @@
   <%= render partial: "aside" %>
 
   <div class="col-md-8">
-    <h2><%= @title %></h2>
+    <div class="background-white">
+      <h2><%= @title %></h2>
 
-    <% if @users.any? %>
-      <%= render @users %>
-    <% else %>
-      <p class="text-center">ユーザーがいません</p>
-    <% end %>
+      <% if @users.any? %>
+        <%= render @users %>
+      <% else %>
+        <p class="text-center">ユーザーがいません</p>
+      <% end %>
+    </div>
   </div>
 </div>

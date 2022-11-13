@@ -21,6 +21,7 @@ div.field_with_errors {
   @extend .container-fluid;
   max-width: var(--breakpoint-lg);
   padding: 30px 15px;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 //カード
@@ -265,6 +266,12 @@ div.field_with_errors {
   text-align: right;
   padding: auto;
   margin: auto;
+}
+
+//ボディ
+.background-white {
+  background-color: white;
+  padding: 20px;
 }
 
 //ナビバー
