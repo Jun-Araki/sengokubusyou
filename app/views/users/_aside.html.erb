@@ -14,13 +14,13 @@
 
   <% @user ||= current_user %>
     <a href="<%= following_user_path(@user) %>">
-      <strong id="following" class="stat">
+      <strong id="following">
         <%= @user.following.count %>
       </strong>
       フォロー&nbsp;&nbsp;
     </a>
     <a href="<%= followers_user_path(@user) %>">
-      <strong id="followers" class="stat">
+      <strong id="followers">
         <%= @user.followers.count %>
       </strong>
       フォロワー

@@ -1,15 +1,13 @@
-<div class="row">
+<div class="row user-show">
   <%= render partial: "aside" %>
 
-  <div class="col-md-8 text-center">
+  <div class="col-md-8">
     <h2><%= @title %></h2>
 
     <% if @users.any? %>
-      <div class="row g-4">
-        <%= render @users %>
-      </div>
+      <%= render @users %>
     <% else %>
-      <p class="text-center">ユーザーはいません</p>
+      <p class="text-center">ユーザーがいません</p>
     <% end %>
   </div>
 </div>
