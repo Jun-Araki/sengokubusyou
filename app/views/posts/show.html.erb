@@ -69,7 +69,7 @@
 
   <% @comments.each do |c| %>
     <div>
-      <a href="/users/<%= c.user.id %>"><%= image_tag c.user.user_image.thumb.url %></a>
+      <a href="/users/<%= c.user.id %>"><%= image_tag c.user.user_image.thumb.url, class: "user-img-thumb" %></a>
       &nbsp;<a href="/users/<%= c.user.id %>"><b><%= c.user.nickname %></b></a>
       &nbsp;<%= l c.created_at %>
       
