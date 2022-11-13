@@ -6,16 +6,20 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %w[index show ranks]
   before_action :set_post, only: %i[edit update destroy]
 
+# rubocop:disable all
   def index
     @q = Post.ransack(params[:q])
     @q_result = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
 
     @posts = if params[:furigana_initial].present?
-               @q_result.select_furigana_initial(params[:furigana_initial])
+                @q_result.select_furigana_initial(params[:furigana_initial])
+             elsif params[:prefecture_name].present?
+                @q_result.select_prefecture_name(params[:prefecture_name])
              else
-               @q_result
+                @q_result
              end
   end
+# rubocop:enable all
 
   def show
     @post = Post.find(params[:id])
