@@ -2,19 +2,18 @@ class UsersController < ApplicationController
   before_action :logged_in_user
   before_action :set_user
   before_action :twitter
+  before_action :image_size, except: %w[following followers]
 
   PER_PAGE = 24
 
   def show
     @title = "登録"
-    @size = "100"
     @user_posts = @user.posts
     @posts = @user_posts.page(params[:page]).per(PER_PAGE)
   end
 
   def likes
     @title = "いいね"
-    @size = "100"
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @user_posts = Kaminari.paginate_array(Post.find(likes))
     @posts = @user_posts.page(params[:page]).per(PER_PAGE)
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
 
   def comments
     @title = "コメント"
-    @size = "100"
     comments = Comment.where(user_id: @user.id).pluck(:post_id)
     @user_posts = Kaminari.paginate_array(Post.find(comments))
     @posts = @user_posts.page(params[:page]).per(PER_PAGE)
@@ -53,5 +51,9 @@ class UsersController < ApplicationController
 
     twitter_url = "https://twitter.com/"
     @twitter = twitter_url + @user.twitter
+  end
+
+  def image_size
+    @size = "100"
   end
 end
