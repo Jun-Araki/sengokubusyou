@@ -17,7 +17,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    0..5.megabytes# rubocop:disable all
+    (0..5).megabytes
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -25,12 +25,14 @@ class ImageUploader < CarrierWave::Uploader::Base
     #   # For Rails 3.1+ asset pipeline compatibility:
     #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
     #
-    "/images/fallback/" + [version_name, "default.jpg"].compact.join("_")# rubocop:disable all
+    images_path = "/images/fallback/"
+    images_path + [version_name, "default.jpg"].compact.join("_")
   end
 
   def filename
     "#{secure_token}.#{file.extension}" if original_filename.present?
-    super.chomp(File.extname(super)) + ".jpg" if original_filename.present?# rubocop:disable all
+    jpg = ".jpg"
+    super.chomp(File.extname(super)) + jpg if original_filename.present?
   end
 
   process convert: "jpg"

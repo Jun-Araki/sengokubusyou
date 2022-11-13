@@ -1,13 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
-    # rubocop:disable all
-    if @comment.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
-    # rubocop:enable all
+    redirect_to request.referer if @comment.save
   end
 
   def destroy
