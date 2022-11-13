@@ -18,16 +18,8 @@ class Post < ApplicationRecord
   end
 
   enum furigana_initial: {
-    あ行: 1,
-    か行: 2,
-    さ行: 3,
-    た行: 4,
-    な行: 5,
-    は行: 6,
-    ま行: 7,
-    や行: 8,
-    ら行: 9,
-    わ行: 10
+    あ行: 1, か行: 2, さ行: 3, た行: 4, な行: 5,
+    は行: 6, ま行: 7, や行: 8, ら行: 9, わ行: 10
   }
 
   enum prefecture_name: {
@@ -65,6 +57,148 @@ class Post < ApplicationRecord
       where(furigana_initial: "ら行")
     when "わ行"
       where(furigana_initial: "わ行")
+    end
+  end
+
+  def self.prefecture_name(prefecture_name)
+    case prefecture_name
+    when "北海道"
+      where(furigana_initial: "北海道")
+    end
+    when "青森県"
+      where(furigana_initial: "青森県")
+    end
+    when "岩手県"
+      where(furigana_initial: "岩手県")
+    end
+    when "宮城県"
+      where(furigana_initial: "宮城県")
+    end
+    when "秋田県"
+      where(furigana_initial: "秋田県")
+    end
+    when "山形県"
+      where(furigana_initial: "山形県")
+    end
+    when "福島県"
+      where(furigana_initial: "福島県")
+    end
+    when "茨城県"
+      where(furigana_initial: "茨城県")
+    end
+    when "栃木県"
+      where(furigana_initial: "栃木県")
+    end
+    when "群馬県"
+      where(furigana_initial: "群馬県")
+    end
+    when "埼玉県"
+      where(furigana_initial: "埼玉県")
+    end
+    when "千葉県"
+      where(furigana_initial: "千葉県")
+    end
+    when "東京都"
+      where(furigana_initial: "東京都")
+    end
+    when "神奈川県"
+      where(furigana_initial: "神奈川県")
+    end
+    when "新潟県"
+      where(furigana_initial: "新潟県")
+    end
+    when "富山県"
+      where(furigana_initial: "富山県")
+    end
+    when "石川県"
+      where(furigana_initial: "石川県")
+    end
+    when "福井県"
+      where(furigana_initial: "福井県")
+    end
+    when "山梨県"
+      where(furigana_initial: "山梨県")
+    end
+    when "長野県"
+      where(furigana_initial: "長野県")
+    end
+    when "岐阜県"
+      where(furigana_initial: "岐阜県")
+    end
+    when "静岡県"
+      where(furigana_initial: "静岡県")
+    end
+    when "愛知県"
+      where(furigana_initial: "愛知県")
+    end
+    when "三重県"
+      where(furigana_initial: "三重県")
+    end
+    when "滋賀県"
+      where(furigana_initial: "滋賀県")
+    end
+    when "京都府"
+      where(furigana_initial: "京都府")
+    end
+    when "大阪府"
+      where(furigana_initial: "大阪府")
+    end
+    when "兵庫県"
+      where(furigana_initial: "兵庫県")
+    end
+    when "奈良県"
+      where(furigana_initial: "奈良県")
+    end
+    when "和歌山県"
+      where(furigana_initial: "和歌山県")
+    end
+    when "鳥取県"
+      where(furigana_initial: "鳥取県")
+    end
+    when "島根県"
+      where(furigana_initial: "島根県")
+    end
+    when "岡山県"
+      where(furigana_initial: "岡山県")
+    end
+    when "広島県"
+      where(furigana_initial: "広島県")
+    end
+    when "徳島県"
+      where(furigana_initial: "徳島県")
+    end
+    when "香川県"
+      where(furigana_initial: "香川県")
+    end
+    when "愛媛県"
+      where(furigana_initial: "愛媛県")
+    end
+    when "高知県"
+      where(furigana_initial: "高知県")
+    end
+    when "福岡県"
+      where(furigana_initial: "福岡県")
+    end
+    when "佐賀県"
+      where(furigana_initial: "佐賀県")
+    end
+    when "長崎県"
+      where(furigana_initial: "長崎県")
+    end
+    when "熊本県"
+      where(furigana_initial: "熊本県")
+    end
+    when "大分県"
+      where(furigana_initial: "大分県")
+    end
+    when "宮崎県"
+      where(furigana_initial: "宮剤県")
+    end
+    when "鹿児島県"
+      where(furigana_initial: "鹿児島県")
+    end
+    when "沖縄県"
+      where(furigana_initial: "沖縄県")
     end
   end
   # rubocop:enable all
