@@ -1,5 +1,5 @@
 User.create!(email: "test1@example.com", password: "password", nickname: "さな丸",
-             user_image: File.open("/db/fixtures/Sanada_Yukimura.jpg"), twitter: "TS1engineer",
+             user_image: File.open("db/fixtures/Sanada_Yukimura.jpg"), twitter: "TS1engineer",
              profile: "真田幸村が大好きで、上田城などの史跡をめぐっています。戦国武将について語りたいので、ぜひよろしくお願いします。")
 User.create!(email: "test2@example.com", password: "password", nickname: "大江戸", profile: "よろしくお願いします。")
 User.create!(email: "test3@example.com", password: "password", nickname: "戦国", profile: "よろしくお願いします。")
