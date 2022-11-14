@@ -7,7 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :prefecture_name
       t.string :commentary
       t.string :image
-      t.integer :likes_count
+      t.integer :likes_count, default: 0
 
       t.timestamps
     end
