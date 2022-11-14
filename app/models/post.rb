@@ -129,6 +129,8 @@ class Post < ApplicationRecord
       where(prefecture_name: "岡山県")
     when "広島県"
       where(prefecture_name: "広島県")
+    when "山口県"
+      where(prefecture_name: "山口県")
     when "徳島県"
       where(prefecture_name: "徳島県")
     when "香川県"
@@ -148,7 +150,7 @@ class Post < ApplicationRecord
     when "大分県"
       where(prefecture_name: "大分県")
     when "宮崎県"
-      where(prefecture_name: "宮剤県")
+      where(prefecture_name: "宮崎県")
     when "鹿児島県"
       where(prefecture_name: "鹿児島県")
     when "沖縄県"

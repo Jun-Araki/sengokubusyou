@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
   def prefecture
     @size = "100"
-    posts = Post.order(prefecture_name: :asc).page(params[:page]).per(PER_PAGE)
+    posts = Post.page(params[:page]).per(PER_PAGE)
 
     @posts = if params[:prefecture_name].present?
                posts.select_prefecture_name(params[:prefecture_name])
