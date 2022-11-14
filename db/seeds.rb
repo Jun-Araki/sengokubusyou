@@ -1,13 +1,15 @@
 User.create!(email: "test1@example.com", password: "password", nickname: "さな丸",
              user_image: File.open("db/fixtures/Sanada_Yukimura.jpg"), twitter: "TS1engineer",
              profile: "真田幸村が大好きで、上田城などの史跡をめぐっています。戦国武将について語りたいので、ぜひよろしくお願いします。")
-User.create!(email: "test2@example.com", password: "password", nickname: "大江戸", profile: "よろしくお願いします。")
-User.create!(email: "test3@example.com", password: "password", nickname: "戦国", profile: "よろしくお願いします。")
+User.create!(email: "test2@example.com", password: "password", nickname: "大江戸", profile: "よろしくお願いします。",
+             user_image: File.open("db/fixtures/hugaku.jpeg"))
+User.create!(email: "test3@example.com", password: "password", nickname: "刀", profile: "よろしくお願いします。",
+             user_image: File.open("db/fixtures/katana.jpg"))
 User.create!(email: "test4@example.com", password: "password", nickname: "天下布武", profile: "よろしくお願いします。")
 User.create!(email: "test5@example.com", password: "password", nickname: "独眼竜", profile: "よろしくお願いします。")
 User.create!(email: "test6@example.com", password: "password", nickname: "キリシタン大名", profile: "よろしくお願いします。")
 User.create!(email: "test7@example.com", password: "password", nickname: "雅", profile: "よろしくお願いします。")
-User.create!(email: "test8@example.com", password: "password", nickname: "刀狩", profile: "よろしくお願いします。")
+User.create!(email: "test8@example.com", password: "password", nickname: "戦国", profile: "よろしくお願いします。")
 User.create!(email: "test9@example.com", password: "password", nickname: "鉄砲隊", profile: "よろしくお願いします。")
 User.create!(email: "guest@example.com", password: "password", nickname: "guest", profile: "よろしくお願いします。")
 
