@@ -45,7 +45,7 @@ end
   i += 1
   Like.create!(post_id: 116, user_id: i)
 end
-150.times do |i|
+53.times do |i|
   i += 1
   Like.create!(post_id: i, user_id: 1)
 end
