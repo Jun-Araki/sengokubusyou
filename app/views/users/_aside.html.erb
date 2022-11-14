@@ -34,7 +34,7 @@
           <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
                       html: { method: :delete }, local: true) do |f| %>
             <div class="follow-aside-btn">
-              <%= f.submit "アンフォロー", class: "btn btn-secondary"  %>
+              <%= f.submit "フォロー中", class: "btn btn-secondary"  %>
             </div>  
           <% end %>
           
@@ -49,7 +49,7 @@
       <% end %>
 
     <div class="text-center">
-      <%= link_to regists_user_path(@user), class: "btn btn-comment-search" do %>
+      <%= link_to user_path(@user), class: "btn btn-comment-search" do %>
         <i class="fa-regular fa-square-plus"></i>&nbsp;<span>登録した武将</span>
       <% end %>
       <%= link_to likes_user_path(@user), class: "btn btn-comment-search" do %>
@@ -60,7 +60,7 @@
       <% end %>
     </div>
 
-    <div class="text-center">
+    <div class="text-center mt-2">
       <% if @user.id == current_user.id %>
         <% unless @user.email == "guest@example.com" %>
           <%= link_to edit_user_registration_path, class: "btn btn-edit" do %>
@@ -69,5 +69,7 @@
         <% end %>
       <% end %>
     </div>
+    <br>
+    <br>
   </div>
 </aside>

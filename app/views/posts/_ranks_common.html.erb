@@ -1,38 +1,14 @@
 <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-5">
-    <div class="text-center">
-      <% case i %>
-      <% when 1 %>
-        <div class="rank-num rank-1">第<%= i %>位</div>
-      <% when 2 %>
-        <div class="rank-num rank-2">第<%= i %>位</div>
-      <% when 3 %>
-        <div class="rank-num rank-3">第<%= i %>位</div>
-      <% end %>
-  </div>
-  <div class="card text-card-container">
-
-    <%= link_to post do %>
-      <div class="card-title"><%= post.name %></div>
-      <div class="card-img-top">
-        <%= image_tag post.image.url, :size => "150" %>
-      </div>
+  <div class="text-center">
+    <% case i %>
+    <% when 1 %>
+      <div class="rank-num rank-1">第<%= i %>位</div>
+    <% when 2 %>
+      <div class="rank-num rank-2">第<%= i %>位</div>
+    <% when 3 %>
+      <div class="rank-num rank-3">第<%= i %>位</div>
     <% end %>
-
-    <div class="card-body">
-      <p class="card-text"><%= post.commentary %></p>
-      <%= link_to post, class: "btn btn-show-delete" do %>
-        <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細</span>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <p id="post-<%= post.id %>" >
-        <% if post.liked_by?(current_user) %>
-          <%= render "posts/like", post: post %>
-        <% else %>
-          <%= render "posts/dislike", post: post %>
-        <% end %>              
-      <% end %>
-      </p>
-    </div>
   </div>
+
+  <%= render partial: "post_card" , locals: {post: post} %>
 </div>

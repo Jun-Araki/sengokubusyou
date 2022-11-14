@@ -1,66 +1,69 @@
-<h2><%= t('.title', resource: resource.model_name.human) %></h2>
+<section class="form-post-user background-white">
+  <h2><%= t('.title', resource: resource.model_name.human) %></h2>
 
-<section class="form-post-user" >
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-group row">
-    <div class="col-sm-1 form-icon">
-      <%= f.label :user_image do %>
-        <i class="fa-solid fa-image"></i>
-      <% end %>
+    <div class="form-group row">
+      <div class="col-1 form-icon">
+        <%= f.label :user_image do %>
+          <i class="fa-solid fa-image"></i>
+        <% end %>
+      </div>
+      <div class="col-11">
+        <%= f.file_field :user_image, accept: "image/png,image/jpeg,image/gif", autofocus: true, autocomplete: "user_image", class: "form-control", placeholder: "アイコン画像" %>
+      </div>
     </div>
-    <div class="col-sm-11">
-      <%= f.file_field :user_image, accept: "image/png,image/jpeg,image/gif", autofocus: true, autocomplete: "user_image", class: "form-control", placeholder: "アイコン画像" %>
+
+    <div class="form-group row">
+      <div class="col-1 form-icon">
+        <%= f.label :nickname do %>
+          <i class="fa-solid fa-user"></i> 
+        <% end %>
+      </div>
+      <div class="col-11">
+        <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control", placeholder: "ニックネーム", required: true %>
+      </div>
     </div>
+
+    <div class="form-group row">
+      <div class="col-1 form-icon">
+        <%= f.label :email do %>
+          <i class="fa-solid fa-envelope"></i>
+        <% end %>
+      </div>
+      <div class="col-11">
+        <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "メールアドレス", required: true %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-1 form-icon ">
+        <%= f.label :profile do %>
+          <i class="fa-regular fa-address-card"></i>
+        <% end %>
+      </div>
+      <div class="col-11">
+        <%= f.text_area :profile, autofocus: true, autocomplete: "profile", class: "form-control form-area", placeholder: "自己紹介（200字以内）" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-1 form-icon">
+        <%= f.label :twitter do %>
+          <i class="fa-brands fa-twitter"></i>
+        <% end %>
+      </div>
+      <div class="col-11">
+        <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter", class: "form-control", placeholder: "アカウント名" %>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-regist form-group">更新</button>
+  <% end %>
+
+  <hr>
+  <div class="text-center">
+    <%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>
   </div>
-
-  <div class="form-group row">
-    <div class="col-sm-1 form-icon">
-      <%= f.label :nickname do %>
-        <i class="fa-solid fa-user"></i> 
-      <% end %>
-    </div>
-    <div class="col-sm-11">
-      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control", placeholder: "ニックネーム", required: true %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-1 form-icon">
-      <%= f.label :email do %>
-        <i class="fa-solid fa-envelope"></i>
-      <% end %>
-    </div>
-    <div class="col-sm-11">
-      <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "メールアドレス", required: true %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-1 form-icon ">
-      <%= f.label :profile do %>
-        <i class="fa-regular fa-address-card"></i>
-      <% end %>
-    </div>
-    <div class="col-sm-11">
-      <%= f.text_area :profile, autofocus: true, autocomplete: "profile", class: "form-control form-area", placeholder: "自己紹介（200字以内）" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-1 form-icon">
-      <%= f.label :twitter do %>
-        <i class="fa-brands fa-twitter"></i>
-      <% end %>
-    </div>
-    <div class="col-sm-11">
-      <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter", class: "form-control", placeholder: "アカウント名" %>
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-regist form-group">更新</button>
-<% end %>
-
-<hr>
-<%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>
+</section>

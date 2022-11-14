@@ -8,4 +8,8 @@ class CreateLikes < ActiveRecord::Migration[6.1]
     end
     add_index :likes, %i[user_id post_id], unique: true
   end
+
+  def up
+    Post.find_each { |post| Post.reset_counters(post.id, :likes_count) }
+  end
 end

@@ -16,13 +16,13 @@ Rails.application.routes.draw do
     resource :likes, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
     collection do
-      get "ranks"
+      get :ranks, :prefecture
     end
   end
 
   resources :users do
     member do
-      get :following, :followers, :regists, :likes, :comments
+      get :following, :followers, :likes, :comments
     end
   end
 

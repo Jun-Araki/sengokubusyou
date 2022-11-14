@@ -179,6 +179,17 @@ div.field_with_errors {
 .btn:hover .btn__text:nth-child(2) {
   top: 0;
 }
+
+.btn-prefecture {
+  font-size: large;
+  margin: auto;
+}
+
+.prefecture-area {
+  max-width: 1200px;
+  margin: auto;
+}
+
 //ボタンend
 
 //ランキング
@@ -236,7 +247,7 @@ div.field_with_errors {
 
 //ユーザ関連
 .form-post-user {
-  max-width: 350px;
+  max-width: 400px;
   margin: auto;
 }
 
@@ -320,6 +331,7 @@ h2 {
 
 h3 {
   margin: 20px 0;
+  text-align: center;
 }
 
 // フッター
