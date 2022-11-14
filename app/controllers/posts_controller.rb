@@ -6,21 +6,17 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %w[index show ranks]
   before_action :set_post, only: %i[edit update destroy]
 
-# rubocop:disable all
   def index
     @size = "100"
     @q = Post.ransack(params[:q])
     @q_result = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
 
     @posts = if params[:furigana_initial].present?
-                @q_result.select_furigana_initial(params[:furigana_initial])
-             elsif params[:prefecture_name].present?
-                @q_result.select_prefecture_name(params[:prefecture_name])
+               @q_result.select_furigana_initial(params[:furigana_initial])
              else
-                @q_result
+               @q_result
              end
   end
-# rubocop:enable all
 
   def show
     @post = Post.find(params[:id])
@@ -62,6 +58,17 @@ class PostsController < ApplicationController
     @size = "150"
     @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
     @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+  end
+
+  def prefecture
+    @size = "100"
+    posts = Post.order(prefecture_name: :asc).page(params[:page]).per(PER_PAGE)
+
+    @posts = if params[:prefecture_name].present?
+               posts.select_prefecture_name(params[:prefecture_name])
+             else
+               posts
+             end
   end
 
   private

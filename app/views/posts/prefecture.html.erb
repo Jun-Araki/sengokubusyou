@@ -1,0 +1,17 @@
+<h1>出身地で探す</h1>
+
+<div class="m-auto text-center">
+  <%= link_to "北海道", prefecture_posts_path(prefecture_name: "北海道") %>
+</div>
+
+<% if params[:prefecture_name].present? %>
+  <p class="text-center">検索結果&nbsp;<%= Post.select_prefecture_name(params[:prefecture_name]).count %>件</p> 
+<% end %>
+
+<section class="row g-4">
+  <%= render @posts %>
+</section>
+
+<section class="pagination justify-content-center">
+  <%= paginate @posts %>
+</section>
