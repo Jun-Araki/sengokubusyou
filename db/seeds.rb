@@ -74,4 +74,4 @@ Comment.create!(user_id: 1, post_id: 54, content: "安土城跡に行ってき�
 Comment.create!(user_id: 5, post_id: 54, content: "確かに当時は滋賀の琵琶湖周辺が京に近くて栄えてたんだよね")
 
 Comment.create!(user_id: 6, post_id: 116, content: "戦国最強の騎馬軍団")
-Comment.create!(user_id: 7, post_id: 116, content: "もう少し長生きしていれば信長の天下にならなかったかも")
+Comment.create!(user_id: 7, post_id: 116, content: "もう少し長生きしていれば信長の天下にならなかったかもしれない")
