@@ -56,7 +56,6 @@ class Post < ApplicationRecord
     鳥取県: 31, 島根県: 32, 岡山県: 33, 広島県: 34, 山口県: 35,
     徳島県: 36, 香川県: 37, 愛媛県: 38, 高知県: 39,
     福岡県: 40, 佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46,
-    沖縄県: 47
   }
 
   def self.select_prefecture_name(prefecture_name)
@@ -153,8 +152,6 @@ class Post < ApplicationRecord
       where(prefecture_name: "宮崎県")
     when "鹿児島県"
       where(prefecture_name: "鹿児島県")
-    when "沖縄県"
-      where(prefecture_name: "沖縄県")
     end
   end
 end
