@@ -182,7 +182,11 @@ div.field_with_errors {
 
 .btn-prefecture {
   font-size: large;
-  max-width: 1000px;
+  margin: auto;
+}
+
+.prefecture-area {
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -327,6 +331,7 @@ h2 {
 
 h3 {
   margin: 20px 0;
+  text-align: center;
 }
 
 // フッター
