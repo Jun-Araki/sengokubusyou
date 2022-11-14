@@ -12,12 +12,12 @@
     <% end %>
   </div>
 
-  <div class="col-lg-2 col-md-3 col-12 follow-btn">
+  <div class="col-lg-2 col-md-3 col-12">
   <% unless current_user?(user) %>
     <% if current_user.following?(user) %>
       <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
                   html: { method: :delete }, local: true) do |f| %>
-      <%= f.submit "アンフォロー", class: "btn btn-secondary"  %>
+      <%= f.submit "フォロー中", class: "btn btn-secondary"  %>
       <% end %>
     <% else %>
       <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
