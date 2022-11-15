@@ -49,13 +49,13 @@
       <% end %>
 
     <div class="text-center">
-      <%= link_to user_path(@user), class: "btn btn-comment-search" do %>
+      <%= link_to user_path(@user), class: "btn btn-comment-post" do %>
         <i class="fa-regular fa-square-plus"></i>&nbsp;<span>登録した武将</span>
       <% end %>
-      <%= link_to likes_user_path(@user), class: "btn btn-comment-search" do %>
+      <%= link_to likes_user_path(@user), class: "btn btn-comment-post" do %>
         <i class="fa-solid fa-heart"></i>&nbsp;<span>いいねした武将</span>
       <% end %>
-      <%= link_to comments_user_path(@user), class: "btn btn-comment-search" do %>
+      <%= link_to comments_user_path(@user), class: "btn btn-comment-post" do %>
         <i class="fa-solid fa-message"></i>&nbsp;<span>コメントした武将</span>
       <% end %>
     </div>
