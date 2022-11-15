@@ -44,7 +44,7 @@
   <p class="text-center">検索結果&nbsp;<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
 <% end %>
 
-<section class="row g-4">
+<section class="row g-4 card-area">
   <%= render @posts %>
 </section>
 
