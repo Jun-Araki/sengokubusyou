@@ -22,12 +22,15 @@
         </strong>
         フォロー&nbsp;&nbsp;
       </a>
+      <br>
       <a href="<%= followers_user_path(@user) %>">
         <strong id="followers">
           <%= @user.followers.count %>
         </strong>
         フォロワー
       </a>
+      <br>
+      <br>
 
       <% unless current_user?(@user) %>
         <% if current_user.following?(@user) %>
@@ -49,27 +52,26 @@
       <% end %>
 
     <div class="text-center">
-      <%= link_to user_path(@user), class: "btn btn-comment-post" do %>
+      <%= link_to user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
         <i class="fa-regular fa-square-plus"></i>&nbsp;<span>登録した武将</span>
       <% end %>
-      <%= link_to likes_user_path(@user), class: "btn btn-comment-post" do %>
+      <%= link_to likes_user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
         <i class="fa-solid fa-heart"></i>&nbsp;<span>いいねした武将</span>
       <% end %>
-      <%= link_to comments_user_path(@user), class: "btn btn-comment-post" do %>
+      <%= link_to comments_user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
         <i class="fa-solid fa-message"></i>&nbsp;<span>コメントした武将</span>
       <% end %>
     </div>
 
-    <div class="text-center mt-2">
+    <div class="text-center">
       <% if @user.id == current_user.id %>
         <% unless @user.email == "guest@example.com" %>
-          <%= link_to edit_user_registration_path, class: "btn btn-edit" do %>
+          <%= link_to edit_user_registration_path, class: "btn btn-edit my-3 w-75" do %>
             <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>
           <% end %>
         <% end %>
       <% end %>
     </div>
-    <br>
     <br>
   </div>
 </aside>
