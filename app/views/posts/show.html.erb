@@ -4,11 +4,13 @@
   </div>
 
   <div class="card-body">
-    <p><%= image_tag @post.image.url, :size => "400" %></p>
+    <p><%= image_tag @post.image.url, :size => "300" %></p>
     <div class="px-5">
       <font size="4">
       <p><%= @post.commentary %></p>
-      <p>出身地：<b><%= @post.prefecture_name %></b></p>
+      <p>出身地：
+        <%= link_to @post.prefecture_name, prefecture_posts_path(prefecture_name: @post.prefecture_name) %>
+      </p>
       <p>作成者：
         <% if @post.user.nickname.present? %>
           <%= link_to @post.user.nickname, user_path(@post.user.id) %>
