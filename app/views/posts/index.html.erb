@@ -1,11 +1,10 @@
 <h1>武将検索</h1>
 
 <div class="text-center">
-  <%= link_to ranks_posts_path, class: "btn btn-index btn-lg" do %>
+  <%= link_to ranks_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
     <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
   <% end %>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <%= link_to prefecture_posts_path, class: "btn btn-index btn-lg" do %>
+  <%= link_to prefecture_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
     <i class="fa-solid fa-vihara"></i>&nbsp;<span>出身地で探す</span>
   <% end %>
 </div>
@@ -16,15 +15,19 @@
   <% end %>
 </div>
 
-<div class="text-center">
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name_cont, "武将名" %>
-    <%= f.search_field :name_or_furigana_name_cont, size: 15 %>&emsp;
-    <%= button_tag type: 'submit', class: 'btn btn-comment-search' do %>
-      <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>検索</span>
-    <% end %>
-  <% end %>
-</div>
+<%= search_form_for @q do |f| %>
+  <div class="row my-4 justify-content-center">
+    <div class="col-auto">
+      <%= f.search_field :name_or_furigana_name_cont, placeholder: "武将名で検索", class: "form-control" %>
+    </div>
+    
+    <div class="col-auto">
+      <%= button_tag type: 'submit', class: 'btn btn-search col-auto' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <% if params[:q] != nil %>
   <% if @q_result.present? %>
@@ -44,7 +47,7 @@
   <p class="text-center">検索結果&nbsp;<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
 <% end %>
 
-<section class="row g-4">
+<section class="row g-4 card-area">
   <%= render @posts %>
 </section>
 

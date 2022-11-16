@@ -2,7 +2,7 @@
   <h1><%= params[:prefecture_name] %>の戦国武将</h1>
   <p class="text-center">検索結果&nbsp;<%= Post.select_prefecture_name(params[:prefecture_name]).count %>件</p> 
 
-  <section class="row g-4">
+  <section class="row g-4 card-area">
     <%= render @posts %>
   </section>
 

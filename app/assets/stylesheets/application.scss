@@ -93,12 +93,11 @@ div.field_with_errors {
   color: #a92121 !important;
 }
 
-.btn-comment-search,
-.btn-comment-search:hover,
-.btn-comment-search:active {
+.btn-comment-post,
+.btn-comment-post:hover,
+.btn-comment-post:active {
   background-color: #4163a7 !important;
-  border: solid 1px black;
-  margin: 10px 0 20px 0;
+  border: solid 1px black !important;
 }
 
 .btn-regist,
@@ -134,62 +133,48 @@ div.field_with_errors {
   width: 100%;
 }
 
-.btn-unfollow {
-  position: relative;
-  display: inline-block;
-  background-image: linear-gradient(135deg, #dd5e89, #f7bb97); /* 背景のグラデーション */
-  border-radius: 30px; /* 角丸をつける */
-  width: 200px; /* 横幅 */
-  height: 60px; /* 縦幅 */
-  line-height: 60px; /* 行の高さ(heightと同じ値にする) */
-  text-decoration: none; /* aタグのアンダーラインを消す */
-  overflow: hidden; /* はみ出し部分を隠す */
-  cursor: pointer; /* カーソルをポインターにする */
-}
-
-/* ボタンのテキスト */
-.btn__text {
-  position: absolute;
-  left: 0;
-  display: block;
-  height: 100%; /* 縦幅をボタンと同じにする */
-  width: 100%; /* 横幅をボタンと同じにする */
-  color: #fff; /* 文字色 */
-  font-size: 16px; /* 文字サイズ */
-  font-weight: bold; /* 文字の太さ */
-  text-align: center; /* テキストを中央揃え */
-  transition: all 0.3s; /* アニメーション実行時間 */
-}
-
-/* ボタンのテキスト(デフォルトのテキスト) */
-.btn__text:nth-child(1) {
-  top: 0;
-}
-
-/* ボタンのテキスト(隠れているテキスト) */
-.btn__text:nth-child(2) {
-  top: -100%;
-}
-
-/* ボタンホバーアクション */
-.btn:hover .btn__text:nth-child(1) {
-  top: 100%;
-}
-
-.btn:hover .btn__text:nth-child(2) {
-  top: 0;
-}
-
 .btn-prefecture {
   font-size: large;
   margin: auto;
 }
+
+.btn-search,
+.btn-search:hover,
+.btn-search:active {
+  border: solid 1px rgb(206, 212, 218);
+  color: rgba(0, 110, 255, 0.917) !important;
+}
+
+.btn-unfollow,
+.btn-unfollow:hover,
+.btn-unfollow:active {
+  color: black !important;
+  border: solid 2px rgb(206, 212, 218);
+  border-radius: 20px;
+}
+
+.btn-follow,
+.btn-follow:hover,
+.btn-follow:active {
+  background-color: #c82020 !important;
+  border: solid 2px #991c1c;
+  border-radius: 20px;
+}
 //ボタンend
 
 //ページエリア
-.prefecture-area {
+.prefecture-area,
+.card-area {
   max-width: 1200px;
   margin: auto;
+  text-align: center !important;
+}
+
+//検索フォーム
+input[type='search'] {
+  width: 300px;
+  height: 38px;
+  -webkit-appearance: searchfield;
 }
 
 //ランキング
@@ -277,15 +262,6 @@ div.field_with_errors {
   margin-left: 8px;
 }
 
-.follow-btn {
-  text-align: right;
-  width: 100%;
-}
-
-.follow-aside-btn {
-  margin: 10px;
-}
-
 //画像
 .user-img {
   border-radius: 50%;
@@ -326,7 +302,7 @@ h1 {
 
 h2 {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 h3 {
