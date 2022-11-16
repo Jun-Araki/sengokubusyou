@@ -15,18 +15,19 @@
   <% end %>
 </div>
 
-<div class="row my-3 justify-content-center">
-  <%= search_form_for @q do |f| %>
-  <div class="col-auto">
+<%= search_form_for @q do |f| %>
+  <div class="row my-4 justify-content-center">
+    <div class="col-auto">
       <%= f.search_field :name_or_furigana_name_cont, placeholder: "武将名で検索", class: "form-control" %>
+    </div>
+    
+    <div class="col-auto">
+      <%= button_tag type: 'submit', class: 'btn btn-search col-auto' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
   </div>
-      <div class="col-auto">
-        <%= button_tag type: 'submit', class: 'btn btn-search' do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        <% end %>
-      </div>
-    <% end %>
-</div>
+<% end %>
 
 <% if params[:q] != nil %>
   <% if @q_result.present? %>

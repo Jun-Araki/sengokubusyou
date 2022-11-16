@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :twitter
   before_action :image_size, except: %w[following followers]
 
-  PER_PAGE = 24
+  PER_PAGE = 12
 
   def show
     @title = "登録"
