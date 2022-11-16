@@ -16,13 +16,17 @@
   <% end %>
 </div>
 
-<div class="text-center mt-4">
-  <%= search_form_for @q do |f| %>
-    <%= f.search_field :name_or_furigana_name_cont, placeholder: "  武将名で検索" %>
-    <%= button_tag type: 'submit', class: 'btn btn-search' do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
+<div class="row my-3 justify-content-center">
+  <div class="col-auto">
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :name_or_furigana_name_cont, placeholder: "武将名で検索", class: "form-control" %>
+  </div>
+      <div class="col-auto">
+        <%= button_tag type: 'submit', class: 'btn btn-search' do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
     <% end %>
-  <% end %>
+      </div>
 </div>
 
 <% if params[:q] != nil %>

@@ -183,6 +183,13 @@ div.field_with_errors {
   font-size: large;
   margin: auto;
 }
+
+.btn-search,
+.btn-search:hover,
+.btn-search:active {
+  border: solid 1px rgb(206, 212, 218);
+  color: rgba(0, 110, 255, 0.917) !important;
+}
 //ボタンend
 
 //ページエリア
@@ -190,13 +197,13 @@ div.field_with_errors {
 .card-area {
   max-width: 1200px;
   margin: auto;
+  text-align: center !important;
 }
 
 //検索フォーム
 input[type='search'] {
   width: 300px;
   height: 38px;
-  margin: 0;
   -webkit-appearance: searchfield;
 }
 
