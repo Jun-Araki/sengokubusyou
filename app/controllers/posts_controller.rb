@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @size = "100"
     @q = Post.ransack(params[:q])
     @q_result = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
 
@@ -55,13 +54,11 @@ class PostsController < ApplicationController
   end
 
   def ranks
-    @size = "150"
     @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
     @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
   end
 
   def prefecture
-    @size = "100"
     posts = Post.page(params[:page]).per(PER_PAGE)
 
     @posts = if params[:prefecture_name].present?
