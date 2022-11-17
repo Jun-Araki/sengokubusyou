@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to root_path, alert: "武将を削除しました" # rubocop:disable all
+    redirect_to root_path, alert: t("alert.post_delete")
   end
 
   def ranks

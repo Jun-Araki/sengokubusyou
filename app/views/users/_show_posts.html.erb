@@ -1,0 +1,28 @@
+<div class="row user-show">
+  <%= render partial: "aside" %>
+
+  <div class="col-md-8">
+    <div class="background-white">
+      <h2><%= title %>した武将</h2>
+
+      <% if @posts.present? %>
+        <div class="text-center">
+          <font size="4">
+            <b>武将数:&nbsp;</b><%= @user_posts.count %>
+          </font>
+        </div>
+
+        <section class="row g-4 m-auto">
+          <%= render partial: "post", collection: @posts %>
+        </section>
+
+        <div class="pagination justify-content-center">
+          <%= paginate @posts %>
+        </div>
+
+      <% else %>
+        <p class="text-center">武将がいません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
