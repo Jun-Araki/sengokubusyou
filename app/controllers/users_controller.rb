@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
   before_action :set_user
-  before_action :twitter
 
   PER_PAGE = 12
 
@@ -34,12 +33,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def twitter
-    return if @user.twitter.blank?
-
-    twitter_url = "https://twitter.com/"
-    @twitter = twitter_url + @user.twitter
   end
 end

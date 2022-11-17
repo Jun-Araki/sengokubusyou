@@ -1,5 +1,5 @@
 <div class="row user-show">
-  <%= render partial: "aside" %>
+  <%= render partial: "aside", locals: {twitter: "https://twitter.com/" + @user.twitter} %>
 
   <div class="col-md-8">
     <div class="background-white">
