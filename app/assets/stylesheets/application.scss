@@ -55,6 +55,10 @@ div.field_with_errors {
   margin: 5px auto;
 }
 
+.card-top {
+  position: relative;
+}
+
 //カードend
 
 //ボタン
@@ -162,16 +166,10 @@ div.field_with_errors {
 }
 //ボタンend
 
-//トップページ
-.top-page {
-  max-width: 1200px;
-  text-align: center;
-  margin: auto;
-}
-
 //ページエリア
 .prefecture-area,
-.card-area {
+.card-area,
+.top-page-area {
   max-width: 1200px;
   margin: auto;
   text-align: center !important;

@@ -1,25 +1,41 @@
-<div class="top-page">
+<div class="top-page-area">
   <h2>みんなの戦国武将とは</h2>
 
-  <div class="row">
-      <div class="card col-sm-6 col-12">
+  <div class="row g-4">
+    <div class="col-sm-6 col-12">
+      <div class="card card-top h-100">
         <%= link_to posts_path do %>
-          <%= image_tag "sample.png", width: 400, height: 300 %>
+          <%= image_tag "sample.png", width: 360, height: 270 %>
+
           <div class="card-body">
             <h5 class="card-title">武将検索</h5>
-            <p class="card-text">様々な戦国武将を50音や出身地、ランキングから検索できます</p>
+            <p class="card-text">様々な戦国武将を50音や出身地などで検索できます。</p>
+
             <%= link_to posts_path, class: "btn btn-index mx-2 my-2" do %>
               <i class="fas fa-envelope-open-text"></i>&nbsp;<span>50音で探す</span>
             <% end %>
+
             <%= link_to prefecture_posts_path, class: "btn btn-index mx-2 my-2" do %>
               <i class="fa-solid fa-vihara"></i>&nbsp;<span>出身地で探す</span>
             <% end %>
           </div>
         <% end %>
       </div>
+    </div>
 
     <div class="col-sm-6 col-12">
-      <%= image_tag "sample.png", width: 400, height: 300 %>
+      <div class="card card-top h-100">
+        <%= link_to info_posts_path do %>
+          <%= image_tag "sample.png", width: 360, height: 270 %>
+          <div class="card-body">
+            <h5 class="card-title">コメント機能</h5>
+            <p class="card-text">好きな戦国武将を見つけたら、おすすめポイントをコメントできます。</p>
+            <%= link_to posts_path, class: "btn btn-index mx-2 my-2" do %>
+              <i class="fas fa-envelope-open-text"></i>&nbsp;<span>コメントしてみる</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
