@@ -168,8 +168,7 @@ div.field_with_errors {
 
 //ページエリア
 .prefecture-area,
-.card-area,
-.top-page-area {
+.card-area {
   max-width: 1200px;
   margin: auto;
   text-align: center !important;
@@ -288,6 +287,27 @@ input[type='search'] {
   padding: 20px;
 }
 
+//トップページ
+.top-page-area {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center !important;
+}
+
+.background-white-busyou {
+  background-color: white;
+  max-width: 700px;
+  padding: 5px;
+  margin: auto;
+}
+
+.background-white-regist {
+  background-color: white;
+  max-width: 550px;
+  padding: 5px;
+  margin: auto;
+}
+
 //ナビバー
 .navbar-sengoku {
   background-color: #991c1c;
@@ -300,19 +320,11 @@ input[type='search'] {
 }
 
 //見出し
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+h1,
+h2,
 h3 {
-  margin: 20px 0;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 // フッター
