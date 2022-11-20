@@ -57,6 +57,7 @@ div.field_with_errors {
 
 .card-top {
   position: relative;
+  border: 2px solid #b28e5f;
 }
 
 //カードend
@@ -163,6 +164,15 @@ div.field_with_errors {
   background-color: #c82020 !important;
   border: solid 2px #991c1c;
   border-radius: 20px;
+}
+
+.btn-info,
+.btn-info:hover,
+.btn-info:active {
+  background-color: #c82020 !important;
+  border: solid 1px #991c1c;
+  width: 200px;
+  margin-bottom: 30px;
 }
 //ボタンend
 
@@ -288,12 +298,6 @@ input[type='search'] {
 }
 
 //トップページ
-.top-page-area {
-  max-width: 1000px;
-  margin: auto;
-  text-align: center !important;
-}
-
 .background-white-busyou {
   background-color: white;
   max-width: 700px;
@@ -306,6 +310,21 @@ input[type='search'] {
   max-width: 550px;
   padding: 5px;
   margin: auto;
+}
+
+.top-page-area {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center !important;
+}
+
+ul {
+  margin: auto;
+  max-width: 200px;
+}
+
+li {
+  text-align: left;
 }
 
 //ナビバー
