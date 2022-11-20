@@ -25,7 +25,7 @@ div.field_with_errors {
 }
 
 //カード
-.card {
+.card-post {
   text-align: center;
   position: relative;
   border-top: 4px solid #b28e5f;
@@ -34,7 +34,7 @@ div.field_with_errors {
   border-right: 2px solid #b28e5f;
 }
 
-.card-title {
+.card-post-title {
   padding: 20px;
   font-size: 20px;
   font-family: serif;
@@ -42,7 +42,7 @@ div.field_with_errors {
   background: #b28e5f;
 }
 
-.card-text {
+.card-post-text {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -161,6 +161,13 @@ div.field_with_errors {
   border-radius: 20px;
 }
 //ボタンend
+
+//トップページ
+.top-page {
+  max-width: 1200px;
+  text-align: center;
+  margin: auto;
+}
 
 //ページエリア
 .prefecture-area,

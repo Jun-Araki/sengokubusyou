@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   PER_PAGE = 12
 
-  before_action :authenticate_user!, except: %w[index show ranks prefecture]
+  before_action :authenticate_user!, except: %w[index show ranks prefecture top]
   before_action :set_post, only: %i[edit update destroy]
 
   def index
