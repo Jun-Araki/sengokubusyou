@@ -10,8 +10,8 @@
 </div>
 
 <div class="m-auto text-center">
-  <% Post.furigana_initials.each do |i| %>
-    <%= link_to "#{i[0]}", posts_path(furigana_initial: "#{i[1]}"), class: "btn btn-furigana btn-lg" %>
+  <% Post.furigana_initials.each do |v, k| %>
+    <%= link_to "#{v}", posts_path(furigana_initial: "#{k}"), class: "btn btn-furigana btn-lg" %>
   <% end %>
 </div>
 
