@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class PostsController < ApplicationController
   PER_PAGE = 12
 
@@ -7,9 +5,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @size = "100"
     @q = Post.ransack(params[:q])
-    @q_result = @q.result.order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+    @q_result = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
 
     @posts = if params[:furigana_initial].present?
                @q_result.select_furigana_initial(params[:furigana_initial])
@@ -51,18 +48,16 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to root_path, alert: "武将を削除しました" # rubocop:disable all
+    redirect_to root_path, alert: t("alert.post_delete")
   end
 
   def ranks
-    @size = "150"
     @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
     @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
   end
 
   def prefecture
-    @size = "100"
-    posts = Post.page(params[:page]).per(PER_PAGE)
+    posts = Post.includes(:user, :likes).page(params[:page]).per(PER_PAGE)
 
     @posts = if params[:prefecture_name].present?
                posts.select_prefecture_name(params[:prefecture_name])

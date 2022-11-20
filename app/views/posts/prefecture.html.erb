@@ -21,10 +21,12 @@
     <p>北海道・東北地方</p>
     <hr>
     <div class="row">
-      <% Post.prefecture_names.keys[0..6].each do |p| %>
+      <% Post.prefecture_names.each do |k, v| %>
+        <% if v >= 1 && v <= 7 %>
         <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{p}", prefecture_posts_path(prefecture_name: "#{p}") %></b>
+          <b><%= link_to "#{k}", prefecture_posts_path(prefecture_name: "#{v}") %></b>
         </div>
+        <% end %>
       <% end %>
     </div>
 

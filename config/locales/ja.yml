@@ -50,6 +50,7 @@ ja:
     login: ログインしてください
     post_create_failure: 武将の登録に失敗しました
     post_update_failure: 武将の更新に失敗しました
+    post_delete: 武将を削除しました
   date:
     abbr_day_names:
       - 日
