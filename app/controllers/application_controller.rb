@@ -14,8 +14,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_in_path_for(_resource)
-    session[:previous_url] || root_path
+  def after_sign_in_path_for(resource)
+    if session[:previous_url] == root_path || session[:previous_url] == info_posts_path
+      posts_path(resource)
+    else
+      session[:previous_url] || posts_path(resource)
+    end
   end
 
   def configure_permitted_parameters

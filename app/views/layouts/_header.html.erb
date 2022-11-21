@@ -1,7 +1,13 @@
 <nav class="navbar navbar-sengoku navbar-expand-sm navbar-dark fixed-top justify-content-end">
   <div class="container-fluid navbar-sengoku">
-    <%= link_to posts_path, class: "navbar-brand" do %>
-      <i class="fas fa-home"></i>&nbsp;<span>みんなの戦国武将</span>
+    <% if user_signed_in? %>
+      <%= link_to posts_path, class: "navbar-brand" do %>
+        <i class="fas fa-home"></i>&nbsp;<span>みんなの戦国武将</span>
+      <% end %>
+    <% else %>
+      <%= link_to top_posts_path, class: "navbar-brand" do %>
+        <i class="fas fa-home"></i>&nbsp;<span>みんなの戦国武将</span>
+      <% end %>
     <% end %>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,6 +29,7 @@
         <%= link_to destroy_user_session_path, class: "nav-item nav-link active", method: :delete, data: { confirm: "ログアウトしますか?"} do %>
           <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;<span>ログアウト</span>
         <% end %>
+        
       <% else %>
         <%= link_to new_user_registration_path, class: "nav-item nav-link active" do %>
           <i class="fa-solid fa-user-plus"></i>&nbsp;<span>新規登録</span>

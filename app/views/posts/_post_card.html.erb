@@ -1,12 +1,12 @@
-  <div class="card">
+  <div class="card card-post">
     <%= link_to post do %>
-      <div class="card-title"><%= post.name %></div>
+      <div class="card-title card-post-title"><%= post.name %></div>
       <div class="card-img-top">
         <%= image_tag post.image.url, :size => size %>
       </div>
 
       <div class="card-body">
-        <p class="card-text mb-2"><%= post.commentary %></p>
+        <p class="card-text card-post-text mb-2"><%= post.commentary %></p>
         <%= link_to post, class: "btn btn-show-delete" do %>
           <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細を見る</span>
         <% end %>
