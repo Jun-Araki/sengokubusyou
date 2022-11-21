@@ -20,7 +20,7 @@ div.field_with_errors {
 .base-container {
   @extend .container-fluid;
   max-width: var(--breakpoint-lg);
-  // padding: 30px 15px;
+  padding: 30px 15px;
   background-color: rgba(0, 0, 0, 0.03);
 }
 
@@ -172,7 +172,7 @@ div.field_with_errors {
   background-color: #c82020 !important;
   border: solid 1px #991c1c;
   width: 200px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 //ボタンend
 
@@ -323,6 +323,33 @@ input[type='search'] {
   width: 100%;
   height: 500px;
   object-fit: cover;
+  padding-bottom: 20px;
+}
+
+.catch-copy {
+  position: relative;
+}
+
+.catch-copy p {
+  color: white;
+  // font-size: 1.5rem !important;
+  font-size: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+}
+
+.catch-copy img {
+  text-align: center;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  padding-bottom: 20px;
 }
 
 ul {
