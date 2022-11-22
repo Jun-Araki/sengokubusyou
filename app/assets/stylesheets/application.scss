@@ -9,21 +9,6 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/regular';
 
-div.field_with_errors {
-  display: contents;
-  input,
-  textarea {
-    @extend .is-invalid;
-  }
-}
-
-.base-container {
-  @extend .container-fluid;
-  max-width: var(--breakpoint-lg);
-  padding: 30px 15px;
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
 //カード
 .card-post {
   text-align: center;
@@ -377,14 +362,38 @@ h3 {
   margin-bottom: 20px;
 }
 
-// フッター
-.footer {
-  background-color: #991c1c;
-  color: white;
-  padding: 3px;
-}
-
 //全体
 a {
   text-decoration: none;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.base-container {
+  @extend .container-fluid;
+  max-width: var(--breakpoint-lg);
+  padding: 30px 15px;
+}
+
+footer {
+  background-color: #991c1c;
+  color: white;
+}
+
+div.field_with_errors {
+  display: contents;
+  input,
+  textarea {
+    @extend .is-invalid;
+  }
 }
