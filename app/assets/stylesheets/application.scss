@@ -151,6 +151,12 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   border-radius: 20px;
 }
 
+.follow-unfollow {
+  text-align: right !important;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .btn-info,
 .btn-info:hover,
 .btn-info:active {
