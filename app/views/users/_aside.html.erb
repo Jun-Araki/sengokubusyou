@@ -1,7 +1,7 @@
-<aside class="col-md-4 text-center">
+<aside class="col-md-4">
   <div class="background-white">
     <%= image_tag @user.user_image.url, class: "user-img" %>
-    <div class="my-3"><b><%= @user.nickname %></b></div>
+    <p class="my-3"><b><%= @user.nickname %></b></p>
 
     <% if @user.twitter.present? %>
       <div class="my-3">
@@ -13,65 +13,55 @@
       </div>
     <% end %>
 
-    <p><%= @user.profile %><br></p>
+    <p class="text-start"><%= @user.profile %><br></p>
 
     <% @user ||= current_user %>
-      <a href="<%= following_user_path(@user) %>">
-        <strong id="following">
-          <%= @user.following.count %>
-        </strong>
-        フォロー&nbsp;&nbsp;
-      </a>
-      <br>
-      <a href="<%= followers_user_path(@user) %>">
-        <strong id="followers">
-          <%= @user.followers.count %>
-        </strong>
-        フォロワー
-      </a>
-      <br>
-      <br>
+    <a href="<%= following_user_path(@user) %>">
+      <b id="following"><%= @user.following.count %></b>&nbsp;フォロー
+    </a>
+    <br>
 
+    <a href="<%= followers_user_path(@user) %>">
+      <b id="followers"><%= @user.followers.count %></b>&nbsp;フォロワー
+    </a>
+    <br>
+    <br>
 
-      <% unless current_user?(@user) %>
-        <% if current_user.following?(@user) %>
-          <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
-                      html: { method: :delete }, local: true) do |f| %>
-            <%= f.submit "フォロー中", class: "btn btn-unfollow mb-1"  %>
-          <% end %>
-          
-        <% else %>
-          <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
-            <div class="follow-aside-btn">
-              <%= hidden_field_tag :followed_id, @user.id %>
-              <%= f.submit "フォロー", class: "btn btn-follow mb-1" %>
-            </div>
-          <% end %>
+    <% unless current_user?(@user) %>
+      <% if current_user.following?(@user) %>
+        <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
+                    html: { method: :delete }, local: true) do |f| %>
+          <%= f.submit "フォロー中", class: "btn btn-unfollow mb-1"  %>
+        <% end %>
+        
+      <% else %>
+        <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+          <div class="follow-aside-btn">
+            <%= hidden_field_tag :followed_id, @user.id %>
+            <%= f.submit "フォロー", class: "btn btn-follow mb-1" %>
+          </div>
         <% end %>
       <% end %>
-      <br>
+    <% end %>
+    <br>
 
-    <div class="text-center">
-      <%= link_to user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
-        <i class="fa-regular fa-square-plus"></i>&nbsp;<span>登録した武将</span>
-      <% end %>
-      <%= link_to likes_user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
-        <i class="fa-solid fa-heart"></i>&nbsp;<span>いいねした武将</span>
-      <% end %>
-      <%= link_to comments_user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
-        <i class="fa-solid fa-message"></i>&nbsp;<span>コメントした武将</span>
-      <% end %>
-    </div>
+    <%= link_to user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
+      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>登録した武将</span>
+    <% end %>
+    <%= link_to likes_user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
+      <i class="fa-solid fa-heart"></i>&nbsp;<span>いいねした武将</span>
+    <% end %>
+    <%= link_to comments_user_path(@user), class: "btn btn-comment-post my-2 w-75" do %>
+      <i class="fa-solid fa-message"></i>&nbsp;<span>コメントした武将</span>
+    <% end %>
 
-    <div class="text-center">
-      <% if @user.id == current_user.id %>
-        <% unless @user.email == "guest@example.com" %>
-          <%= link_to edit_user_registration_path, class: "btn btn-edit my-3 w-75" do %>
-            <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>
-          <% end %>
+    <% if @user.id == current_user.id %>
+      <% unless @user.email == "guest@example.com" %>
+        <%= link_to edit_user_registration_path, class: "btn btn-edit my-3 w-75" do %>
+          <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
+    <br>
   </div>
-  <br>
 </aside>

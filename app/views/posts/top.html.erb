@@ -14,6 +14,15 @@
   </div>
   <br>
 
+  <div class="background-white-regist">
+    <h3>アカウント登録はこちら</h3>
+    <p>戦国武将を通して多くの仲間を見つけよう！ さあ、今すぐ登録しよう！</p>
+    <%= link_to new_user_registration_path, class: "btn btn-show-delete btn-lg" do %>
+      <i class="fa-solid fa-user-plus"></i>&nbsp;<span>新規登録</span>
+    <% end %>
+  </div>
+  <br>
+
   <h3>主な4つの機能</h3>
   <div class="row g-4">
     <div class="col-sm-6 col-12">
@@ -24,7 +33,6 @@
           <div class="card-body">
             <h5 class="card-title">武将検索</h5>
             <p class="card-text">200名以上の戦国武将を検索できます</p>
-
             <%= link_to posts_path, class: "btn btn-index mx-2 my-2" do %>
               <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将を検索する</span>
             <% end %>
@@ -37,6 +45,7 @@
       <div class="card card-top h-100">
         <%= link_to info_posts_path do %>
           <%= image_tag "comment.png", width: 360, height: 270 %>
+
           <div class="card-body">
             <h5 class="card-title">コメント投稿</h5>
             <p class="card-text">好きな戦国武将を見つけたら、コメントできます</p>
@@ -56,6 +65,7 @@
       <div class="card card-top h-100">
         <%= link_to info_posts_path do %>
           <%= image_tag "follow.png", width: 360, height: 270 %>
+
           <div class="card-body">
             <h5 class="card-title">フォロー</h5>
             <p class="card-text">気の合うユーザーを見つけたら、フォローできます</p>
@@ -71,6 +81,7 @@
       <div class="card card-top h-100">
         <%= link_to info_posts_path do %>
           <%= image_tag "regist.png", width: 360, height: 270 %>
+          
           <div class="card-body">
             <h5 class="card-title">武将登録</h5>
             <p class="card-text">好きな武将を新たに登録することができます</p>
@@ -81,15 +92,5 @@
         <% end %>
       </div>
     </div>
-  </div>
-
-  <br>
-
-  <div class="background-white-regist">
-    <h3>アカウント登録はこちら</h3>
-    <p>戦国武将を通して多くの仲間を見つけよう！ さあ、今すぐ登録しよう！</p>
-    <%= link_to new_user_registration_path, class: "btn btn-show-delete" do %>
-      <i class="fa-solid fa-user-plus"></i>&nbsp;<span>新規登録</span>
-    <% end %>
   </div>
 </section>
