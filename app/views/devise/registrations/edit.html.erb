@@ -62,8 +62,5 @@
     <button type="submit" class="btn btn-regist form-group">更新</button>
   <% end %>
 
-  <hr>
-  <div class="text-center">
-    <%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>
-  </div>
+  <%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>
 </section>

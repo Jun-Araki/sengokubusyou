@@ -66,8 +66,9 @@ h3 {
   padding: 20px;
 }
 
-.pagination li a {
-  margin-top: 20px;
+.pagination {
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .alert,
@@ -165,7 +166,6 @@ h3 {
 
 .btn-prefecture {
   font-size: large;
-  margin: auto;
 }
 
 .btn-search,
@@ -242,7 +242,7 @@ h3 {
 }
 
 .form-area {
-  height: 100px;
+  height: 110px;
   width: 100%;
 }
 
@@ -250,17 +250,9 @@ h3 {
   margin: auto;
 }
 
-.form-group-login {
-  margin-bottom: 10px !important;
-}
-
 .user-show {
   max-width: 1000px;
   margin: auto;
-}
-
-.user-show-name {
-  margin-left: 8px;
 }
 
 .user-img {
