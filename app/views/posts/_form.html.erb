@@ -10,18 +10,18 @@
     </div>
 
     <div class="form-group mb-3">
-      <%= form.label :furigana_name %> <br>
-      <%= form.text_field :furigana_name, class: "form-control", required: true, placeholder: "さなだゆきむら" %>
+      <%= form.label :kana %> <br>
+      <%= form.text_field :kana, class: "form-control", required: true, placeholder: "さなだゆきむら" %>
     </div>
     
     <div class="form-group mb-3">
-      <%= form.label :furigana_initial %> <br>
-      <%= form.select :furigana_initial, Post.furigana_initials.keys , {include_blank: "選んでください"}, class: "form-control", required: true %>
+      <%= form.label :initial %> <br>
+      <%= form.select :initial, Post.initials.keys , {include_blank: "選んでください"}, class: "form-control", required: true %>
     </div>
     
     <div class="form-group mb-3">
-      <%= form.label :prefecture_name %> <br>
-      <%= form.select :prefecture_name, Post.prefecture_names.keys, {include_blank: "選んでください"}, class: "form-control", required: true  %>
+      <%= form.label :prefecture %> <br>
+      <%= form.select :prefecture, Post.prefectures.keys, {include_blank: "選んでください"}, class: "form-control", required: true  %>
     </div>
     
     <div class="form-group mb-3">

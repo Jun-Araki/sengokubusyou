@@ -18,11 +18,11 @@ require "csv"
 CSV.foreach("db/csv_data/post_data.csv", headers: true) do |row|
   Post.create!(image: File.open("#{Rails.root}/db/fixtures/#{row['image']}"),
                name: row["name"],
-               user_id: row["user_id"],
-               prefecture_name: row["prefecture_name"],
-               furigana_name: row["furigana_name"],
-               furigana_initial: row["furigana_initial"],
-               commentary: row["commentary"])
+               kana: row["kana"],
+               initial: row["initial"],
+               prefecture: row["prefecture"],
+               commentary: row["commentary"],
+               user_id: row["user_id"])
 end
 
 10.times do |i|

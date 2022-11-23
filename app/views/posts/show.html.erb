@@ -1,7 +1,7 @@
 <section class="post-show-area">
   <div class="card card-post">
     <div class="card-title card-post-title">
-        <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.furigana_name %></small></h4>
+        <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.kana %></small></h4>
     </div>
 
     <div class="card-body">
@@ -9,7 +9,7 @@
       <div class="px-5">
         <font size="4">
         <p class="text-start"><%= @post.commentary %></p>
-        <p>出身地：<%= link_to @post.prefecture_name, prefecture_posts_path(prefecture_name: @post.prefecture_name) %></p>
+        <p>出身地：<%= link_to @post.prefecture, prefecture_posts_path(prefecture: @post.prefecture) %></p>
         <p>作成者：
           <% if @post.user.nickname.present? %>
             <%= link_to @post.user.nickname, user_path(@post.user.id) %>

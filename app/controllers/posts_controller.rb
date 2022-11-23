@@ -7,10 +7,10 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @q_result = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
+    @q_result = @q.result.includes(:user, :likes).order(kana: :asc).page(params[:page]).per(PER_PAGE)
 
-    @posts = if params[:furigana_initial].present?
-               @q_result.select_furigana_initial(params[:furigana_initial])
+    @posts = if params[:initial].present?
+               @q_result.select_initial(params[:initial])
              else
                @q_result
              end
@@ -55,8 +55,8 @@ class PostsController < ApplicationController
   def prefecture
     posts = Post.includes(:user, :likes).page(params[:page]).per(PER_PAGE)
 
-    @posts = if params[:prefecture_name].present?
-               posts.select_prefecture_name(params[:prefecture_name])
+    @posts = if params[:prefecture].present?
+               posts.select_prefecture(params[:prefecture])
              else
                posts
              end
@@ -80,6 +80,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :furigana_name, :furigana_initial, :prefecture_name, :commentary, :image)
+    params.require(:post).permit(:name, :kana, :initial, :prefecture, :commentary, :image)
   end
 end

@@ -8,14 +8,14 @@
 <% end %>
 
 <div class="m-auto">
-  <% Post.furigana_initials.each do |v, k| %>
-    <%= link_to "#{v}", posts_path(furigana_initial: "#{k}"), class: "btn btn-furigana btn-lg" %>
+  <% Post.initials.each do |v, k| %>
+    <%= link_to "#{v}", posts_path(initial: "#{k}"), class: "btn btn-furigana btn-lg" %>
   <% end %>
 </div>
 
 <%= search_form_for @q do |f| %>
   <div class="row my-4 justify-content-center">
-    <%= f.search_field :name_or_furigana_name_cont, placeholder: "武将名で検索", class: "form-control" %>
+    <%= f.search_field :name_or_kana_cont, placeholder: "武将名で検索", class: "form-control" %>
   
     <%= button_tag type: 'submit', class: 'btn btn-search col-auto' do %>
       <i class="fa-solid fa-magnifying-glass"></i>
@@ -34,8 +34,8 @@
   <% end %>
 <% end %>
 
-<% if params[:furigana_initial].present? %>
-  <p>検索結果&nbsp;<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
+<% if params[:initial].present? %>
+  <p>検索結果&nbsp;<%= Post.select_initial(params[:initial]).count %>件</p> 
 <% end %>
 
 <div class="row g-4 card-area">

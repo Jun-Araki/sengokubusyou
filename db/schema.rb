@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2022_11_14_021649) do
 
   create_table "posts", force: :cascade do |t|
     t.string "name"
-    t.string "furigana_name"
-    t.integer "furigana_initial"
-    t.integer "prefecture_name"
+    t.string "kana"
+    t.integer "initial"
+    t.integer "prefecture"
     t.string "commentary"
     t.string "image"
     t.integer "likes_count", default: 0
