@@ -25,7 +25,6 @@
       <b id="followers"><%= @user.followers.count %></b>&nbsp;フォロワー
     </a>
     <br>
-    <br>
 
     <% unless current_user?(@user) %>
       <% if current_user.following?(@user) %>

@@ -1,49 +1,47 @@
-<section class="text-center">
-  <h1>武将検索</h1>
+<h1>武将検索</h1>
 
-  <%= link_to ranks_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
-    <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
-  <% end %>
-  <%= link_to prefecture_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
-    <i class="fa-solid fa-vihara"></i>&nbsp;<span>出身地で探す</span>
-  <% end %>
+<%= link_to ranks_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
+  <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
+<% end %>
+<%= link_to prefecture_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
+  <i class="fa-solid fa-vihara"></i>&nbsp;<span>出身地で探す</span>
+<% end %>
 
-  <div class="m-auto">
-    <% Post.furigana_initials.each do |v, k| %>
-      <%= link_to "#{v}", posts_path(furigana_initial: "#{k}"), class: "btn btn-furigana btn-lg" %>
+<div class="m-auto">
+  <% Post.furigana_initials.each do |v, k| %>
+    <%= link_to "#{v}", posts_path(furigana_initial: "#{k}"), class: "btn btn-furigana btn-lg" %>
+  <% end %>
+</div>
+
+<%= search_form_for @q do |f| %>
+  <div class="row my-4 justify-content-center">
+    <%= f.search_field :name_or_furigana_name_cont, placeholder: "武将名で検索", class: "form-control" %>
+  
+    <%= button_tag type: 'submit', class: 'btn btn-search col-auto' do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
   </div>
+<% end %>
 
-  <%= search_form_for @q do |f| %>
-    <div class="row my-4 justify-content-center">
-      <%= f.search_field :name_or_furigana_name_cont, placeholder: "武将名で検索", class: "form-control" %>
-    
-      <%= button_tag type: 'submit', class: 'btn btn-search col-auto' do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      <% end %>
-    </div>
-  <% end %>
-
-  <% if params[:q] != nil %>
-    <% if @q_result.present? %>
-      <p>検索結果&nbsp;<%= @q_result.count %>件</p>
-    <% else %>
-      <p>検索に一致する武将がいません</p>
-      <%= link_to new_post_path, class: "btn btn-show-delete" do %>
-        <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将の登録はこちら</span>
-      <% end %>
+<% if params[:q] != nil %>
+  <% if @q_result.present? %>
+    <p>検索結果&nbsp;<%= @q_result.count %>件</p>
+  <% else %>
+    <p>検索に一致する武将がいません</p>
+    <%= link_to new_post_path, class: "btn btn-show-delete" do %>
+      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将の登録はこちら</span>
     <% end %>
   <% end %>
+<% end %>
 
-  <% if params[:furigana_initial].present? %>
-    <p>検索結果&nbsp;<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
-  <% end %>
+<% if params[:furigana_initial].present? %>
+  <p>検索結果&nbsp;<%= Post.select_furigana_initial(params[:furigana_initial]).count %>件</p> 
+<% end %>
 
-  <div class="row g-4 card-area">
-    <%= render @posts %>
-  </div>
+<div class="row g-4 card-area">
+  <%= render @posts %>
+</div>
 
-  <div class="pagination justify-content-center">
-    <%= paginate @posts %>
-  </div>
-</section>
+<div class="pagination justify-content-center">
+  <%= paginate @posts %>
+</div>

@@ -1,14 +1,12 @@
 <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-5">
-  <div class="text-center">
-    <% case i %>
-    <% when 1 %>
-      <div class="rank-num rank-1">第<%= i %>位</div>
-    <% when 2 %>
-      <div class="rank-num rank-2">第<%= i %>位</div>
-    <% when 3 %>
-      <div class="rank-num rank-3">第<%= i %>位</div>
-    <% end %>
-  </div>
+  <% case i %>
+  <% when 1 %>
+    <div class="rank-num rank-1">第<%= i %>位</div>
+  <% when 2 %>
+    <div class="rank-num rank-2">第<%= i %>位</div>
+  <% when 3 %>
+    <div class="rank-num rank-3">第<%= i %>位</div>
+  <% end %>
 
   <%= render partial: "post_card" , locals: {post: post, size: 150} %>
 </div>

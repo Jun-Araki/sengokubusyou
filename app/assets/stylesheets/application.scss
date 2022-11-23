@@ -3,11 +3,10 @@
  *= require_self
  */
 
-@import 'bootstrap/scss/bootstrap';
-
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/regular';
+@import 'bootstrap/scss/bootstrap';
 
 //カード
 .card-post {
@@ -224,14 +223,17 @@ input[type='search'] {
 //フラッシュ
 .alert {
   margin: auto;
+  text-align: start;
 }
 
 .alert-notice {
   @extend .alert-success;
+  text-align: start;
 }
 
 .alert-alert {
   @extend .alert-danger;
+  text-align: start;
 }
 
 //ユーザ関連

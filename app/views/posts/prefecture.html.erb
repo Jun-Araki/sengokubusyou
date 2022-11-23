@@ -1,6 +1,6 @@
 <% if params[:prefecture_name].present? %>
   <h1><%= params[:prefecture_name] %>の戦国武将</h1>
-  <p class="text-center">検索結果&nbsp;<%= Post.select_prefecture_name(params[:prefecture_name]).count %>件</p> 
+  <p>検索結果&nbsp;<%= Post.select_prefecture_name(params[:prefecture_name]).count %>件</p> 
 
   <section class="row g-4 card-area">
     <%= render @posts %>
@@ -9,7 +9,6 @@
   <section class="pagination justify-content-center">
     <%= paginate @posts %>
   </section>
-
   <br>
   <br>
 <% end %>
@@ -17,7 +16,7 @@
 <section class="background-white prefecture-area">
   <h1>出身地で探す</h1>
 
-  <div class="btn-prefecture">
+  <div class="btn-prefecture text-start">
     <p>北海道・東北地方</p>
     <hr>
     <div class="row">

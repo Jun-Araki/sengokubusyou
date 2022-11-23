@@ -1,25 +1,25 @@
-  <div class="card card-post">
-    <%= link_to post do %>
-      <div class="card-title card-post-title"><%= post.name %></div>
-      <div class="card-img-top">
-        <%= image_tag post.image.url, :size => size %>
-      </div>
+<div class="card card-post">
+  <%= link_to post do %>
+    <div class="card-title card-post-title"><%= post.name %></div>
+    <div class="card-img-top">
+      <%= image_tag post.image.url, :size => size %>
+    </div>
 
-      <div class="card-body">
-        <p class="card-text card-post-text mb-2"><%= post.commentary %></p>
-        <%= link_to post, class: "btn btn-show-delete" do %>
-          <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細を見る</span>
+    <div class="card-body">
+      <p class="card-text card-post-text mb-2"><%= post.commentary %></p>
+      <%= link_to post, class: "btn btn-show-delete" do %>
+        <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細を見る</span>
+      <% end %>
+  <% end %>
+
+      <p id="post-<%= post.id %>" >
+        <% if user_signed_in? %>
+          <% if post.liked_by?(current_user) %>
+            <%= render "posts/like", post: post %>
+          <% else %>
+            <%= render "posts/dislike", post: post %>
+          <% end %>              
         <% end %>
-    <% end %>
-
-        <p id="post-<%= post.id %>" >
-          <% if user_signed_in? %>
-            <% if post.liked_by?(current_user) %>
-              <%= render "posts/like", post: post %>
-            <% else %>
-              <%= render "posts/dislike", post: post %>
-            <% end %>              
-          <% end %>
-        </p>
-      </div>
-  </div>
+      </p>
+    </div>
+</div>
