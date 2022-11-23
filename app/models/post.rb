@@ -39,6 +39,6 @@ class Post < ApplicationRecord
   end
 
   def self.display_prefecture(prefecture)
-    prefectures.invert.fetch(prefecture:).to_i
+    prefectures.invert.fetch(prefecture:)
   end
 end
