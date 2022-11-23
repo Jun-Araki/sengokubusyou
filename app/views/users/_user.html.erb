@@ -12,7 +12,7 @@
     <% end %>
   </div>
 
-  <div class="col-lg-2 col-md-3 col-12 follow-unfollow">
+  <div class="col-lg-2 col-md-3 col-12 btn-follow-unfollow">
     <% unless current_user?(user) %>
       <% if current_user.following?(user) %>
         <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
