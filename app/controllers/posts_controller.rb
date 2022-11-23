@@ -32,6 +32,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
+
     if @post.save
       redirect_to @post, notice: t("notice.post_create")
     else
@@ -53,7 +54,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to root_path, alert: t("alert.post_delete")
+    flash.now[:alert] = t("alert.post_delete")
+    render "not_exists"
   end
 
   def prefecture
