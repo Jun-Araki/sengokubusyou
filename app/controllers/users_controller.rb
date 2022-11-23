@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def likes
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @user_posts = Post.find(likes)
-    @posts = Kaminari.paginate_array(Post.find(likes)).page(params[:page]).per(PER_PAGE)
+    @posts = Kaminari.paginate_array(Post.find(likes)).page(params[:page]).per(PER_PAGE).includes(:likes)
   end
 
   def comments

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resource :likes, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
     collection do
-      get :ranks, :prefecture, :top, :info
+      get :ranks, :prefecture, :top, :info, :not_exist
     end
   end
 

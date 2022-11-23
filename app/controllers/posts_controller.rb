@@ -17,9 +17,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments
-    @comment = current_user.comments.new if user_signed_in?
+    if Post.exists?(params[:id])
+      @post = Post.find(params[:id])
+      @comments = @post.comments
+      @comment = current_user.comments.new if user_signed_in?
+    else
+      render "not_exists"
+    end
   end
 
   def new
@@ -60,7 +64,6 @@ class PostsController < ApplicationController
              else
                posts
              end
-    # binding.pry
   end
 
   def ranks; end

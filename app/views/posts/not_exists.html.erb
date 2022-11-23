@@ -1,0 +1,18 @@
+<section class="top-page-area">
+  <h3 class="mt-5">武将が存在しません</h3>
+
+  <%= image_tag "busyou_login.png", width: "200", height: "280", class: "mb-5" %>
+  <br>
+
+  <%= link_to posts_path, class: "btn btn-show-delete btn-lg" do %>
+    <i class="fa-solid fa-magnifying-glass"></i>&nbsp;<span>武将検索に戻る</span>
+  <% end %>
+  <br>
+
+  <div class="mb-2">または</div>
+
+  <%= link_to new_post_path, class: "btn btn-index btn-lg" do %>
+    <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将を登録する</span>
+  <% end %>
+  <br>
+</section>
