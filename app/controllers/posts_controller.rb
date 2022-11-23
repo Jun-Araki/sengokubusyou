@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!, except: %w[index show ranks prefecture top info]
   before_action :set_post, only: %i[edit update destroy]
+  before_action :set_ranks, only: %i[ranks top]
 
   def index
     @q = Post.ransack(params[:q])
@@ -51,11 +52,6 @@ class PostsController < ApplicationController
     redirect_to root_path, alert: t("alert.post_delete")
   end
 
-  def ranks
-    @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
-    @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
-  end
-
   def prefecture
     posts = Post.includes(:user, :likes).page(params[:page]).per(PER_PAGE)
 
@@ -66,6 +62,8 @@ class PostsController < ApplicationController
              end
   end
 
+  def ranks; end
+
   def top; end
 
   def info; end
@@ -74,6 +72,11 @@ class PostsController < ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def set_ranks
+    @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
   end
 
   def post_params

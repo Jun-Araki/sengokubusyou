@@ -49,13 +49,9 @@
         <%= f.text_area :content, required: true, class: "form-area" %>
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <br>
-
         <%= button_tag type: 'submit', class: 'btn btn-comment-post mt-3' do %>
           <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
         <% end %>
-        <br>
-        <br>
       <% end %>
 
     <% else %>
@@ -65,6 +61,8 @@
         <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;<span>ログイン</span>
       <% end %>
     <% end %>
+    <br>
+    <br>
 
     <div class="text-start">
       <% @comments.each do |c| %>
