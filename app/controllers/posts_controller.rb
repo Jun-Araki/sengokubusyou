@@ -60,6 +60,7 @@ class PostsController < ApplicationController
              else
                posts
              end
+    # binding.pry
   end
 
   def ranks; end

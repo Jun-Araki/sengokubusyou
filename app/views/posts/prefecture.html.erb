@@ -1,5 +1,9 @@
 <% if params[:prefecture].present? %>
   <h1><%= params[:prefecture] %>の戦国武将</h1>
+
+  <h1><%= Post.display_prefecture(params[:prefecture]) =%>の戦国武将</h1>
+
+
   <p>検索結果&nbsp;<%= Post.select_prefecture(params[:prefecture]).count %>件</p> 
 
   <section class="row g-4 card-area">
