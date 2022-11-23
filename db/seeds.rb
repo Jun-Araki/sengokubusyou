@@ -1,6 +1,7 @@
 User.create!(email: "test1@example.com", password: "password", nickname: "さな丸",
              profile: "真田幸村が大好きで、上田城などの史跡をめぐっています。戦国武将について語りたいので、ぜひよろしくお願いします。",
              user_image: File.open("db/fixtures/Sanada_Yukimura.jpg"), twitter: "TS1engineer")
+User.create!(email: "guest@example.com", password: "password", nickname: "guest", profile: "よろしくお願いします。")
 User.create!(email: "test2@example.com", password: "password", nickname: "大江戸",
              profile: "主に関東を中心に歴史巡りをしています。最近はコロナもあって遠出できていないので、ここで情報を集めていきたいと思っています。よろしくお願いします。",
              user_image: File.open("db/fixtures/hugaku.jpeg"))
@@ -25,7 +26,6 @@ User.create!(email: "test8@example.com", password: "password", nickname: "足軽
 User.create!(email: "test9@example.com", password: "password", nickname: "鉄砲隊",
              profile: "戦国武将の戦いに興味をもっている者です。鉄砲3段打ちなどで戦国最強の武田軍を撃退した「長篠の戦い」は非常に関心があります。その他、ここでしか話せない細かい話もしていきたいと思っています。",
              user_image: File.open("db/fixtures/teppou.png"))
-User.create!(email: "guest@example.com", password: "password", nickname: "guest", profile: "よろしくお願いします。")
 
 require "csv"
 
@@ -84,8 +84,9 @@ Comment.create!(user_id: 3, post_id: 93, content: "むしろ伊達勢を押し�
 Comment.create!(user_id: 1, post_id: 93, content: "夏の陣では家康が自害を決め込むほどの突撃だったんだよな")
 Comment.create!(user_id: 4, post_id: 93, content: "本当にあと一歩だったけど、そういう姿に多くの人が感動するんだよね")
 
-Comment.create!(user_id: 1, post_id: 54, content: "安土城跡に行ってきたけど、ここに天主閣があったと思うと感激")
+Comment.create!(user_id: 2, post_id: 54, content: "安土城跡に行ってきたけど、ここに天主閣があったと思うと感激")
 Comment.create!(user_id: 5, post_id: 54, content: "確かに当時は滋賀の琵琶湖周辺が京に近くて栄えてたんだよね")
+Comment.create!(user_id: 2, post_id: 54, content: "信長の革新的なところが凄いと思うよ")
 
 Comment.create!(user_id: 6, post_id: 116, content: "戦国最強の騎馬軍団")
 Comment.create!(user_id: 7, post_id: 116, content: "もう少し長生きしていれば信長の天下にならなかったかもしれない")
