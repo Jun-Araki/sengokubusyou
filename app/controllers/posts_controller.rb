@@ -7,13 +7,16 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @q_result = @q.result.includes(:user, :likes).order(kana: :asc).page(params[:page]).per(PER_PAGE)
+    @q_result = @q.result.includes(:user, :likes).order(kana: :asc)
 
-    @posts = if params[:initial].present?
-               @q_result.select_initial(params[:initial])
-             else
-               @q_result
-             end
+    if params[:initial].present?
+      @q_select = @q_result.select_initial(params[:initial])
+      posts = @q_select
+    else
+      posts = @q_result
+    end
+
+    @posts = posts.page(params[:page]).per(PER_PAGE)
   end
 
   def show
@@ -62,9 +65,8 @@ class PostsController < ApplicationController
   def prefecture
     return if params[:prefecture].blank?
 
-    posts = Post.includes(:user, :likes).select_prefecture(params[:prefecture])
-    @posts_count = posts.count
-    @posts = posts.page(params[:page]).per(PER_PAGE)
+    @posts_select = Post.includes(:user, :likes).select_prefecture(params[:prefecture])
+    @posts = @posts_select.page(params[:page]).per(PER_PAGE)
     @post_display = Post.prefectures.invert.transform_keys!(&:to_s).fetch(params[:prefecture])
   end
 

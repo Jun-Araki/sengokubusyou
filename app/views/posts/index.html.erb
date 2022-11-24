@@ -3,6 +3,7 @@
 <%= link_to ranks_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
   <i class="fa-solid fa-ranking-star"></i>&nbsp;<span>武将ランキング</span>
 <% end %>
+
 <%= link_to prefecture_posts_path, class: "btn btn-index btn-lg mx-2 my-2" do %>
   <i class="fa-solid fa-vihara"></i>&nbsp;<span>出身地で探す</span>
 <% end %>
@@ -35,7 +36,7 @@
 <% end %>
 
 <% if params[:initial].present? %>
-  <p>検索結果&nbsp;<%= Post.select_initial(params[:initial]).count %>件</p> 
+  <p>検索結果&nbsp;<%= @q_select.count %>件</p> 
 <% end %>
 
 <div class="row g-4 card-area">
