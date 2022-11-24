@@ -10,7 +10,7 @@
 
 <div class="m-auto">
   <% Post.initials.each do |v, k| %>
-    <%= link_to "#{v}", posts_path(initial: "#{k}"), class: "btn btn-furigana btn-lg" %>
+    <%= link_to v, posts_path(initial: k), class: "btn btn-furigana btn-lg" %>
   <% end %>
 </div>
 
@@ -27,8 +27,10 @@
 <% if params[:q] != nil %>
   <% if @q_result.present? %>
     <p>検索結果&nbsp;<%= @q_result.count %>件</p>
+
   <% else %>
     <p>検索に一致する武将がいません</p>
+    
     <%= link_to new_post_path, class: "btn btn-show-delete" do %>
       <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将の登録はこちら</span>
     <% end %>
