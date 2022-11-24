@@ -1,6 +1,6 @@
 <% if params[:prefecture].present? %>
   <h1><%= @post_display =%>の戦国武将</h1>
-  
+
   <p>検索結果&nbsp;<%= @posts.count %>件</p> 
 
   <section class="row g-4 card-area">
@@ -23,9 +23,9 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 1 && v <= 7 %>
-        <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{k}", prefecture_posts_path(prefecture: v) %></b>
-        </div>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+            <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -33,50 +33,60 @@
     <p class="mt-3">関東地方</p>
     <hr>
     <div class="row">
-      <% Post.prefectures.keys[7..13].each do |p| %>
-        <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{p}", prefecture_posts_path(prefecture: "#{p}") %></b>
-        </div>
+      <% Post.prefectures.each do |k, v| %>
+        <% if v >= 8 && v <= 14 %>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+            <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
     <p class="mt-3">中部地方</p>
     <hr>
     <div class="row">
-      <% Post.prefectures.keys[14..22].each do |p| %>
-        <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{p}", prefecture_posts_path(prefecture: "#{p}") %></b>
-        </div>
+      <% Post.prefectures.each do |k, v| %>
+        <% if v >= 15 && v <= 23 %>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+            <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
     <p class="mt-3">近畿地方</p>
     <hr>
     <div class="row">
-      <% Post.prefectures.keys[23..29].each do |p| %>
-        <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{p}", prefecture_posts_path(prefecture: "#{p}") %></b>
-        </div>
+      <% Post.prefectures.each do |k, v| %>
+        <% if v >= 24 && v <= 30 %>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+            <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
     <p class="mt-3">中国・四国地方</p>
     <hr>
     <div class="row">
-      <% Post.prefectures.keys[30..38].each do |p| %>
-        <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{p}", prefecture_posts_path(prefecture: "#{p}") %></b>
-        </div>
+      <% Post.prefectures.each do |k, v| %>
+        <% if v >= 31 && v <= 39 %>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+            <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
     <p class="mt-3">九州地方</p>
     <hr>
     <div class="row">
-      <% Post.prefectures.keys[39..45].each do |p| %>
-        <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
-          <b><%= link_to "#{p}", prefecture_posts_path(prefecture: "#{p}") %></b>
-        </div>
+      <% Post.prefectures.each do |k, v| %>
+        <% if v >= 40 && v <= 46 %>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+            <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
