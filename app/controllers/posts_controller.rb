@@ -61,11 +61,12 @@ class PostsController < ApplicationController
   def prefecture
     posts = Post.includes(:user, :likes).page(params[:page]).per(PER_PAGE)
 
-    @posts = if params[:prefecture].present?
-               posts.select_prefecture(params[:prefecture])
-             else
-               posts
-             end
+    if params[:prefecture].present?
+      @posts = posts.select_prefecture(params[:prefecture])
+      @post_display = Post.prefectures.invert.transform_keys!(&:to_s).fetch(params[:prefecture])
+    else
+      @posts = posts
+    end
   end
 
   def ranks; end

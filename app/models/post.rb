@@ -37,8 +37,4 @@ class Post < ApplicationRecord
   def self.select_prefecture(prefecture)
     where(prefecture:)
   end
-
-  def self.display_prefecture(prefecture)
-    prefectures.invert.fetch(prefecture:)
-  end
 end
