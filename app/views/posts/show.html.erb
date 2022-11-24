@@ -9,7 +9,7 @@
       <div class="px-5">
         <font size="4">
         <p class="text-start"><%= @post.commentary %></p>
-        <p>出身地：<%= link_to @post.prefecture, prefecture_posts_path(prefecture: @post.prefecture) %></p>
+        <p>出身地：<%= link_to @post.prefecture, prefecture_posts_path(prefecture: @post_prefecture) %></p>
         <p>作成者：
           <% if @post.user.nickname.present? %>
             <%= link_to @post.user.nickname, user_path(@post.user.id) %>

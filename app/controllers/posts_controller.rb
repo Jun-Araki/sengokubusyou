@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   def show
     if Post.exists?(params[:id])
       @post = Post.find(params[:id])
+      @post_prefecture = Post.prefectures.fetch(@post.prefecture)
       @comments = @post.comments
       @comment = current_user.comments.new if user_signed_in?
     else
