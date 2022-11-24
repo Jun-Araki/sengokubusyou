@@ -12,6 +12,16 @@ class Post < ApplicationRecord
   validates :commentary, presence: true
   mount_uploader :image, ImageUploader, uniqueness: true
 
+  scope :add_is_liked, lambda { |user|
+                         join_query = <<~SQL.squish
+                           LEFT OUTER JOIN likes ON likes.post_id = #{table_name}.id
+                                                 AND likes.user_id = #{user.id}
+                         SQL
+
+                         joins(join_query).select(select_values.blank? && "#{table_name}.*",
+                                                  "likes.user_id IS NOT NULL AS is_liked")
+                       }
+
   def liked_by?(user)
     likes.any? { |like| like.user_id == user.id }
   end

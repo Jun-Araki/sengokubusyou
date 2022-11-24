@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @q_result = @q.result.includes(:user, :likes).order(kana: :asc)
+    @q_result = @q.result.includes(:user).add_is_liked(current_user).order(kana: :asc)
 
     if params[:initial].present?
       @q_select = @q_result.select_initial(params[:initial])
