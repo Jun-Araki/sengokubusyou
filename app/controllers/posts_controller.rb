@@ -65,8 +65,8 @@ class PostsController < ApplicationController
   def prefecture
     return if params[:prefecture].blank?
 
-    @posts_select = Post.includes(:user, :likes).select_prefecture(params[:prefecture])
-    @posts = @posts_select.page(params[:page]).per(PER_PAGE)
+    @posts_select = Post.select_prefecture(params[:prefecture])
+    @posts = @posts_select.includes(:likes).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
     @post_display = Post.prefectures.invert.transform_keys!(&:to_s).fetch(params[:prefecture])
   end
 
