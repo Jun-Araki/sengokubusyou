@@ -1,7 +1,7 @@
 <% if params[:prefecture].present? %>
   <h1><%= @post_display =%>の戦国武将</h1>
 
-  <p>検索結果&nbsp;<%= @posts.count %>件</p> 
+  <p>検索結果&nbsp;<%= @posts_count %>件</p> 
 
   <section class="row g-4 card-area">
     <%= render @posts %>
