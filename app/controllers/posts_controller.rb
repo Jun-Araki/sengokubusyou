@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     if Post.exists?(params[:id])
       @post = Post.find(params[:id])
       @post_prefecture = Post.prefectures.fetch(@post.prefecture)
-      @comments = @post.comments
+      @comments = @post.comments.includes(:user, :post)
       @comment = current_user.comments.new if user_signed_in?
     else
       render "not_exists"
