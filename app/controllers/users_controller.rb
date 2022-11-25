@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
-  before_action :set_user
+  before_action :set_user, except: :show
   before_action :set_likes, only: %i[likes comments]
 
   PER_PAGE = 12
 
   def show
-    @user_posts = @user.posts
-    @posts = @user.posts.includes(:user).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      @user_posts = @user.posts
+      @posts = @user.posts.includes(:user).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
+    else
+      render "not_exists"
+    end
   end
 
   def likes
