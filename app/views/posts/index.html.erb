@@ -24,21 +24,16 @@
   </div>
 <% end %>
 
-<% if params[:q] != nil %>
-  <% if @q_result.present? %>
-    <p>検索結果&nbsp;<%= @q_result.count %>件</p>
+<% if (params[:q] != nil && @posts_match.present?) || params[:initial].present? %>
+    <p>検索結果&nbsp;<%= @posts_match.count %>件</p>
 
-  <% else %>
+  <% elsif params[:q] != nil %>
     <p>検索に一致する武将がいません</p>
     
     <%= link_to new_post_path, class: "btn btn-show-delete" do %>
       <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将の登録はこちら</span>
     <% end %>
-  <% end %>
-<% end %>
-
-<% if params[:initial].present? %>
-  <p>検索結果&nbsp;<%= @q_select.count %>件</p> 
+  <% else %>
 <% end %>
 
 <div class="row g-4 card-area">
