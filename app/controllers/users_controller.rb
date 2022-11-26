@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.following.includes(:active_relationships)
+    @users = @user.following
   end
 
   def followers
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.includes(:active_relationships).find(params[:id])
   end
 
   def set_likes
