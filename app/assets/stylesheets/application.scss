@@ -3,11 +3,39 @@
  *= require_self
  */
 
-@import 'bootstrap/scss/bootstrap';
-
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/regular';
+@import 'bootstrap/scss/bootstrap';
+
+//共通
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+footer {
+  background-color: #991c1c;
+  color: white;
+}
+
+.base-container {
+  @extend .container-fluid;
+  max-width: var(--breakpoint-lg);
+  padding: 30px 15px;
+}
 
 div.field_with_errors {
   display: contents;
@@ -17,60 +45,58 @@ div.field_with_errors {
   }
 }
 
-.base-container {
-  @extend .container-fluid;
-  max-width: var(--breakpoint-lg);
-  padding: 30px 15px;
-  background-color: rgba(0, 0, 0, 0.03);
+.navbar-sengoku {
+  background-color: #991c1c;
+  padding-left: 20px;
 }
 
-//カード
-.card-post {
-  text-align: center;
-  position: relative;
-  border-top: 4px solid #b28e5f;
-  border-bottom: 4px solid #b28e5f;
-  border-left: 2px solid #b28e5f;
-  border-right: 2px solid #b28e5f;
+.navbar-image {
+  width: 30px;
+  height: 20px;
 }
 
-.card-post-title {
+h1,
+h2,
+h3 {
+  margin-bottom: 20px;
+}
+
+.background-white {
+  background-color: white;
   padding: 20px;
-  font-size: 20px;
-  font-family: serif;
-  color: white;
-  background: #b28e5f;
 }
 
-.card-post-text {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  height: 72px;
+.pagination {
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.card-show {
-  max-width: 600px;
-  margin: 5px auto;
+.alert,
+.alert-notice,
+.alert-alert {
+  text-align: start;
 }
 
-.card-top {
-  position: relative;
-  border: 2px solid #b28e5f;
+.alert-notice {
+  @extend .alert-success;
 }
 
-//カードend
+.alert-alert {
+  @extend .alert-danger;
+}
+
+//共通end
 
 //ボタン
-.btn {
+.btn,
+.btn:hover,
+.btn:active {
+  color: white !important;
   font-family: serif;
-  color: white;
 }
 
 .btn:hover,
 .btn:active {
-  color: white !important;
   opacity: 0.6;
 }
 
@@ -124,15 +150,15 @@ div.field_with_errors {
 .btn-furigana:hover,
 .btn-furigana:active {
   background-color: #a9974e;
-  outline: 1px solid rgb(255, 255, 255);
+  outline: solid 1px rgb(255, 255, 255);
   outline-offset: -4px;
   border-radius: 0%;
   margin: 20px 10px 0 10px;
 }
 
-.btn-gest,
-.btn-gest:hover,
-.btn-gest:active {
+.btn-guest,
+.btn-guest:hover,
+.btn-guest:active {
   background-color: #c92121 !important;
   border: solid 1px #991c1c;
   width: 100%;
@@ -140,7 +166,6 @@ div.field_with_errors {
 
 .btn-prefecture {
   font-size: large;
-  margin: auto;
 }
 
 .btn-search,
@@ -166,6 +191,11 @@ div.field_with_errors {
   border-radius: 20px;
 }
 
+.btn-follow-unfollow {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .btn-info,
 .btn-info:hover,
 .btn-info:active {
@@ -176,12 +206,81 @@ div.field_with_errors {
 }
 //ボタンend
 
-//ページエリア
+//武将
+.card-post {
+  border-top: solid 4px #b28e5f;
+  border-bottom: solid 4px #b28e5f;
+  border-left: solid 2px #b28e5f;
+  border-right: solid 2px #b28e5f;
+}
+
+.card-post-title {
+  padding: 20px;
+  font-size: 20px;
+  font-family: serif;
+  color: white;
+  background: #b28e5f;
+}
+
+.card-post-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  height: 72px;
+}
+//武将end
+
+//ユーザー
+.form-post-user {
+  max-width: 400px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.form-area {
+  height: 110px;
+  width: 100%;
+}
+
+.form-icon {
+  margin: auto;
+}
+
+.user-show {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.user-img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+}
+
+.user-img-thumb {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+//ユーザーend
+
+//投稿一覧・出身地
 .prefecture-area,
 .card-area {
   max-width: 1200px;
   margin: auto;
-  text-align: center !important;
+}
+
+//投稿詳細
+.post-show-area {
+  max-width: 600px;
+  margin: 5px auto;
 }
 
 //検索フォーム
@@ -201,7 +300,6 @@ input[type='search'] {
   font-size: 30px;
   font-weight: bold;
   -webkit-text-stroke: 1px #b28e5f;
-  text-stroke: 1px #b28e5f;
 }
 
 .rank-1 {
@@ -217,84 +315,8 @@ input[type='search'] {
 }
 
 //コメント
-.comment {
-  max-width: 600px;
-  margin: 5px auto;
-}
-
 .comment-content {
   margin-left: 60px;
-}
-
-//ページネーション
-.pagination li a {
-  margin-top: 20px;
-}
-
-//フラッシュ
-.alert {
-  margin: auto;
-}
-
-.alert-notice {
-  @extend .alert-success;
-}
-
-.alert-alert {
-  @extend .alert-danger;
-}
-
-//ユーザ関連
-.form-post-user {
-  max-width: 400px;
-  margin: auto;
-}
-
-.form-group {
-  margin-bottom: 40px;
-}
-
-.form-area {
-  height: 100px;
-  width: 100%;
-}
-
-.form-icon {
-  margin: auto;
-}
-
-.form-group-login {
-  margin-bottom: 10px !important;
-}
-
-.user-show {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.user-show-name {
-  margin-left: 8px;
-}
-
-//画像
-.user-img {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 150px;
-  height: 150px;
-}
-
-.user-img-thumb {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 50px;
-  height: 50px;
-}
-
-//ボディ
-.background-white {
-  background-color: white;
-  padding: 20px;
 }
 
 //トップページ
@@ -315,11 +337,9 @@ input[type='search'] {
 .top-page-area {
   max-width: 1000px;
   margin: auto;
-  text-align: center !important;
 }
 
 .top-image {
-  text-align: center;
   width: 100%;
   height: 500px;
   object-fit: cover;
@@ -342,7 +362,6 @@ input[type='search'] {
 }
 
 .catch-copy img {
-  text-align: center;
   width: 100%;
   height: 500px;
   object-fit: cover;
@@ -358,33 +377,7 @@ li {
   text-align: left;
 }
 
-//ナビバー
-.navbar-sengoku {
-  background-color: #991c1c;
-  padding-left: 20px;
+.card-top {
+  border: solid 2px #b28e5f;
 }
-
-.navbar-image {
-  width: 30px;
-  height: 20px;
-}
-
-//見出し
-h1,
-h2,
-h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-// フッター
-.footer {
-  background-color: #991c1c;
-  color: white;
-  padding: 3px;
-}
-
-//全体
-a {
-  text-decoration: none;
-}
+//トップページend

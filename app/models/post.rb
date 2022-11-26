@@ -6,22 +6,32 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }, uniqueness: true# rubocop:disable all
-  validates :furigana_name, presence: true
-  validates :furigana_initial, presence: true
-  validates :prefecture_name, presence: true
+  validates :kana, presence: true
+  validates :initial, presence: true
+  validates :prefecture, presence: true
   validates :commentary, presence: true
   mount_uploader :image, ImageUploader, uniqueness: true
+
+  scope :add_is_liked, lambda { |user|
+                         join_query = <<~SQL.squish
+                           LEFT OUTER JOIN likes ON likes.post_id = #{table_name}.id
+                                                 AND likes.user_id = #{user.id}
+                         SQL
+
+                         joins(join_query).select(select_values.blank? && "#{table_name}.*",
+                                                  "likes.user_id IS NOT NULL AS is_liked")
+                       }
 
   def liked_by?(user)
     likes.any? { |like| like.user_id == user.id }
   end
 
-  enum furigana_initial: {
+  enum initial: {
     あ行: 1, か行: 2, さ行: 3, た行: 4, な行: 5,
     は行: 6, ま行: 7, や行: 8, ら行: 9, わ行: 10
   }
 
-  enum prefecture_name: {
+  enum prefecture: {
     北海道: 1, 青森県: 2, 岩手県: 3, 宮城県: 4, 秋田県: 5, 山形県: 6, 福島県: 7,
     茨城県: 8, 栃木県: 9, 群馬県: 10, 埼玉県: 11, 千葉県: 12, 東京都: 13, 神奈川県: 14,
     新潟県: 15, 富山県: 16, 石川県: 17, 福井県: 18, 山梨県: 19, 長野県: 20, 岐阜県: 21, 静岡県: 22, 愛知県: 23,
@@ -30,11 +40,11 @@ class Post < ApplicationRecord
     福岡県: 40, 佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46
   }
 
-  def self.select_furigana_initial(furigana_initial)
-    where(furigana_initial:)
+  def self.select_initial(initial)
+    where(initial:)
   end
 
-  def self.select_prefecture_name(prefecture_name)
-    where(prefecture_name:)
+  def self.select_prefecture(prefecture)
+    where(prefecture:)
   end
 end

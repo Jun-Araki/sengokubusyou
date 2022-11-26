@@ -5,7 +5,7 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.hidden_field :reset_password_token %>
 
-    <div class="form-group form-group-login row">
+    <div class="form-group mb-2 row">
       <div class="col-sm-1 form-icon">
         <%= f.label :password do %>
           <i class="fa-solid fa-lock"></i>
@@ -28,9 +28,7 @@
       </div>
     </div>
 
-    <div class="btn actions text-center">
-      <%= f.submit t('.change_my_password') %>
-    </div>
+    <%= f.submit t('.change_my_password') %>
   <% end %>
 
   <hr>

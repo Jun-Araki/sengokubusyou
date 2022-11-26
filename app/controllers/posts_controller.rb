@@ -6,19 +6,25 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @q_result = @q.result.includes(:user, :likes).order(furigana_name: :asc).page(params[:page]).per(PER_PAGE)
 
-    @posts = if params[:furigana_initial].present?
-               @q_result.select_furigana_initial(params[:furigana_initial])
-             else
-               @q_result
-             end
+    @posts_match = if params[:initial].present?
+                     Post.select_initial(params[:initial])
+                   else
+                     @q.result
+                   end
+
+    @posts = @posts_match.includes(:user).add_is_liked(current_user).order(kana: :asc).page(params[:page]).per(PER_PAGE)
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments
-    @comment = current_user.comments.new if user_signed_in?
+    if Post.exists?(params[:id])
+      @post = Post.find(params[:id])
+      @post_prefecture = Post.prefectures.fetch(@post.prefecture)
+      @comments = @post.comments.includes(:user, :post)
+      @comment = current_user.comments.new if user_signed_in?
+    else
+      render "not_exists"
+    end
   end
 
   def new
@@ -27,6 +33,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
+
     if @post.save
       redirect_to @post, notice: t("notice.post_create")
     else
@@ -48,25 +55,27 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to root_path, alert: t("alert.post_delete")
-  end
-
-  def ranks
-    @likes    = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
-    @comments = Post.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    flash.now[:alert] = t("alert.post_delete")
+    render "not_exists"
   end
 
   def prefecture
-    posts = Post.includes(:user, :likes).page(params[:page]).per(PER_PAGE)
+    return if params[:prefecture].blank?
 
-    @posts = if params[:prefecture_name].present?
-               posts.select_prefecture_name(params[:prefecture_name])
-             else
-               posts
-             end
+    @posts_select = Post.select_prefecture(params[:prefecture])
+    @posts = @posts_select.includes(:likes).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
+    @post_display = Post.prefectures.invert.transform_keys!(&:to_s).fetch(params[:prefecture])
   end
 
-  def top; end
+  def ranks
+    posts = Post.includes(:likes).add_is_liked(current_user)
+    @likes = posts.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @comments = posts.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+  end
+
+  def top
+    @likes = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+  end
 
   def info; end
 
@@ -77,6 +86,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :furigana_name, :furigana_initial, :prefecture_name, :commentary, :image)
+    params.require(:post).permit(:name, :kana, :initial, :prefecture, :commentary, :image)
   end
 end

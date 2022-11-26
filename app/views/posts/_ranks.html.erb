@@ -1,11 +1,5 @@
-<h2>いいね数</h2>
-<%= render "ranks" %>
-
-<br>
-<br>
-<h2>コメント数</h2>
 <div class="row rank-page background-white" >
-  <% @comments.each.with_index(1) do |post, i| %>
+  <% @likes.each.with_index(1) do |post, i| %>
     <%= render partial: "ranks_common", locals: {post: post, i: i} %>
   <% end %>
 </div>

@@ -1,5 +1,5 @@
 <section class="form-post-user background-white">
-  <h4 class="text-center mb-5"><%= t('.forgot_your_password') %></h4>
+  <h3><%= t('.forgot_your_password') %></h3>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>

@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="form-group form-group-login row">
+    <div class="form-group mb-2 row">
       <div class="col-1 form-icon">
         <%= f.label :password do %>
           <i class="fa-solid fa-lock"></i>
@@ -27,18 +27,18 @@
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field form-group text-center">
+      <div class="field form-group">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
     <% end %>
 
     <%= button_tag type: 'submit', class: 'btn btn-regist form-group' do %>
-        <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;<span>ログイン</span>
+      <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;<span>ログイン</span>
     <% end %>
 
-    <%= link_to users_guest_sign_in_path, class: "btn btn-gest form-group", method: :post do %>
-    <i class="fa-solid fa-right-to-bracket"></i></i>&nbsp;<span>ゲストログイン（登録なしでログイン）</span>
+    <%= link_to users_guest_sign_in_path, class: "btn btn-guest form-group", method: :post do %>
+      <i class="fa-solid fa-right-to-bracket"></i></i>&nbsp;<span>ゲストログイン（登録なしでログイン）</span>
     <% end %>
   <% end %>
 

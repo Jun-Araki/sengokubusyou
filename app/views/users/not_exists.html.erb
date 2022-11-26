@@ -1,0 +1,11 @@
+<section class="top-page-area">
+  <h3 class="mt-5">ユーザーが存在しません</h3>
+
+  <%= image_tag "busyou_login.png", width: "200", height: "280", class: "mb-5" %>
+  <br>
+
+  <%= link_to user_path(current_user), class: "btn btn-show-delete btn-lg" do %>
+    <i class="fa-regular fa-user"></i>&nbsp;<span>マイページに戻る</span>
+  <% end %>
+  <br>
+</section>
