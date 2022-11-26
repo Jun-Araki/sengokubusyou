@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.following
+    @users = @user.following.includes(:active_relationships)
   end
 
   def followers
