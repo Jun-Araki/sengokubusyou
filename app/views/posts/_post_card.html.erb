@@ -12,14 +12,17 @@
       <% end %>
   <% end %>
 
-      <p id="post-<%= post.id %>" >
-        <% if user_signed_in? %>
-          <% if post.is_liked %>
-            <%= render "posts/like", post: post %>
-          <% else %>
-            <%= render "posts/dislike", post: post %>
-          <% end %>              
-        <% end %>
-      </p>
+      <% unless @comments.present? %>
+        <p id="post-<%= post.id %>" >
+          <% if user_signed_in? %>
+            <% if post.is_liked %>
+              <%= render "posts/like", post: post %>
+            <% else %>
+              <%= render "posts/dislike", post: post %>
+            <% end %>              
+          <% end %>
+        </p>
+      <% end %>
+      <%= post.comments_count %>
     </div>
 </div>

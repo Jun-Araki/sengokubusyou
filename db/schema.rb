@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 2022_11_14_021649) do
     t.integer "initial"
     t.integer "prefecture"
     t.string "commentary"
-    t.string "image"
     t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
     t.bigint "user_id"
     t.index ["name"], name: "index_posts_on_name"
     t.index ["user_id"], name: "index_posts_on_user_id"
