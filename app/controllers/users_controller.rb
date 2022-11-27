@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user
-  before_action :set_user, except: :show
+  before_action :set_user, only: %i[likes comments]
   before_action :set_likes, only: %i[likes comments]
 
   PER_PAGE = 12
@@ -32,11 +32,14 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.following.includes(:active_relationships)
+    @user = User.find(params[:id])
+    @users = User.includes(:active_relationships,
+                           active_relationships: :followed).find(params[:id]).following
+    # @users = @user.following.includes(:passive_relationships, passive_relationships: %i[followed follower])
   end
 
   def followers
-    @users = @user.followers
+    @users = @user.followers.includes(:passive_relationships, passive_relationships: %i[followed follower])
   end
 
   private

@@ -29,6 +29,7 @@ main {
 footer {
   background-color: #991c1c;
   color: white;
+  text-align: center;
 }
 
 .base-container {
@@ -50,9 +51,8 @@ div.field_with_errors {
   padding-left: 20px;
 }
 
-.navbar-image {
-  width: 30px;
-  height: 20px;
+.nav-btn {
+  justify-content: end;
 }
 
 h1,

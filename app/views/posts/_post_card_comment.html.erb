@@ -10,16 +10,12 @@
       <%= link_to post, class: "btn btn-show-delete" do %>
         <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細を見る</span>
       <% end %>
-  <% end %>
 
-      <% if user_signed_in? %>
-        <p id="post-<%= post.id %>" >
-          <% if post.is_liked %>
-            <%= render "posts/like", post: post %>
-          <% else %>
-            <%= render "posts/dislike", post: post %>
-          <% end %>   
-        </p>
-      <% end %>
+      <p>
+        <%= link_to post_path(post) do %>
+          <i class="fa-solid fa-message"></i>&nbsp;<%= post.comments_count %>
+        <% end %>
+      </p>
+  <% end %>
     </div>
 </div>
