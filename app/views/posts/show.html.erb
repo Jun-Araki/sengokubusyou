@@ -29,11 +29,12 @@
         
         <% if current_user.id == @post.user_id %>
           <%= link_to edit_post_path(@post), class: "btn btn-edit" do %>
-            <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集</span>
+            <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集する</span>
           <% end %>
+          <br>
 
           <%= link_to post_path(@post), class: "btn btn-show-delete", method: :delete, data: { confirm: "削除しますか？" } do %>
-            <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除</span>
+            <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除する</span>
           <% end %>
         <% end %>
       <% end %>
