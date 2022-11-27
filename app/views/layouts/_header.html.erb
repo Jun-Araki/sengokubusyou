@@ -1,11 +1,11 @@
 <nav class="navbar navbar-sengoku navbar-expand-md navbar-dark fixed-top">
   <div class="container-fluid">
     <% if user_signed_in? %>
-      <%= link_to posts_path, class: "navbar-brand" do %>
+      <%= link_to posts_path, class: "navbar-brand catch-copy" do %>
         <i class="fas fa-home"></i>&nbsp;<span>みんなの戦国武将</span>
       <% end %>
     <% else %>
-      <%= link_to top_posts_path, class: "navbar-brand" do %>
+      <%= link_to top_posts_path, class: "navbar-brand catch-copy" do %>
         <i class="fas fa-home"></i>&nbsp;<span>みんなの戦国武将</span>
       <% end %>
     <% end %>

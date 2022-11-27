@@ -36,7 +36,13 @@
     </div>
     
     <%= button_tag type: 'submit', class: 'btn btn-regist form-group' do %>
-      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将登録</span>
+      <i class="fa-regular fa-square-plus"></i>&nbsp;<%= button_value %>
     <% end %>
   <% end %>
+
+<% if title == "編集" %>
+  <%= link_to post_path, class: "btn btn-index form-group w-100 mb-3" do %>
+    武将詳細に戻る
+  <% end %>
+<% end %>
 </div>
