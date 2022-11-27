@@ -1,24 +1,51 @@
-# README
+# みんなの戦国武将
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- アプリケーション → https://sengokubusyou.herokuapp.com/
+- Qiita → https://qiita.com/TS1engineer
+- Twitter → https://twitter.com/TS1engineer
 
-Things you may want to cover:
+# 概要
 
-* Ruby version
+# 開発背景
 
-* System dependencies
+# 開発環境
 
-* Configuration
+## 使用技術
 
-* Database creation
+| 主な言語 | Ruby 3.1.2 |
+| フレームワーク | Ruby on Rails 6.1.7 |
+| フロントエンド | HTML/scss/JavaScript |
+| データベース | PostgreSQL |
+| コード解析 | RuboCop |
+| ソースコード管理 | GitHub |
+| インフラ | Heroku/AWS(S3) |
 
-* Database initialization
+## ER 図
 
-* How to run the test suite
+<%= image_tag "erzu.png", width: 360, height: 270 %>
 
-* Services (job queues, cache servers, search engines, etc.)
+## 画面遷移図
 
-* Deployment instructions
+<%= image_tag "gamensenizu.png", width: 360, height: 270 %>
 
-* ...
+# 機能一覧
+
+| ログイン関連 | ログイン、ゲストログイン、ログアウト、パスワード再設定メール送信 |
+| ユーザー関連| 登録、編集、削除 |
+| 武将検索 | 名前検索、50 音検索、出身地検索 |
+| 武将登録 | 登録、編集、削除 |
+| いいね | 武将にいいねできる |
+| コメント | 武将にコメントできる |
+| ランキング | いいね数ランキング、コメント数ランキング |
+| フォロー | ユーザーのフォロー、アンフォロー |
+| マイページ | 登録・いいね・コメントした武将一覧、フォロー・フォロワー一覧 |
+
+## 使い方
+
+### 武将検索（50 音）
+
+### 武将検索（出身地）
+
+### マイページ
+
+# 工夫した点
