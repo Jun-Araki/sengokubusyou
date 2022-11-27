@@ -17,7 +17,6 @@ class Post < ApplicationRecord
                            LEFT OUTER JOIN likes ON likes.post_id = #{table_name}.id
                                                  AND likes.user_id = #{user.id}
                          SQL
-
                          joins(join_query).select(select_values.blank? && "#{table_name}.*",
                                                   "likes.user_id IS NOT NULL AS is_liked")
                        }

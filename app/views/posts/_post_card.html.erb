@@ -12,14 +12,14 @@
       <% end %>
   <% end %>
 
-      <p id="post-<%= post.id %>" >
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <p id="post-<%= post.id %>" >
           <% if post.is_liked %>
             <%= render "posts/like", post: post %>
           <% else %>
             <%= render "posts/dislike", post: post %>
-          <% end %>              
-        <% end %>
-      </p>
+          <% end %>   
+        </p>
+      <% end %>
     </div>
 </div>
