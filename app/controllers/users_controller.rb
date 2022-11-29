@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers.includes(:active_relationships)
+    @users = @user.followers.includes(:passive_relationships)
   end
 
   private
