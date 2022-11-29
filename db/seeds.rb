@@ -1,31 +1,34 @@
-User.create!(email: "test1@example.com", password: "password", nickname: "さな丸",
+User.create!(email: "jun1@gmail.com", password: "password", nickname: "さな丸",
              profile: "真田幸村が大好きで、上田城などの史跡をめぐっています。戦国武将について語りたいので、ぜひよろしくお願いします。",
              user_image: File.open("db/fixtures/Sanada_Yukimura.jpg"), twitter: "TS1engineer")
-User.create!(email: "guest@example.com", password: "password", nickname: "guest", profile: "よろしくお願いします。")
-User.create!(email: "test2@example.com", password: "password", nickname: "大江戸",
+User.create!(email: "guest@gmail.com", password: "password", nickname: "guest", profile: "よろしくお願いします。")
+User.create!(email: "jun2@gmail.com", password: "password", nickname: "大江戸",
              profile: "主に関東を中心に歴史巡りをしています。最近はコロナもあって遠出できていないので、ここで情報を集めていきたいと思っています。よろしくお願いします。",
              user_image: File.open("db/fixtures/hugaku.jpeg"))
-User.create!(email: "test3@example.com", password: "password", nickname: "刀",
+User.create!(email: "jun3@gmail.com", password: "password", nickname: "刀",
              profile: "刀剣乱舞の影響で日本刀に興味を持ち、そこから戦国武将にも興味を持ちました。みなさんと楽しく交流できたらいいなと思っています。",
              user_image: File.open("db/fixtures/katana.jpg"))
-User.create!(email: "test4@example.com", password: "password", nickname: "風来坊",
+User.create!(email: "jun4@gmail.com", password: "password", nickname: "風来坊",
              profile: "現在、日本全国を旅しながら、各地の歴史や文化について学んでいるものです。実際に足を運んでみることで初めてわかることも数多く、そうした点を共有していきたいと持っています。",
              user_image: File.open("db/fixtures/huurai.png"))
-User.create!(email: "test5@example.com", password: "password", nickname: "独眼竜",
+User.create!(email: "jun5@gmail.com", password: "password", nickname: "独眼竜",
              profile: "仙台出身で伊達政宗が大好きです。現在は地元を離れていて、周りに歴史好きがいないので、ぜひよろしくお願いします。",
              user_image: File.open("db/fixtures/date.png"))
-User.create!(email: "test6@example.com", password: "password", nickname: "利休",
+User.create!(email: "jun6@gmail.com", password: "password", nickname: "利休",
              profile: "大学時代に茶道を学んだ影響で千利休に興味があります。その千利休は多くの戦国武将に重宝されました。ここでも多くの人との関わりの中で、貴重な交流を図っていきたいです。",
              user_image: File.open("db/fixtures/sadou.png"))
-User.create!(email: "test7@example.com", password: "password", nickname: "雅",
+User.create!(email: "jun7@gmail.com", password: "password", nickname: "雅",
              profile: "京都の大学に通っていたため、寺や神社などに興味を持っています。寺や神社は戦勝祈願にも使われるほど戦国武将と深い関わりがあり、自然と戦国武将にも興味を持ち始めました。よろしくお願いします。",
              user_image: File.open("db/fixtures/kyouto.png"))
-User.create!(email: "test8@example.com", password: "password", nickname: "足軽",
+User.create!(email: "jun8@gmail.com", password: "password", nickname: "足軽",
              profile: "最近歴史に興味を持った者です。歴史の勉強をしながら、学んだことをアウトプットしていきたいと思います。よろしくお願いします。",
              user_image: File.open("db/fixtures/asigaru.png"))
-User.create!(email: "test9@example.com", password: "password", nickname: "鉄砲隊",
+User.create!(email: "jun9@gmail.com", password: "password", nickname: "鉄砲隊",
              profile: "戦国武将の戦いに興味をもっている者です。鉄砲3段打ちなどで戦国最強の武田軍を撃退した「長篠の戦い」は非常に関心があります。その他、ここでしか話せない細かい話もしていきたいと思っています。",
              user_image: File.open("db/fixtures/teppou.png"))
+User.create!(email: "jun10@gmail.com", password: "password", nickname: "下剋上",
+             profile: "下剋上で成り上がった豊臣秀吉などの武将が好きです。これまでの官位によるものではなく、本当の力で築き上げた武将に魅力を感じています。よろしくお願いします。",
+             user_image: File.open("db/fixtures/kattyuu.png"))
 
 require "csv"
 
@@ -64,13 +67,13 @@ end
   Like.create!(post_id: i, user_id: 1)
 end
 
-2.upto(10) do |i|
+2.upto(11) do |i|
   Relationship.create!(follower_id: 1, followed_id: i)
 end
-2.upto(10) do |i|
+2.upto(11) do |i|
   Relationship.create!(follower_id: i, followed_id: 1)
 end
-3.upto(10) do |i|
+3.upto(11) do |i|
   Relationship.create!(follower_id: 2, followed_id: i)
 end
 
