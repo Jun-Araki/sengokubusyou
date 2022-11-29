@@ -37,13 +37,12 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @users = User.includes(:active_relationships,
-                           active_relationships: :followed).find(params[:id]).following
-    # @users = @user.following.includes(:passive_relationships, passive_relationships: %i[followed follower])
+    @users = @user.following.includes(:passive_relationships)
   end
 
   def followers
-    @users = @user.followers.includes(:passive_relationships, passive_relationships: %i[followed follower])
+    @user = User.find(params[:id])
+    @users = @user.followers.includes(:active_relationships)
   end
 
   private
