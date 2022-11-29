@@ -59,7 +59,13 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-regist form-group">更新</button>
+    <button type="submit" class="btn btn-regist mb-3">
+      <i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;更新
+    </button>
+
+    <%= link_to user_path(current_user), class: "btn btn-index w-100 mb-4" do %>
+      <i class="fa-regular fa-user"></i>&nbsp;<span>マイページに戻る</span>
+    <% end %>
   <% end %>
 
   <%= link_to t('.cancel_my_account'), registration_path(resource_name), class: "form-group text-center", data: { confirm: t('.are_you_sure') }, method: :delete %>

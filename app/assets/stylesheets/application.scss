@@ -175,6 +175,12 @@ h3 {
   color: rgba(0, 110, 255, 0.917) !important;
 }
 
+.btn-search-post,
+.btn-search-post:hover,
+.btn-search-post:active {
+  width: 210px;
+}
+
 .btn-unfollow,
 .btn-unfollow:hover,
 .btn-unfollow:active {
@@ -348,6 +354,7 @@ input[type='search'] {
 
 .catch-copy {
   position: relative;
+  font-family: serif;
 }
 
 .catch-copy h2 {

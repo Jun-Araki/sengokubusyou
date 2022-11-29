@@ -27,18 +27,16 @@
     <br>
 
     <% unless current_user?(@user) %>
-      <% if current_user.following?(@user) %>
-        <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
+      <% if @user.following?(current_user) %>
+        <%= form_with(model: @user.passive_relationships.find { |relationship| relationship.follower_id == current_user.id },
                     html: { method: :delete }, local: true) do |f| %>
           <%= f.submit "フォロー中", class: "btn btn-unfollow mb-1"  %>
         <% end %>
         
       <% else %>
         <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
-          <div class="follow-aside-btn">
-            <%= hidden_field_tag :followed_id, @user.id %>
-            <%= f.submit "フォロー", class: "btn btn-follow mb-1" %>
-          </div>
+          <%= hidden_field_tag :followed_id, @user.id %>
+          <%= f.submit "フォロー", class: "btn btn-follow mb-1" %>
         <% end %>
       <% end %>
     <% end %>
@@ -63,4 +61,5 @@
     <% end %>
     <br>
   </div>
+  <br>
 </aside>

@@ -1,7 +1,7 @@
 <section class="post-show-area">
   <div class="card card-post">
     <div class="card-title card-post-title">
-        <h4><%= @post.name %> &nbsp;&nbsp; <small><%= @post.kana %></small></h4>
+        <h4><%= @post.name %> &nbsp;<small><%= @post.kana %></small></h4>
     </div>
 
     <div class="card-body">
@@ -29,11 +29,12 @@
         
         <% if current_user.id == @post.user_id %>
           <%= link_to edit_post_path(@post), class: "btn btn-edit" do %>
-            <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集</span>
+            <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>編集する</span>
           <% end %>
+          <br>
 
           <%= link_to post_path(@post), class: "btn btn-show-delete", method: :delete, data: { confirm: "削除しますか？" } do %>
-            <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除</span>
+            <i class="fa-regular fa-trash-can"></i>&nbsp;<span>削除する</span>
           <% end %>
         <% end %>
       <% end %>
@@ -46,14 +47,14 @@
 
     <% if user_signed_in? %>
       <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-        <%= f.text_area :content, required: true, class: "form-area" %>
+        <%= f.text_area :content, required: true, class: "form-area form-control" %>
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= button_tag type: 'submit', class: 'btn btn-comment-post mt-3' do %>
           <i class="fa-solid fa-pen"></i>&nbsp;<span>コメントを書く</span>
         <% end %>
       <% end %>
-
+      
     <% else %>
       <p><b>コメントを書くにはログインが必要です</b></p>
 

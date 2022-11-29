@@ -35,8 +35,14 @@
       <%= form.file_field :image, class: "form-control", accept: "image/png,image/jpeg,image/gif" %>
     </div>
     
-    <%= button_tag type: 'submit', class: 'btn btn-regist form-group' do %>
-      <i class="fa-regular fa-square-plus"></i>&nbsp;<span>武将登録</span>
+    <%= button_tag type: "submit", class: "btn btn-regist my-4" do %>
+      <%= button_value %>
+    <% end %>
+  <% end %>
+
+  <% if title == "編集" %>
+    <%= link_to post_path, class: "btn btn-index w-100 mb-3" do %>
+      <i class="fa-regular fa-user"></i>&nbsp;<span>武将詳細に戻る</span>
     <% end %>
   <% end %>
 </div>
