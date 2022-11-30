@@ -1,7 +1,5 @@
 # みんなの戦国武将
 
-top_image.png
-
 - アプリ → https://sengokubusyou.herokuapp.com/
 - Qiita → https://qiita.com/TS1engineer
 - Twitter → https://twitter.com/TS1engineer
@@ -9,10 +7,10 @@ top_image.png
 
 # 1. 概要
 
-sengoku.jpg
-
 - **200 人以上の豊富な戦国武将の中から、好きな武将を見つけたり、登録することができます。**
 - **好きな武将にコメントを投稿することで、気の合う仲間とつながることができるアプリです。**
+
+![top_image](https://user-images.githubusercontent.com/105146615/204910630-1ec301e0-2701-43ca-bc03-8863a79f6f4d.png)
 
 # 2. 開発背景
 
@@ -46,12 +44,11 @@ sengoku.jpg
 | インフラ         | Heroku/AWS(S3)       |
 
 ## ER 図
-
-erzu.png
+![erzu](https://user-images.githubusercontent.com/105146615/204910877-4aff8843-c80e-4d43-8cc6-1f05d6b5c85a.png)
 
 ## 画面遷移図
 
-gamensenizu.png
+![gamensenizu](https://user-images.githubusercontent.com/105146615/204910902-a1c10f5d-8b67-4f37-8c00-2bba3276c4fa.png)
 
 # 4. 機能
 
@@ -73,15 +70,18 @@ gamensenizu.png
 
 ### 武将検索（50 音）
 
-.gif
+![index](https://user-images.githubusercontent.com/105146615/204918007-0e2f2fc2-5331-40ba-886a-d6a2aea3f146.gif)
+
 
 ### 武将検索（出身地）
 
-.gif
+![prefecture](https://user-images.githubusercontent.com/105146615/204918036-d40a3699-050d-4341-9916-2c82eb583395.gif)
+
 
 ### マイページ
 
-.gif
+![mypage](https://user-images.githubusercontent.com/105146615/204918063-db0e3c09-2096-424a-8db8-6df72d4487b9.gif)
+
 
 # 5. 工夫した点
 
