@@ -34,7 +34,7 @@
       </div>
       <div class="col-11">
         <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", 
-        placeholder: "パスワード#{t('devise.shared.minimum_password_length', count: @minimum_password_length)}", required: true %>
+        placeholder: "パスワード#{t('devise.shared.minimum_password_length', count: 6)}", required: true %>
       </div>
     </div>
 
