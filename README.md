@@ -48,7 +48,7 @@
 
 ## 画面遷移図
 
-![gamensenizu](https://user-images.githubusercontent.com/105146615/204910902-a1c10f5d-8b67-4f37-8c00-2bba3276c4fa.png)
+![gamensenizu](https://user-images.githubusercontent.com/105146615/205252286-3a8418e0-d705-4b3c-965c-90818c3ee370.png)
 
 # 4. 機能
 
