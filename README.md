@@ -1,11 +1,7 @@
 # みんなの戦国武将
 
-top_image.png
-
-- アプリ
-  https://sengokubusyou.herokuapp.com/
-- Qiita
-  https://qiita.com/TS1engineer
+- アプリ → https://sengokubusyou.herokuapp.com/
+- Qiita → https://qiita.com/TS1engineer
 
 # 1. 概要
 
