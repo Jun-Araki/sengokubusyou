@@ -14,7 +14,7 @@
 
 ## 歴史が大好き
 
-2016 年大河ドラマ「真田丸」をきっかけに歴史に興味をもち、歴史の本を購入したりする中で、実際に現地に行くことが趣味になりました。  
+2016 年大河ドラマ「真田丸」をきっかけに歴史に興味をもち、歴史の本を購入したりする中で、実際に現地に行くことが趣味になりました。。  
 中でも戦国武将について調べることが日課となっていて、特に気になる武将がいれば、ゆかりの地を巡ったりしています。
 
 ## 歴史を通じて交流がしたい
@@ -42,6 +42,7 @@
 | インフラ         | Heroku/AWS(S3)       |
 
 ## ER 図
+
 ![erzu](https://user-images.githubusercontent.com/105146615/204910877-4aff8843-c80e-4d43-8cc6-1f05d6b5c85a.png)
 
 ## 画面遷移図
@@ -70,16 +71,13 @@
 
 ![index](https://user-images.githubusercontent.com/105146615/204918007-0e2f2fc2-5331-40ba-886a-d6a2aea3f146.gif)
 
-
 ### 武将検索（出身地）
 
 ![prefecture](https://user-images.githubusercontent.com/105146615/204918036-d40a3699-050d-4341-9916-2c82eb583395.gif)
 
-
 ### マイページ
 
 ![mypage](https://user-images.githubusercontent.com/105146615/204918063-db0e3c09-2096-424a-8db8-6df72d4487b9.gif)
-
 
 # 5. 工夫した点
 
