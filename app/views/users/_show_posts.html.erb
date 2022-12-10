@@ -6,9 +6,7 @@
       <h2><%= title %>した武将</h2>
 
       <% if @posts.present? %>
-          <font size="4">
-            <b>武将数:&nbsp;</b><%= @user_posts.count %>
-          </font>
+        武将数:&nbsp;<b><%= @user_posts.count %></b>名
           
         <div class="row g-4 m-auto">
           <%= render partial: "post", collection: @posts %>
