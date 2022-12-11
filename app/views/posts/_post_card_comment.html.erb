@@ -10,12 +10,11 @@
       <%= link_to post, class: "btn btn-show-delete" do %>
         <i class="fas fa-envelope-open-text"></i>&nbsp;<span>詳細を見る</span>
       <% end %>
+      <br>
 
-      <p>
-        <%= link_to post_path(post) do %>
-          <i class="fa-solid fa-message"></i>&nbsp;<%= post.comments_count %>
-        <% end %>
-      </p>
+      <%= link_to post_path(post), class: "comments-count" do %>
+        <i class="fa-solid fa-message"></i>&nbsp;<%= post.comments_count %>
+      <% end %>
   <% end %>
     </div>
 </div>

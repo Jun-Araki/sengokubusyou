@@ -25,7 +25,7 @@
 <% end %>
 
 <% if (params[:q] != nil && @posts_match.present?) || params[:initial].present? %>
-    <p>検索結果&nbsp;<%= @posts_match.count %>件</p>
+    <p>武将数:&nbsp;<b><%= @posts_match.count %></b>名</p>
 
   <% elsif params[:q] != nil %>
     <p>検索に一致する武将がいません</p>
