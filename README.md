@@ -1,14 +1,13 @@
 # みんなの戦国武将
 
 - アプリ → https://sengokubusyou.herokuapp.com/
-- Qiita → https://qiita.com/TS1engineer
+- Qiita → https://qiita.com/TS1engineer/items/7a5b5d33903d73992c49
 
 # 1. 概要
 
 - **200 人以上の豊富な戦国武将の中から、好きな武将を見つけたり、登録することができます。**
 - **好きな武将にコメントを投稿することで、気の合う仲間とつながることができるアプリです。**
-
-![top.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/e478e1ba-ee53-1bc5-8c23-6bee5428e205.gif)
+  ![top.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/e478e1ba-ee53-1bc5-8c23-6bee5428e205.gif)
 
 # 2. 開発背景
 
@@ -16,46 +15,16 @@
 
 **2016 年大河ドラマ「真田丸」をきっかけに歴史に興味をもち、歴史の本を購入したりする中で、実際に現地に行くことが趣味になりました。**
 中でも戦国武将について調べることが日課となっていて、特に気になる武将がいれば、ゆかりの地を巡ったりしています。
-
 ![haikei1jpg.jpg](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/103503f1-cac7-7602-b028-c073cc3582f7.jpeg)
 
 ## 歴史を通じて交流がしたい
 
 そうした中で、現地に行って得られた体験を共有したかったのですが、同世代に好きな人がおらず、ひとりで楽しむ程度でした。  
 **そのため、「歴史に興味のある人との交流できたらいいな」と思っていたため、今回アプリを作ることを決めました。**
-
+「あの戦国武将と自分の出身地が一緒」というだけでも興味を持ちやすいですし、そういう方にぜひ使ってもらいたいアプリです。
 ![haikei2.jpg](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/564068ac-88f1-ac76-4dca-6143aeddb9c6.jpeg)
 
-## 歴史好きをもっと増やしたい
-
-歴史の授業で習うものは形式的すぎるので、もう少し気軽に歴史に興味を持ってもらいたいと思っています。  
-**「あの戦国武将と自分の出身地が一緒」というだけでも興味を持ちやすいですし、そういう方にぜひ使ってもらいたいアプリです。**
-
-![haikei3.jpg](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/f9d5c683-2eb4-5132-0320-a13100a16250.jpeg)
-
-# 3. 開発環境
-
-## 使用技術
-
-| 項目             | 内容                 |
-| ---------------- | -------------------- |
-| 言語             | Ruby 3.1.2           |
-| フレームワーク   | Ruby on Rails 6.1.7  |
-| フロントエンド   | HTML/scss/JavaScript |
-| データベース     | PostgreSQL           |
-| コード解析       | RuboCop              |
-| ソースコード管理 | GitHub               |
-| インフラ         | Heroku/AWS(S3)       |
-
-## ER 図
-
-![erzu](https://user-images.githubusercontent.com/105146615/204910877-4aff8843-c80e-4d43-8cc6-1f05d6b5c85a.png)
-
-## 画面遷移図
-
-![gamensenizu.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/9ac197c4-b3e8-f317-3277-e91f4fa7248c.png)
-
-# 4. 機能
+# 3. 機能
 
 ## 機能一覧
 
@@ -92,20 +61,40 @@
 
 ![mypage](https://user-images.githubusercontent.com/105146615/204918063-db0e3c09-2096-424a-8db8-6df72d4487b9.gif)
 
+# 4. 開発環境
+
+## 使用技術
+
+| 項目             | 内容                 |
+| ---------------- | -------------------- |
+| 言語             | Ruby 3.1.2           |
+| フレームワーク   | Ruby on Rails 6.1.7  |
+| フロントエンド   | HTML/scss/JavaScript |
+| データベース     | PostgreSQL           |
+| コード解析       | RuboCop              |
+| ソースコード管理 | GitHub               |
+| インフラ         | Heroku/AWS(S3)       |
+
+## ER 図
+
+![ER図（個人）.drawio.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/c50fdbef-92ab-0a3e-e0e4-d39d6675fecc.png)
+
+## 画面遷移図
+
+![gamensenizu.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/9ac197c4-b3e8-f317-3277-e91f4fa7248c.png)
+
 # 5. 工夫した点
 
 ## N+1 問題の解消
 
 - 武将やユーザーの一覧を表示する際に、それぞれデータベースに問い合わせるのではなく、一度にまとめて問い合わせるよう修正しました。
 - N+1 問題を解決することで、データベースへの負荷が軽減され、レスポンスの良い仕様にしました。
-
   ![n+1.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/71dd3dad-3468-56fa-d694-451788631261.gif)
 
 ## いいねを非同期処理
 
 - いいねボタンをクリックした際に、ページ全体をリロードするのではなく、いいねボタンのみ変化する非同期処理を実現しました。
 - 非同期処理を実現することで、ページ全体のリロードがなくなり、レスポンスの良い仕様にしました。
-
   ![hidouki.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/9055e8eb-887c-ab14-f700-81ecd3eca7a1.gif)
 
 ## 実務開発を想定
@@ -116,7 +105,6 @@
    `DO`：とにかく手を動かすことを意識し、20 分考えても分からない場合はメンターへ質問しながら進めました。  
    `CHECK`：入会しているスクールの週次ミーティングで進捗状況やアプリのレビューを行い、内容を修正しながら進めました。  
    `ACTION`：レビューで指摘された点はもちろん、同様の点が他にもないか考えながら、修正していきました。
-   
   ![jitumu.jpg](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/b21a7544-0aac-3bcd-e1ce-fbef1fd28a09.jpeg)
 
 以上です。ここまでご覧いただき、誠にありがとうございました。
