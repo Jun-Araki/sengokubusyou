@@ -8,7 +8,7 @@
 - **200 人以上の豊富な戦国武将の中から、好きな武将を見つけたり、登録することができます。**
 - **好きな武将にコメントを投稿することで、気の合う仲間とつながることができるアプリです。**
 
-  ![top.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/e478e1ba-ee53-1bc5-8c23-6bee5428e205.gif)
+![top.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/e478e1ba-ee53-1bc5-8c23-6bee5428e205.gif)
 
 # 2. 開発背景
 
