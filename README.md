@@ -84,7 +84,6 @@
 
 ## 画面遷移図
 
-![gamensenizu.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/9ac197c4-b3e8-f317-3277-e91f4fa7248c.png)
 ![画面遷移図（個人） drawio](https://user-images.githubusercontent.com/105146615/209425398-c9132f8f-956f-4ab5-b865-d806e4188c15.png)
 
 # 5. 工夫した点
