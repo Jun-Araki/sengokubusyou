@@ -1,4 +1,4 @@
-server "ElatsticIP", user: "jun", roles: %w[app db web]
+server "54.150.211.131", user: "jun", roles: %w[app db web]
 
 set :ssh_options, {
   keys: %w[~/.ssh/sengoku.pem],
