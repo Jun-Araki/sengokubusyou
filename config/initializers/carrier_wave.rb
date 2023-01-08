@@ -7,5 +7,6 @@ if Rails.env.production?
       region: "ap-northeast-1"
     }
     config.fog_directory = "sengoku-bucket"
+    config.asset_host = "https://static.minnano-sengokubusyou.com"
   end
 end
