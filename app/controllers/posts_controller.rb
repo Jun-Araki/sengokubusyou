@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts_match = params[:initial].present? ? Post.select_initial(params[:initial]) : @q.result
-    @posts = @posts_match.includes(:user).add_is_liked(current_user).order(kana: :asc).page(params[:page]).per(PER_PAGE)
+    posts = @posts_match.includes(:user).add_is_liked(current_user)
+    @posts = posts.order(created_at: :asc).page(params[:page]).per(PER_PAGE)
   end
 
   def show
