@@ -1,7 +1,7 @@
 # みんなの戦国武将
 
 - アプリ → https://minnano-sengokubusyou.com
-- GitHub → https://github.com/Jun-Araki/sengokubusyou
+- Qiita → https://qiita.com/TS1engineer/items/7a5b5d33903d73992c49
 
 ![smart.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/e6648d34-1b93-31b4-f3fd-46f998fd564a.gif)
 
