@@ -93,11 +93,11 @@
 
 ## ER 図
 
-![ER図（個人）.drawio.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/c50fdbef-92ab-0a3e-e0e4-d39d6675fecc.png)
+![ER図（個人）.drawio.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/d16834c7-b495-66d4-5310-efac30948c2d.png)
 
 ## 画面遷移図
 
-![画面遷移図（個人）.drawio.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/3ffb9e1c-4a42-ebe7-c57e-73ec13edba84.png)
+![画面遷移図（個人）.drawio (1).png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/5253276b-7980-e671-1a4b-11df7682fd41.png)
 
 # 5. 工夫した点
 
