@@ -102,9 +102,10 @@
 
 ## N+1 問題の解消
 
-- 武将やユーザーの一覧を表示する際の SQL 発行回数や処理速度を改善するため、ActiveRecord の includes メソッドを採用しました。
-- includes は絞り込みが必要な時は例外を投げずに eager_load に fallback するため、絞り込みができない preload や複数のクエリで絞り込めない eager_load よりも運用しやすいと考えたためです。
-- この includes メソッドを利用して、例えば、user.following でフォロー一覧を取得し、:passive_relationships の受動的関係を includes することで N ＋ 1 問題を解決しました。
+- 武将やユーザー一覧を表示する際の SQL 発行回数や処理速度改善のため、ActiveRecord の`includes`メソッドを採用しました。
+- `includes`は絞り込みが必要な時は例外を投げずに`eager_load`に fallback するため、絞り込みができない`preload`や複数のクエリで絞り込めない`eager_load`より運用しやすいと考えました。
+- 注意点として、`associationが複数あるときは個別に最適化できない`ため、クエリのデータ量を判断しながら、今後も最適化していきたいです。
+- 今回は`user.following`でフォロー一覧を取得し、`passive_relationships`の受動的関係を`includes`することで、N ＋ 1 問題を解決しました。
 
 ![n+1.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/71dd3dad-3468-56fa-d694-451788631261.gif)
 
@@ -112,7 +113,6 @@
 
 - いいねボタンをクリックした際に、ページ全体をリロードするのではなく、いいねボタンのみ変化する非同期処理を実現しました。
 - Ajax を利用することで、JSON を使って非同期にサーバとの間の通信を行うため、web プラウザから、html ファイルのタグで囲った一部の情報をリクエストするので、それ以外の部分は変わらない仕様にしました。
-- 非同期処理を実現することで、ページ全体のリロードがなくなり、レスポンスの良い仕様にしました。
 
 ![hidouki.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2674841/9055e8eb-887c-ab14-f700-81ecd3eca7a1.gif)
 
