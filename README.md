@@ -76,7 +76,7 @@
 
 | 項目           | 内容                                                          |
 | -------------- | ------------------------------------------------------------- |
-| 言語           | Ruby 3.1.2                                                    |
+| バックエンド   | Ruby 3.1.2                                                    |
 | フレームワーク | Ruby on Rails 6.1.7                                           |
 | フロントエンド | HTML/scss/JavaScript                                          |
 | 主な gem       | device/kaminari/carrierwave/ransack/bootstrap/webpacker/debug |
