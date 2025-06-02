@@ -1,7 +1,7 @@
 <% if params[:prefecture].present? %>
   <h1><b><%= @post_display =%></b>の戦国武将</h1>
 
-  <p>武将数:&nbsp;<b><%= @posts_select.count %></b>名</p> 
+  <p>武将数:&nbsp;<b><%= @posts_select.count %></b>名</p>
 
   <section class="row g-4 card-area">
     <%= render @posts %>
@@ -24,7 +24,7 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 1 && v <= 7 %>
-          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-2">
             <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
           </div>
         <% end %>
@@ -36,7 +36,7 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 8 && v <= 14 %>
-          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-2">
             <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
           </div>
         <% end %>
@@ -48,7 +48,7 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 15 && v <= 23 %>
-          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-2">
             <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
           </div>
         <% end %>
@@ -60,7 +60,7 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 24 && v <= 30 %>
-          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-2">
             <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
           </div>
         <% end %>
@@ -72,7 +72,7 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 31 && v <= 39 %>
-          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-2">
             <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
           </div>
         <% end %>
@@ -84,7 +84,7 @@
     <div class="row">
       <% Post.prefectures.each do |k, v| %>
         <% if v >= 40 && v <= 46 %>
-          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-2">
             <b><%= link_to k, prefecture_posts_path(prefecture: v) %></b>
           </div>
         <% end %>
