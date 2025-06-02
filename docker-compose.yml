@@ -1,0 +1,27 @@
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle # bundleのキャッシュを永続化
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: postgres://postgres:password@db:5432/your_app_development # データベース接続文字列
+
+  db:
+    image: postgres:13
+    volumes:
+      - db_data:/var/lib/postgresql/data # データベースのデータを永続化
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: your_app_development # データベース名
+
+volumes:
+  db_data:
+  bundle_cache:
