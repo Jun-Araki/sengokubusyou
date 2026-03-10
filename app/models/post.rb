@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  PER_PAGE = 12
 
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -49,6 +50,30 @@ class Post < ApplicationRecord
     [q, posts_match]
   end
 
+  def self.index_bundle(params, user)
+    q, posts_match = search_with_initial(params)
+    posts = build_list(posts_match, user, includes: [:user], order: { created_at: :asc }, page: params[:page])
+    { q:, posts_match:, posts: }
+  end
+
+  def self.prefecture_bundle(params, user)
+    posts_select = by_prefecture(params[:prefecture])
+    posts = build_list(posts_select, user, includes: [:likes], order: nil, page: params[:page])
+    post_display = prefecture_label(params[:prefecture])
+    { posts_select:, posts:, post_display: }
+  end
+
+  def self.rankings_bundle(user)
+    posts = includes(:likes).with_like_flag(user)
+    likes = posts.find(top_ids_by_likes)
+    comments = posts.find(top_ids_by_comments)
+    { likes:, comments: }
+  end
+
+  def self.top_likes
+    find(top_ids_by_likes)
+  end
+
   def self.top_ids_by_likes(limit = 3)
     Like.group(:post_id).order("count(post_id) desc").limit(limit).pluck(:post_id)
   end
@@ -64,4 +89,11 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
+
+  def self.build_list(scope, user, includes:, order:, page:)
+    relation = scope.includes(includes).with_like_flag(user)
+    relation = relation.order(order) if order
+    relation.page(page).per(PER_PAGE)
+  end
+  private_class_method :build_list
 end

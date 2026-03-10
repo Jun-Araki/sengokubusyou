@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-  PER_PAGE = 12
-
   before_action :authenticate_user!, except: %i[index show ranks prefecture top info]
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @q, @posts_match = Post.search_with_initial(params)
-    @posts = build_posts(@posts_match, includes: [:user], order: { created_at: :asc })
+    result = Post.index_bundle(params, current_user)
+    @q = result[:q]
+    @posts_match = result[:posts_match]
+    @posts = result[:posts]
   end
 
   def show
@@ -55,19 +55,20 @@ class PostsController < ApplicationController
   def prefecture
     return if params[:prefecture].blank?
 
-    @posts_select = Post.by_prefecture(params[:prefecture])
-    @posts = build_posts(@posts_select, includes: [:likes])
-    @post_display = Post.prefecture_label(params[:prefecture])
+    result = Post.prefecture_bundle(params, current_user)
+    @posts_select = result[:posts_select]
+    @posts = result[:posts]
+    @post_display = result[:post_display]
   end
 
   def ranks
-    posts = Post.includes(:likes).with_like_flag(current_user)
-    @likes = posts.find(Post.top_ids_by_likes)
-    @comments = posts.find(Post.top_ids_by_comments)
+    result = Post.rankings_bundle(current_user)
+    @likes = result[:likes]
+    @comments = result[:comments]
   end
 
   def top
-    @likes = Post.find(Post.top_ids_by_likes)
+    @likes = Post.top_likes
   end
 
   def info; end
@@ -80,11 +81,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:name, :kana, :initial, :prefecture, :commentary, :image)
-  end
-
-  def build_posts(scope, includes:, order: nil)
-    relation = scope.includes(includes).with_like_flag(current_user)
-    relation = relation.order(order) if order
-    relation.page(params[:page]).per(PER_PAGE)
   end
 end

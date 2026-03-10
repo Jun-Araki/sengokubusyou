@@ -121,6 +121,71 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe ".index_bundle" do
+    let(:user) { create(:user) }
+
+    it "検索結果と一覧を返す" do
+      older = create(:post, created_at: 2.days.ago)
+      newer = create(:post, created_at: 1.day.ago)
+
+      result = Post.index_bundle({ q: {} }, user)
+
+      expect(result[:q]).to be_a(Ransack::Search)
+      expect(result[:posts_match]).to match_array([older, newer])
+      expect(result[:posts].map(&:id)).to eq([older.id, newer.id])
+    end
+  end
+
+  describe ".prefecture_bundle" do
+    let(:user) { create(:user) }
+
+    it "都道府県に一致する一覧と表示名を返す" do
+      tokyo_post = create(:post, prefecture: "東京都")
+      create(:post, prefecture: "大阪府")
+
+      result = Post.prefecture_bundle({ prefecture: "東京都" }, user)
+
+      expect(result[:posts_select]).to eq([tokyo_post])
+      expect(result[:posts]).to eq([tokyo_post])
+      expect(result[:post_display]).to eq("東京都")
+    end
+  end
+
+  describe ".rankings_bundle" do
+    let(:user) { create(:user) }
+
+    it "いいね/コメントのランキングを返す" do
+      post_a = create(:post)
+      post_b = create(:post)
+      user1 = create(:user)
+      user2 = create(:user)
+
+      create(:like, user: user1, post: post_a)
+      create(:like, user: user2, post: post_a)
+      create(:like, user: user1, post: post_b)
+
+      create(:comment, user: user1, post: post_b)
+      create(:comment, user: user2, post: post_b)
+      create(:comment, user: user1, post: post_a)
+
+      result = Post.rankings_bundle(user)
+
+      expect(result[:likes].first).to eq(post_a)
+      expect(result[:comments].first).to eq(post_b)
+    end
+  end
+
+  describe ".top_likes" do
+    it "いいね数上位の投稿を返す" do
+      post = create(:post)
+      create(:like, user: create(:user), post:)
+
+      result = Post.top_likes
+
+      expect(result).to include(post)
+    end
+  end
+
   describe "#liked_by?" do
     let(:user) { create(:user) }
     let(:post) { create(:post, user:) }
