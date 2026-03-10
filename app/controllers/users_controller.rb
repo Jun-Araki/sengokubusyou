@@ -5,29 +5,29 @@ class UsersController < ApplicationController
   PER_PAGE = 12
 
   def index
-    render "not_exists"
+    render_not_exists
   end
 
   def show
     unless @user
-      render "not_exists"
+      render_not_exists
       return
     end
 
     @user_posts = @user.posts
-    @posts = @user.posts.includes(:user).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
+    @posts = build_posts(@user.posts)
   end
 
   def likes
     liked_post_ids = @user.likes.pluck(:post_id)
     @user_posts = Post.where(id: liked_post_ids)
-    @posts = @user_posts.includes(:user).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
+    @posts = build_posts(@user_posts)
   end
 
   def comments
     commented_post_ids = @user.comments.distinct.pluck(:post_id)
     @user_posts = Post.where(id: commented_post_ids)
-    @posts = @user_posts.includes(:user).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
+    @posts = build_posts(@user_posts)
   end
 
   def following
@@ -42,5 +42,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(id: params[:id])
+  end
+
+  def build_posts(scope)
+    scope.includes(:user).with_like_flag(current_user).page(params[:page]).per(PER_PAGE)
   end
 end

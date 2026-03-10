@@ -41,6 +41,26 @@ class Post < ApplicationRecord
     end
   }
 
+  scope :with_like_flag, ->(user) { add_is_liked(user) }
+
+  def self.search_with_initial(params)
+    q = ransack(params[:q])
+    posts_match = params[:initial].present? ? by_initial(params[:initial]) : q.result
+    [q, posts_match]
+  end
+
+  def self.top_ids_by_likes(limit = 3)
+    Like.group(:post_id).order("count(post_id) desc").limit(limit).pluck(:post_id)
+  end
+
+  def self.top_ids_by_comments(limit = 3)
+    Comment.group(:post_id).order("count(post_id) desc").limit(limit).pluck(:post_id)
+  end
+
+  def self.prefecture_label(value)
+    prefectures.invert.transform_keys!(&:to_s).fetch(value)
+  end
+
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end

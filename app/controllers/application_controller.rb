@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path
   end
 
+  def render_not_exists
+    render "not_exists"
+  end
+
   def store_location
     excluded_paths = [new_user_registration_path, new_user_session_path, users_guest_sign_in_path]
     session[:previous_url] = request.fullpath unless request.fullpath.in?(excluded_paths)

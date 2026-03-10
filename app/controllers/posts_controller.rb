@@ -5,16 +5,14 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @q = Post.ransack(params[:q])
-    @posts_match = params[:initial].present? ? Post.by_initial(params[:initial]) : @q.result
-    posts = @posts_match.includes(:user).add_is_liked(current_user)
-    @posts = posts.order(created_at: :asc).page(params[:page]).per(PER_PAGE)
+    @q, @posts_match = Post.search_with_initial(params)
+    @posts = build_posts(@posts_match, includes: [:user], order: { created_at: :asc })
   end
 
   def show
     @post = Post.find_by(id: params[:id])
     unless @post
-      render "not_exists"
+      render_not_exists
       return
     end
 
@@ -58,18 +56,18 @@ class PostsController < ApplicationController
     return if params[:prefecture].blank?
 
     @posts_select = Post.by_prefecture(params[:prefecture])
-    @posts = @posts_select.includes(:likes).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
-    @post_display = Post.prefectures.invert.transform_keys!(&:to_s).fetch(params[:prefecture])
+    @posts = build_posts(@posts_select, includes: [:likes])
+    @post_display = Post.prefecture_label(params[:prefecture])
   end
 
   def ranks
-    posts = Post.includes(:likes).add_is_liked(current_user)
-    @likes = posts.find(top_post_ids_by_likes)
-    @comments = posts.find(top_post_ids_by_comments)
+    posts = Post.includes(:likes).with_like_flag(current_user)
+    @likes = posts.find(Post.top_ids_by_likes)
+    @comments = posts.find(Post.top_ids_by_comments)
   end
 
   def top
-    @likes = Post.find(top_post_ids_by_likes)
+    @likes = Post.find(Post.top_ids_by_likes)
   end
 
   def info; end
@@ -84,11 +82,9 @@ class PostsController < ApplicationController
     params.require(:post).permit(:name, :kana, :initial, :prefecture, :commentary, :image)
   end
 
-  def top_post_ids_by_likes
-    Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id)
-  end
-
-  def top_post_ids_by_comments
-    Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id)
+  def build_posts(scope, includes:, order: nil)
+    relation = scope.includes(includes).with_like_flag(current_user)
+    relation = relation.order(order) if order
+    relation.page(params[:page]).per(PER_PAGE)
   end
 end
