@@ -52,6 +52,7 @@ group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "capybara" # フィーチャーテスト（システムテスト）用
+  gem "dotenv-rails"
   gem "factory_bot_rails" # テストデータを作成するのに便利
   gem "faker" # ダミーデータ生成用
   gem "pry-byebug"

@@ -27,9 +27,9 @@ development:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db # docker-compose.ymlで定義したサービス名
-  username: postgres # docker-compose.ymlで定義したPOSTGRES_USER
-  password: password # docker-compose.ymlで定義したPOSTGRES_PASSWORD
+  host: localhost
+  username: postgres
+  password: password
 
 test:
   <<: *default
@@ -37,9 +37,9 @@ test:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db # docker-compose.ymlで定義したサービス名
-  username: postgres # docker-compose.ymlで定義したPOSTGRES_USER
-  password: password # docker-compose.ymlで定義したPOSTGRES_PASSWORD
+  host: localhost
+  username: postgres
+  password: password
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
