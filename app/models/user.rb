@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :nickname, :email, presence: true
   validates :profile, length: { maximum: 200 }
 
-  mount_uploader :user_image, ImageUploader, uniqueness: true
+  mount_uploader :user_image, ImageUploader
 
   def self.guest
     find_or_create_by!(nickname: "guest", email: "guest@example.com") do |user|
@@ -26,14 +26,14 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    following << other_user
+    following << other_user unless following?(other_user)
   end
 
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by!(followed_id: other_user.id).destroy!
   end
 
-  def following?(current_user)
-    passive_relationships.any? { |relationship| relationship.follower_id == current_user.id }
+  def following?(other_user)
+    active_relationships.exists?(followed_id: other_user.id)
   end
 end

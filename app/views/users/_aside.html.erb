@@ -5,11 +5,11 @@
 
     <% if @user.twitter.present? %>
       <div class="my-3">
-        <font size="4px">
-          <%= link_to twitter, target: "_blank" do %>
+        <span style="font-size: 1.2rem;">
+          <%= link_to @user.twitter, target: "_blank", rel: "noopener noreferrer" do %>
             <i class="fa-brands fa-twitter"></i>
           <% end %>
-        </font>
+        </span>
       </div>
     <% end %>
 
@@ -27,8 +27,8 @@
     <br>
 
     <% unless current_user?(@user) %>
-      <% if @user.following?(current_user) %>
-        <%= form_with(model: @user.passive_relationships.find { |relationship| relationship.follower_id == current_user.id },
+      <% if current_user.following?(@user) %>
+        <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
                     html: { method: :delete }, local: true) do |f| %>
           <%= f.submit "フォロー中", class: "btn btn-unfollow mb-1"  %>
         <% end %>
@@ -52,7 +52,7 @@
       <i class="fa-solid fa-message"></i>&nbsp;<span>コメントした武将</span>
     <% end %>
 
-    <% if @user.id == current_user.id %>
+    <% if current_user?(@user) %>
       <% unless @user.email == "guest@example.com" %>
         <%= link_to edit_user_registration_path, class: "btn btn-edit my-3 w-75" do %>
           <i class="fa-regular fa-pen-to-square"></i>&nbsp;<span>アカウント編集</span>

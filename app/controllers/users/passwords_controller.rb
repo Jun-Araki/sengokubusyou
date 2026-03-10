@@ -1,6 +1,6 @@
 module Users
   class PasswordsController < Devise::PasswordsController
-    before_action :ensure_normal_user, only: :create# rubocop:disable all
+    before_action :ensure_normal_user, only: :create
 
     def ensure_normal_user
       return unless params[:user][:email].downcase == "guest@example.com"

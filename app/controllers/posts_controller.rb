@@ -1,25 +1,26 @@
 class PostsController < ApplicationController
   PER_PAGE = 12
 
-  before_action :authenticate_user!, except: %w[index show ranks prefecture top info]
+  before_action :authenticate_user!, except: %i[index show ranks prefecture top info]
   before_action :set_post, only: %i[edit update destroy]
 
   def index
     @q = Post.ransack(params[:q])
-    @posts_match = params[:initial].present? ? Post.select_initial(params[:initial]) : @q.result
+    @posts_match = params[:initial].present? ? Post.by_initial(params[:initial]) : @q.result
     posts = @posts_match.includes(:user).add_is_liked(current_user)
     @posts = posts.order(created_at: :asc).page(params[:page]).per(PER_PAGE)
   end
 
   def show
-    if Post.exists?(params[:id])
-      @post = Post.find(params[:id])
-      @post_prefecture = Post.prefectures.fetch(@post.prefecture)
-      @comments = @post.comments.includes(:user, :post)
-      @comment = current_user.comments.new if user_signed_in?
-    else
+    @post = Post.find_by(id: params[:id])
+    unless @post
       render "not_exists"
+      return
     end
+
+    @post_prefecture = Post.prefectures.fetch(@post.prefecture)
+    @comments = @post.comments.includes(:user)
+    @comment = current_user.comments.new if user_signed_in?
   end
 
   def new
@@ -27,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post, notice: t("notice.post_create")
@@ -50,26 +51,25 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    flash.now[:alert] = t("alert.post_delete")
-    render "not_exists"
+    redirect_to posts_path, alert: t("alert.post_delete")
   end
 
   def prefecture
     return if params[:prefecture].blank?
 
-    @posts_select = Post.select_prefecture(params[:prefecture])
+    @posts_select = Post.by_prefecture(params[:prefecture])
     @posts = @posts_select.includes(:likes).add_is_liked(current_user).page(params[:page]).per(PER_PAGE)
     @post_display = Post.prefectures.invert.transform_keys!(&:to_s).fetch(params[:prefecture])
   end
 
   def ranks
     posts = Post.includes(:likes).add_is_liked(current_user)
-    @likes = posts.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
-    @comments = posts.find(Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @likes = posts.find(top_post_ids_by_likes)
+    @comments = posts.find(top_post_ids_by_comments)
   end
 
   def top
-    @likes = Post.find(Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id))
+    @likes = Post.find(top_post_ids_by_likes)
   end
 
   def info; end
@@ -82,5 +82,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:name, :kana, :initial, :prefecture, :commentary, :image)
+  end
+
+  def top_post_ids_by_likes
+    Like.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id)
+  end
+
+  def top_post_ids_by_comments
+    Comment.group(:post_id).order("count(post_id) desc").limit(3).pluck(:post_id)
   end
 end

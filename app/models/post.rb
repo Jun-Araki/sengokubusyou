@@ -1,33 +1,18 @@
 class Post < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 30 }, uniqueness: true# rubocop:disable all
+  validates :name, presence: true, length: { maximum: 30 }, uniqueness: true
   validates :kana, presence: true
   validates :initial, presence: true
   validates :prefecture, presence: true
   validates :commentary, presence: true
-  mount_uploader :image, ImageUploader, uniqueness: true
 
-  scope :add_is_liked, lambda { |user|
-    if user.present?
-      join_query = <<~SQL.squish
-        LEFT OUTER JOIN likes ON likes.post_id = #{table_name}.id
-                              AND likes.user_id = #{user.id}
-      SQL
-
-      joins(join_query).select(select_values.blank? && "#{table_name}.*", "likes.user_id IS NOT NULL AS is_liked")
-    else
-      select(select_values.blank? && "#{table_name}.*", "false AS is_liked")
-    end
-  }
-
-  def liked_by?(user)
-    likes.any? { |like| like.user_id == user.id }
-  end
+  mount_uploader :image, ImageUploader
 
   enum initial: {
     あ行: 1, か行: 2, さ行: 3, た行: 4, な行: 5,
@@ -43,11 +28,20 @@ class Post < ApplicationRecord
     福岡県: 40, 佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46
   }
 
-  def self.select_initial(initial)
-    where(initial:)
-  end
+  scope :by_initial, ->(initial) { where(initial:) }
+  scope :by_prefecture, ->(prefecture) { where(prefecture:) }
 
-  def self.select_prefecture(prefecture)
-    where(prefecture:)
+  scope :add_is_liked, lambda { |user|
+    if user.present?
+      sql = "LEFT OUTER JOIN likes ON likes.post_id = #{table_name}.id AND likes.user_id = ?"
+      join_query = sanitize_sql_array([sql, user.id])
+      joins(join_query).select(select_values.blank? && "#{table_name}.*", "likes.user_id IS NOT NULL AS is_liked")
+    else
+      select(select_values.blank? && "#{table_name}.*", "false AS is_liked")
+    end
+  }
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
   end
 end

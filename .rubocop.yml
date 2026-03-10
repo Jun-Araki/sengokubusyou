@@ -5,7 +5,7 @@ AllCops:
   TargetRubyVersion: 3.1.2
   NewCops: enable
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
@@ -13,12 +13,21 @@ Style/FrozenStringLiteralComment:
 
 Rails/FilePath:
   Exclude:
-    - 'config/environments/development.rb'
+    - "config/environments/development.rb"
 
-StringLiterals:
+Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 Metrics/AbcSize:
-  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
-  # a Float.
   Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - "app/controllers/users/**/*"
